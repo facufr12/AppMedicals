@@ -11,25 +11,10 @@ const Footer = ({ bgColor = 'bg-transparent' }) => {
 				<Row className="align-items-center g-0 border-top py-2">
 					{/* Desc */}
 					<Col md={6} sm={12} className="text-center text-md-start">
-						<span>© 2024 Geeks. All Rights Reserved.</span>
+						<span>© 2024 Cober. Todos los derechos Reservados.</span>
 					</Col>
 					{/* Links */}
-					<Col md={6} sm={12}>
-						<nav className="nav nav-footer justify-content-center justify-content-md-end">
-							<Link className="nav-link active ps-0" to="#">
-								Privacy
-							</Link>
-							<Link className="nav-link" to="#">
-								Terms{' '}
-							</Link>
-							<Link className="nav-link" to="#">
-								Feedback
-							</Link>
-							<Link className="nav-link" to="#">
-								Support
-							</Link>
-						</nav>
-					</Col>
+			
 				</Row>
 			</Container>
 		</footer>
