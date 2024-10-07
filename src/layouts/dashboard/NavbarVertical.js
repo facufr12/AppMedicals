@@ -17,7 +17,7 @@ import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
 
 // import media files
-import InverseLogo from 'assets/images/brand/logo/logo-inverse.svg';
+import InverseLogo from 'assets/images/brand/logo/logo-cober-ale.svg';
 import GiftBox from 'assets/images/background/giftbox.png';
 
 // import routes file
@@ -303,22 +303,6 @@ const NavbarVertical = (props) => {
 					})}
 				</Accordion>
 				{/* end of Dashboard Menu */}
-
-				<Card className="bg-dark-primary shadow-none text-center mx-4 my-8">
-					<Card.Body className="py-6">
-						<Image src={GiftBox} alt="" />
-						<div className="mt-4">
-							<h5 className="text-white">Unlimited Access</h5>
-							<p className="text-white-50 fs-6">
-								Upgrade your plan from a Free trial, to select ‘Business Plan’.
-								Start Now
-							</p>
-							<Link to="#!" className="btn btn-white btn-sm mt-2">
-								Upgrade Now
-							</Link>
-						</div>
-					</Card.Body>
-				</Card>
 			</SimpleBar>
 		</Fragment>
 	);

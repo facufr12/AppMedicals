@@ -16,7 +16,7 @@ import ChatLayout from "./dashboard/ChatLayout"; // ( added in v2.0.0 )
 import TaskKanbanLayout from "./dashboard/TaskKanbanLayout"; // ( added in v2.0.0 )
 import HelpCenterTransparentLayout from "layouts/marketing/HelpCenterTransparentLayout"; // ( added in v2.0.0 )
 import EcommerceLayout from "./dashboard/EcommerceLayout"; // ( added in v2.2.0 )
-
+import Cotizador from "components/dashboard/user/Cotizador";
 // ** Import Dahbaord Menu Pages
 import Overview from "components/dashboard/overview/Overview";
 import Analytics from "components/dashboard/analytics/Analytics";
@@ -259,13 +259,17 @@ import Mentor from "components/marketing/landings/mentor/Mentor";
 import MentorList from "components/marketing/pages/mentor/list/MentorList";
 import MentorSingle from "components/marketing/pages/mentor/single/MentorSingle";
 import NavbarVertical from "./dashboard/NavbarVertical";
+import NavbarBrandOnly from "./marketing/navbars/NavbarBrandOnly";
+import NavbarDefault from "routes/marketing/NavbarDefault";
+import NavbarCompact from "./dashboard/navbars/NavbarCompact";
+import SimpleBar from "simplebar-react";
 
 const AllRoutes = () => {
   return (
     <Routes>
       {/* Routes with DefaultLayout */}
-      <Route element={<DefaultLayout />}>
-        <Route path="/" element={<Overview />} />
+      <Route element={<NavbarVertical />}>
+        <Route path="/asdsad" element={<Overview />} />
         <Route
           path="/marketing/course-category/"
           element={<CourseCategory />}
@@ -282,6 +286,7 @@ const AllRoutes = () => {
           path="/marketing/instructor/add-new-course/"
           element={<AddNewCourse />}
         />
+        
         <Route
           path="/marketing/courses/course-path/"
           element={<CoursePath />}
@@ -592,12 +597,13 @@ const AllRoutes = () => {
 
       {/* Routes (DASHBOARD ROUTERS) with DashboardIndex */}
       <Route element={<DashboardIndex />}>
-        <Route path="/dashboard/overview" element={<Overview />} />
+        <Route path="/" element={<Overview />} />
         <Route path="/dashboard/analytics" element={<Analytics />} />
         <Route path="/courses/all-courses" element={<AllCourses />} />
         <Route path="/courses/courses-category" element={<CoursesCategory />} />
         <Route path="/courses/category-single" element={<CategorySingle />} />
         <Route path="/user/instructor" element={<Instructor />} />
+        <Route path="/user/Cotizador" element={<Cotizador />} />
         <Route path="/user/students" element={<Students />} />
         <Route path="/cms/cms-dashboard" element={<CMSDashboard />} />
         <Route path="/cms/all-posts" element={<AllPosts />} />
