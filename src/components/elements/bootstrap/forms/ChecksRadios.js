@@ -8,14 +8,6 @@ import PageHeading from 'components/elements/bootstrap/common/PageHeading';
 // import code syntax highlighter
 import HighlightCode from 'components/elements/highlight-code/HighlightCode';
 
-// import react code file
-import {
-	DefaultCode,
-	SwitchesCode,
-	InlineCode,
-	WithoutLabelsCode,
-	CustomizingCode
-} from 'data/code/forms/ChecksRadiosCode';
 
 const ChecksRadios = () => {
 	return (

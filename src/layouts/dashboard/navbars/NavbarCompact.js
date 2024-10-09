@@ -13,16 +13,13 @@ import {
 } from 'react-bootstrap';
 
 // import custom components
-import GKTippy from 'components/elements/tooltips/GKTippy';
 
 // import media files
-import InverseLogo from 'assets/images/brand/logo/logo-icon.svg';
+import Logo from 'assets/images/logo-cober.svg';
 
 // import routes file
 import { DashboardMenu } from 'routes/dashboard/DashboardRoutes';
 
-// import hooks
-import useToggle from 'hooks/useToggle';
 
 const NavbarCompact = () => {
 	const location = useLocation();
@@ -71,7 +68,7 @@ const NavbarCompact = () => {
 			<div className="nav-scroller">
 				<Navbar.Brand as={Link} to="/dashboard/overview/">
 					<Image
-						src={InverseLogo}
+						src={Logo}
 						alt=""
 						height="30"
 						className="text-inverse"

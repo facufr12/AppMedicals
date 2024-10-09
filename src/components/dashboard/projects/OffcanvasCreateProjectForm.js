@@ -4,7 +4,6 @@ import { Col, Row, Form, InputGroup, Button } from 'react-bootstrap';
 // import custom components
 import { FlatPickr } from 'components/elements/flat-pickr/FlatPickr';
 import { FormSelect } from 'components/elements/form-select/FormSelect';
-import { DropFiles } from 'components/elements/dropfiles/DropFiles';
 
 // import bootstrap icons
 import { Image } from 'react-bootstrap-icons';
@@ -158,9 +157,7 @@ const OffcanvasCreateProjectForm = ({ onClick }) => {
 				{/* Project Cover Image */}
 				<Col xs={12} className="mb-4">
 					<h5 className="mb-3">Cover Image </h5>
-					<div className="dropzone mt-4 p-4 border-dashed text-center">
-						<DropFiles />
-					</div>
+					
 				</Col>
 
 				{/* Buttons */}

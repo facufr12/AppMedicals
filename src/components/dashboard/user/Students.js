@@ -3,7 +3,6 @@ import { Fragment } from 'react';
 import { Col, Row, Card, Tab, Breadcrumb } from 'react-bootstrap';
 
 // import custom components
-import GridListViewButton from 'components/elements/miscellaneous/GridListViewButton';
 
 // import sub components
 import StudentsGridCard from './StudentsGridCard';

@@ -24,8 +24,6 @@ imgtooltip	: Optional - Boolean - Default=false, if you specify this parameter, 
 import { Image } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
-// import custom components
-import GKTippy from 'components/elements/tooltips/GKTippy';
 
 const Avatar = (props) => {
 	const {

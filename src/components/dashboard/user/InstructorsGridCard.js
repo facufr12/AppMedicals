@@ -12,7 +12,6 @@ import { mdiStar } from '@mdi/js';
 import { numberWithCommas } from 'helper/utils';
 
 // import data files
-import { InstructorData } from 'data/users/InstructorData';
 
 function InstructorsGridCard() {
 	const [instructors, setInstructorsList] = useState(

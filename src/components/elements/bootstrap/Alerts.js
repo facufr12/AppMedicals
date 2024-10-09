@@ -10,14 +10,6 @@ import {
 // import code syntax highlighter
 import HighlightCode from 'components/elements/highlight-code/HighlightCode';
 
-// import react code data file
-import {
-	SimpleAlert,
-	LinkAlert,
-	AdditionalAlert,
-	AlertWithIcon,
-	DismissingAlert
-} from 'data/code/AlertsCode';
 
 const Alerts = () => {
 	const AlertDismissible = () => {

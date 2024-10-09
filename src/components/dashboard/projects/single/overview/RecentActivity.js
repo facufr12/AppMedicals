@@ -3,9 +3,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Row, Col, Card, ListGroup } from 'react-bootstrap';
 
-// import data files
-import RecentActivityData from 'data/dashboard/projects/RecentActivityData';
-
 const RecentActivity = () => {
 	return (
 		<Card>

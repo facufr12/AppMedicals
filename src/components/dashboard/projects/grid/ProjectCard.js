@@ -10,7 +10,6 @@ import { AvatarGroup, Avatar } from 'components/elements/bootstrap/Avatar';
 import { numberWithCommas, getStatusColor } from 'helper/utils';
 
 // import data files
-import ProjectTeamMembersData from 'data/dashboard/projects/ProjectTeamMembersData';
 
 const ProjectCard = ({ item }) => {
 	// The forwardRef is important!!
@@ -138,35 +137,7 @@ const ProjectCard = ({ item }) => {
 				<div className="d-flex justify-content-between align-items-center mb-5">
 					<div className="d-flex align-items-center">
 						{/* avatar group */}
-						<AvatarGroup>
-							{ProjectTeamMembersData.filter(function (dataSource) {
-								return (
-									dataSource.id === item.team[0] ||
-									dataSource.id === item.team[1] ||
-									dataSource.id === item.team[2]
-								);
-							}).map((member, index) => {
-								return (
-									<Avatar
-										size="md"
-										src={member.image}
-										type={`${member.image == null ? 'initial' : 'image'}`}
-										name={member.name}
-										className="rounded-circle"
-										imgtooltip
-										key={index}
-									/>
-								);
-							})}
-							<Avatar
-								size="md"
-								type="initial"
-								name={item.team.length - 3 + '+'}
-								variant="light"
-								className="rounded-circle text-dark"
-								showExact
-							/>
-						</AvatarGroup>
+					
 					</div>
 					{/* text */}
 					<div>

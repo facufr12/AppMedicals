@@ -16,8 +16,6 @@ import { Link } from 'react-router-dom';
 // import custom components
 import DotBadge from 'components/elements/bootstrap/DotBadge';
 
-// import data files
-import NotificationData from 'data/dashboard/NotificationData';
 
 const Notifications = () => {
 	function NotificationsIcon(icon, color) {

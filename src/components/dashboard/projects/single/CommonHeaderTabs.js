@@ -6,11 +6,6 @@ import { Col, Row, ListGroup } from 'react-bootstrap';
 // import custom components
 import { AvatarGroup, Avatar } from 'components/elements/bootstrap/Avatar';
 
-// import media files
-import Avatar1 from 'assets/images/avatar/avatar-1.jpg';
-import Avatar2 from 'assets/images/avatar/avatar-2.jpg';
-import Avatar3 from 'assets/images/avatar/avatar-3.jpg';
-import Avatar4 from 'assets/images/avatar/avatar-4.jpg';
 
 // import routes file
 // Here we have used routers list of Projects->Single-> all children

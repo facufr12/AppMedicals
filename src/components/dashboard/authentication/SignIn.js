@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Col, Row, Card, Form, Button, Image } from 'react-bootstrap';
-import Logo from 'assets/images/brand/logo/logo-cober.svg';
+import Logo from "../../../assets/images/logo-cober.svg"
 
 import Overview from '../../dashboard/overview/Overview';
 const SignIn = () => {
@@ -24,7 +24,7 @@ const SignIn = () => {
 							<div className="mb-4 text-center">
 								<Link to="/">
 									<Image 
-										src={Logo} 
+									    src={Logo}
 										className="mb-4" 
 										alt="" 
 										style={{ width: '150px' }} 

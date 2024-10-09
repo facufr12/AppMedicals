@@ -26,9 +26,6 @@ import { FormSelect } from 'components/elements/form-select/FormSelect';
 import { AvatarGroup, Avatar } from 'components/elements/bootstrap/Avatar';
 
 // import data files
-import ProjectsListData from 'data/dashboard/projects/ProjectsListData';
-import ProjectTeamMembersData from 'data/dashboard/projects/ProjectTeamMembersData';
-
 // import utility file
 import { numberWithCommas, getStatusColor } from 'helper/utils';
 
@@ -222,7 +219,7 @@ const ProjectListTable = ({ onNewProject }) => {
 		[]
 	);
 
-	const data = useMemo(() => ProjectsListData, []);
+
 
 	const table = useReactTable({
 		data,

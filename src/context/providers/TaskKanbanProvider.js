@@ -4,11 +4,6 @@ import React, { useReducer } from 'react';
 // import context file
 import { TaskKanbanContext } from 'context/Context';
 
-// import data files
-import {
-	TeamMembers,
-	TaskKanbanItems
-} from 'data/dashboard/task-kanban/TaskKanbanData';
 
 // import reducer file
 import { TaskKanbanReducer } from 'reducers/TaskKanbanReducer';

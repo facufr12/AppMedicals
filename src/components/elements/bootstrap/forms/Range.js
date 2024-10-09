@@ -8,8 +8,6 @@ import PageHeading from 'components/elements/bootstrap/common/PageHeading';
 // import code syntax highlighter
 import HighlightCode from 'components/elements/highlight-code/HighlightCode';
 
-// import react code file
-import { BasicRangeCode } from 'data/code/forms/RangeControlCode';
 
 const Range = () => {
 	return (

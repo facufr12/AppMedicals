@@ -9,10 +9,8 @@ import SimpleBar from "simplebar-react";
 import "simplebar/dist/simplebar.min.css";
 import DotBadge from "components/elements/bootstrap/DotBadge";
 import DarkLightMode from "layouts/DarkLightMode";
-import GKTippy from "components/elements/tooltips/GKTippy";
 
 // import data files
-import NotificationList from "data/Notification";
 
 const QuickMenu = () => {
   const isDesktop = useMediaQuery({

@@ -1,8 +1,6 @@
 // import context file
 import { MailContext } from 'context/Context';
 
-// import data files
-import MailsData from 'data/dashboard/mail/MailsData';
 
 const MailProvider = ({ children }) => {
 	const [mailContextValue] = [

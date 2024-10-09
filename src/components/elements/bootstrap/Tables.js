@@ -6,19 +6,6 @@ import { Col, Row, Card, Table, Nav, Tab } from 'react-bootstrap';
 import HighlightCode from 'components/elements/highlight-code/HighlightCode';
 
 // import react code data file
-import {
-	BasicTableCode,
-	DarkTableCode,
-	TableHeadCode,
-	StripedTableCode,
-	TableVariantCode,
-	BorderedTableCode,
-	BorderlessTableCode,
-	HoverableRowsCode,
-	SmallTableCode,
-	ContextualClassesCode,
-	ResponsiveTableCode
-} from 'data/code/TablesCode';
 
 const Tables = () => {
 	return (

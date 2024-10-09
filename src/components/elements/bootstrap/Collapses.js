@@ -14,8 +14,6 @@ import {
 // import code syntax highlighter
 import HighlightCode from 'components/elements/highlight-code/HighlightCode';
 
-// import react code data file
-import { FadeCollapses, BasicCollapsesCode } from 'data/code/CollapsesCode';
 
 const Collapses = () => {
 	const [open, setOpen] = useState(false);

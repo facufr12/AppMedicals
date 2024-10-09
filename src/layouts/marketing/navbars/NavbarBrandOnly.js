@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Col, Row, Image } from 'react-bootstrap';
 
 // import media files
-import Logo from 'assets/images/brand/logo/logo.svg';
+import Logo from 'assets/images/logo-cober.svg';
 
 const NavbarBrandOnly = () => {
 	return (

@@ -7,12 +7,6 @@ import DotBadge from './DotBadge';
 import HighlightCode from 'components/elements/highlight-code/HighlightCode';
 
 // import react code data file
-import {
-	SimpleBadgeCode,
-	BadgeWithButtonCode,
-	PillBadgesCode,
-	DotBadgeCode
-} from 'data/code/BadgesCode';
 
 const Badges = () => {
 	return (

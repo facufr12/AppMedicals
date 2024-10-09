@@ -14,8 +14,6 @@ import {
 // import code syntax highlighter
 import HighlightCode from 'components/elements/highlight-code/HighlightCode';
 
-// import react code data file
-import { BasicTooltip } from 'data/code/TooltipsCode';
 
 const Tooltips = () => {
 	return (

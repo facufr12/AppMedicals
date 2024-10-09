@@ -17,22 +17,6 @@ import { ShoppingBag } from 'react-feather';
 import HighlightCode from 'components/elements/highlight-code/HighlightCode';
 
 // import react code data file
-import {
-	RegularButtonCode,
-	ButtonTagsCode,
-	OutlineButtonsCode,
-	ButtonSizesCode,
-	BlockButtonCode,
-	ResponsiveButtonCode,
-	BlockButtonWidthCode,
-	ButtonAlignmentCode,
-	ButtonIconsCode,
-	ButtonIcons2Code,
-	ButtonIconsSizeCode,
-	ActiveStateCode,
-	DisabledStateCode,
-	ToggleStatesCode
-} from 'data/code/ButtonsCode';
 
 const Buttons = () => {
 	return (

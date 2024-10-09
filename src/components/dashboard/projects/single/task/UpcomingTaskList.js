@@ -6,8 +6,6 @@ import { Card, Dropdown, Table, Image } from 'react-bootstrap';
 // import custom components
 import ProgressChart from 'components/elements/charts/ProgressChart';
 
-// import data files
-import UpcomingTaskListData from 'data/dashboard/projects/UpcomingTaskListData';
 
 const UpcomingTaskList = () => {
 	// The forwardRef is important!!

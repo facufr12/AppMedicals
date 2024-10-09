@@ -2,10 +2,8 @@
 import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { Col, Row, Card, Form, Button, Image } from 'react-bootstrap';
-
+import Logo from "../../../assets/images/logo-cober.svg"
 // import media files
-import Logo from 'assets/images/brand/logo/logo-cober.svg';
-
 const SignUp = () => {
 	return (
 		<Fragment>

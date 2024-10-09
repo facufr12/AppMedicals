@@ -20,7 +20,6 @@ import TanstackTable from 'components/elements/advance-table/TanstackTable';
 import { numberWithCommas } from 'helper/utils';
 
 // import data files
-import { InstructorData } from 'data/users/InstructorData';
 
 const InstructorsListItems = () => {
 	const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (

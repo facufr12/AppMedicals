@@ -7,34 +7,22 @@ import "assets/scss/theme.scss";
 // ** Import Layouts
 import DashboardIndex from "layouts/dashboard/DashboardIndex";
 import AuthLayout from "layouts/dashboard/AuthLayout";
-import HelpCenterLayout from "layouts/marketing/HelpCenterLayout"; // ( added in v1.3.0 )
 import DashboardIndexCompact from "layouts/dashboard/DashboardIndexCompact"; // ( added in v1.3.0 )
 import DashboardIndexTop from "layouts/dashboard/DashboardIndexTop"; // ( added in v1.3.0 )
 import JobListingLayout from "layouts/marketing/JobListingLayout"; // ( added in v2.0.0 )
-import MailLayout from "./dashboard/MailLayout"; // ( added in v2.0.0 )
+
 import ChatLayout from "./dashboard/ChatLayout"; // ( added in v2.0.0 )
 import TaskKanbanLayout from "./dashboard/TaskKanbanLayout"; // ( added in v2.0.0 )
-import HelpCenterTransparentLayout from "layouts/marketing/HelpCenterTransparentLayout"; // ( added in v2.0.0 )
 import EcommerceLayout from "./dashboard/EcommerceLayout"; // ( added in v2.2.0 )
 import Cotizador from "components/dashboard/user/Cotizador";
 // ** Import Dahbaord Menu Pages
 import Overview from "components/dashboard/overview/Overview";
 import Analytics from "components/dashboard/analytics/Analytics";
 
-// ** Import Courses Pages
-import AllCourses from "components/dashboard/courses/all-courses/AllCourses";
-import CoursesCategory from "components/dashboard/courses/CoursesCategory";
-import CategorySingle from "components/dashboard/courses/CategorySingle";
-
 // ** Import Users Pages
 import Instructor from "components/dashboard/user/Instructor";
-import Students from "components/dashboard/user/Students";
 
 // ** Import CMS Pages
-import CMSDashboard from "components/dashboard/cms/CMSDashboard";
-import AllPosts from "components/dashboard/cms/all-posts/AllPosts";
-import AddNewPost from "components/dashboard/cms/AddNewPost";
-import Category from "components/dashboard/cms/Category";
 
 // ** Import Authentication components
 import SignIn from "components/dashboard/authentication/SignIn";
@@ -47,13 +35,11 @@ import General from "components/dashboard/settings/General";
 import Google from "components/dashboard/settings/Google";
 import Social from "components/dashboard/settings/Social";
 import SocialLogin from "components/dashboard/settings/SocialLogin";
-import Payment from "components/dashboard/settings/Payment";
 import SMTPServer from "components/dashboard/settings/SMTPServer";
 
 // Dashboard Projects ( new v1.2.0 )
 import ProjectGrid from "components/dashboard/projects/grid/ProjectGrid";
 import ProjectList from "components/dashboard/projects/list/ProjectList";
-import CreateProject from "components/dashboard/projects/create-project/CreateProject";
 import ProjectBudget from "components/dashboard/projects/single/budget/ProjectBudget";
 import ProjectFiles from "components/dashboard/projects/single/files/ProjectFiles";
 import ProjectOverview from "components/dashboard/projects/single/overview/ProjectOverview";
@@ -61,41 +47,7 @@ import ProjectSummary from "components/dashboard/projects/single/summary/Project
 import ProjectTask from "components/dashboard/projects/single/task/ProjectTask";
 import ProjectTeam from "components/dashboard/projects/single/team/ProjectTeam";
 
-// Dashboard Apps -> Mail ( new v1.3.0 )
-import Mail from "components/dashboard/mail-app/mail/Mail";
-import MailDraft from "components/dashboard/mail-app/mail-draft/MailDraft";
-import MailDetails from "components/dashboard/mail-app/mail-details/MailDetails";
-
-// Dashboard Apps -> Task Kanban ( v1.4.0 )
-import TaskKanban from "components/dashboard/task-kanban/Kanban";
-import Chat from "components/dashboard/chat/Chat";
-
-// Dashboard Apps -> Calendar ( v2.1.0 )
-import Calendar from "components/dashboard/calendar/Calendar";
-
-// Dashboard - Ecommerce Pages  ( v2.2.0 )
-// ** Ecommerce -> Products Pages
-import ProductGrid from "components/dashboard/ecommerce/products/ProductGrid";
-import ProductGridWithSidebar from "components/dashboard/ecommerce/products/ProductGridWithSidebar";
-import ProductsList from "components/dashboard/ecommerce/products/product-list/ProductsList";
-import ProductSingle from "components/dashboard/ecommerce/products/ProductSingle";
-import ProductSingleV2 from "components/dashboard/ecommerce/products/ProductSingleV2";
-import AddProduct from "components/dashboard/ecommerce/products/AddProduct";
-
-// ** Ecommerce -> Cart Pages
-import Checkout from "components/dashboard/ecommerce/checkout/Checkout";
-import ShoppingCart from "components/dashboard/ecommerce/cart/ShoppingCart";
-
-// ** Ecommerce -> Order Pages
-import Orders from "components/dashboard/ecommerce/orders/orders/Orders";
-import OrderSingle from "components/dashboard/ecommerce/orders/OrderSingle";
-import OrderSummary from "components/dashboard/ecommerce/orders/OrderSummary";
-import OrderHistory from "components/dashboard/ecommerce/orders/OrderHistory";
-
 // ** Ecommerce -> Customers Pages
-import CustomersList from "components/dashboard/ecommerce/customers/CustomersList";
-import CustomerSingle from "components/dashboard/ecommerce/customers/CustomerSingle";
-import AddCustomer from "components/dashboard/ecommerce/customers/AddCustomer";
 
 // Dashboard - Tables Pages  ( v2.2.0 )
 import BasicTables from "components/dashboard/tables/basic/BasicTables";
@@ -140,8 +92,6 @@ import Toasts from "components/elements/bootstrap/Toasts";
 import Tooltips from "components/elements/bootstrap/Tooltips";
 
 // ** Import docs and change log pages
-import Documentation from "components/dashboard/documentation/Documentation";
-import ChangeLog from "components/dashboard/changelog/ChangeLog";
 
 /* ----------------------------------- */
 /* IMPORTS FOR MARKETING PAGES - START */
@@ -150,117 +100,12 @@ import LayoutFooterLinks from "layouts/marketing/LayoutFooterLinks";
 import BlankLayout from "layouts/marketing/BlankLayout";
 import NotFound from "layouts/marketing/NotFound";
 import AcademyLayout from "layouts/marketing/AcademyLayout"; // added in 2.0.0
-import CourseIndex from "components/marketing/pages/courses/course-index/CourseIndex";
-import CourseCategory from "components/marketing/pages/courses/course-category/CourseCategory";
-
-/* IMPORTS FOR FRONT SIDE PAGES MENU */
-import CourseSingle from "components/marketing/pages/courses/course-single/CourseSingle";
-import CourseSingle2 from "components/marketing/pages/courses/course-single2/CourseSingle2";
-import CourseResume from "components/marketing/pages/courses/course-resume/CourseResume";
-import CourseCheckout from "components/marketing/pages/courses/course-checkout/CourseCheckout";
-import CourseFilterPage from "components/marketing/pages/courses/course-filter-page/CourseFilterPage";
-import AddNewCourse from "components/marketing/pages/courses/add-new-course/AddNewCourse";
-import CoursePath from "components/marketing/pages/courses/course-path/CoursePath";
-import CoursePathSingle from "components/marketing/pages/courses/course-path-single/CoursePathSingle";
-import About from "components/marketing/pages/about/About";
-import Pricing from "components/marketing/pages/pricing/Pricing";
-import ComparePlan from "components/marketing/pages/compare-plan/ComparePlan"; // new v1.1.0
-import Contact from "components/marketing/pages/contact/Contact"; // new v1.1.0
-
-// IMPORTS FOR HELP CENTER PAGES ( v1.3.0 )
-import HelpCenter from "components/marketing/pages/help-center/help-center/HelpCenter";
-import HelpCenterFAQ from "components/marketing/pages/help-center/help-center-faq/HelpCenterFAQ";
-import HelpCenterGuide from "components/marketing/pages/help-center/help-center-guide/HelpCenterGuide";
-import HelpCenterGuideSingle from "components/marketing/pages/help-center/help-center-guide-single/HelpCenterGuideSingle";
-import HelpCenterSupport from "components/marketing/pages/help-center/help-center-support/HelpCenterSupport";
-
-/* IMPORTS FOR FRONT BLOG SUBMENU  ROUTERS */
-import BlogListing from "components/marketing/blog/BlogListing";
-import BlogArticleSingle from "components/marketing/blog/BlogArticleSingle";
-import BlogCategory from "components/marketing/blog/BlogCategory";
-import BlogSidebar from "components/marketing/blog/BlogSidebar";
-
-/* IMPORTS FOR FRONT CAREER SUBMENU  ROUTERS */
-import Career from "components/marketing/pages/career/career/Career"; // new v1.1.0
-import CareerList from "components/marketing/pages/career/career-list/CareerList"; // new v1.1.0
-import CareerSingle from "components/marketing/pages/career/career-single/CareerSingle"; // new v1.1.0
-
-/* IMPORTS FOR FRONT SPECIALTY SUBMENU  ROUTERS */
-import ComingSoon from "components/marketing/pages/specialty/ComingSoon";
-import Error404 from "components/marketing/pages/specialty/Error404";
-import MaintenanceMode from "components/marketing/pages/specialty/MaintenanceMode";
-import TermsAndConditions from "components/marketing/pages/specialty/TermsAndConditions";
-
-// Landing menu item pages
-import LandingCourses from "components/marketing/landings/landing-courses/LandingCourses";
-import CourseLead from "components/marketing/landings/course-lead/CourseLead";
-import RequestAccess from "components/marketing/landings/request-access/RequestAccess";
-import LandingSass from "components/marketing/landings/landing-sass/LandingSass"; // new v1.1.0
-import HomeAcademy from "components/marketing/landings/home-academy/HomeAcademy"; // new v2.0.0
-import LandingJob from "components/marketing/landings/landing-job/LandingJob"; // new v2.0.0
-import LandingEducation from "components/marketing/landings/landing-education/LandingEducation"; // new v2.2.0
-
-// Job Listing new pages ( v2.0.0 )
-import JobsList from "components/marketing/pages/jobs/listing/JobsList";
-import JobSingle from "components/marketing/pages/jobs/listing/JobSingle";
-import CompanyList from "components/marketing/pages/jobs/company-list/CompanyList";
-import CompanyAbout from "components/marketing/pages/jobs/company/About";
-import CompanyReviews from "components/marketing/pages/jobs/company/Reviews";
-import CompanyJobs from "components/marketing/pages/jobs/company/Jobs";
-import CompanyBenifits from "components/marketing/pages/jobs/company/Benifits";
-import CompanyPhotos from "components/marketing/pages/jobs/company/Photos";
-import PostAJob from "components/marketing/pages/jobs/post-a-job/PostAJob";
-import UploadResume from "components/marketing/pages/jobs/upload-resume/UploadResume";
-
-// Instructor Dashboard Pages
-import InstructorDashboard from "components/marketing/instructor/Dashboard";
-import InstructorMyCourses from "components/marketing/instructor/MyCourses";
-import InstructorReviews from "components/marketing/instructor/Reviews";
-import Earnings from "components/marketing/instructor/Earnings";
-import InstructorOrders from "components/marketing/instructor/Orders";
-import InstructorStudents from "components/marketing/instructor/Students";
-import ViewProfile from "components/marketing/instructor/ViewProfile";
-
-// Instructor New Dashboard Pages for Quiz ( v2.0.0)
-import InstructorQuiz from "components/marketing/instructor/Quiz";
-import InstructorQuizSingle from "components/marketing/instructor/QuizSingle";
-import InstructorQuizResult from "components/marketing/instructor/QuizResult";
-
-// Student Dashboard Pages
-import StudentDashboard from "components/marketing/student/Dashboard";
-import DeleteProfile from "components/marketing/account-settings/DeleteProfile";
-import EditProfile from "components/marketing/account-settings/EditProfile";
-import LinkedAccounts from "components/marketing/account-settings/LinkedAccounts";
-import AccountNotifications from "components/marketing/account-settings/Notifications";
-import StudentPayment from "components/marketing/account-settings/Payment";
-import ProfilePrivacy from "components/marketing/account-settings/ProfilePrivacy";
-import Security from "components/marketing/account-settings/Security";
-import SocialProfiles from "components/marketing/account-settings/SocialProfiles";
-import Subscriptions from "components/marketing/account-settings/Subscriptions";
-
-// Student New Dashboard Pages for Quiz ( v2.0.0)
-import StudentQuiz from "components/marketing/student/Quiz";
-import StudentQuizStart from "components/marketing/student/quiz-start/QuizStart";
-import StudentQuizAttempt from "components/marketing/student/QuizAttempt";
-import StudentQuizResult from "components/marketing/student/QuizResult";
-
-// Account Settings
-import BillingInfo from "components/marketing/account-settings/BillingInfo";
-import Payouts from "components/marketing/account-settings/Payouts";
-import Invoice from "components/marketing/account-settings/Invoice";
-import InvoiceDetails from "components/marketing/account-settings/InvoiceDetails";
 
 // Portfolio Pages ( v2.2.0)
-import PortfolioList from "components/marketing/pages/portfolio/PortfolioList";
-import PortfolioSingle from "components/marketing/pages/portfolio/PortfolioSingle";
 
 // Mentor Pages (v2.3.0)
-import Mentor from "components/marketing/landings/mentor/Mentor";
-import MentorList from "components/marketing/pages/mentor/list/MentorList";
-import MentorSingle from "components/marketing/pages/mentor/single/MentorSingle";
 import NavbarVertical from "./dashboard/NavbarVertical";
 import NavbarBrandOnly from "./marketing/navbars/NavbarBrandOnly";
-import NavbarDefault from "routes/marketing/NavbarDefault";
 import NavbarCompact from "./dashboard/navbars/NavbarCompact";
 import SimpleBar from "simplebar-react";
 
@@ -270,321 +115,32 @@ const AllRoutes = () => {
       {/* Routes with DefaultLayout */}
       <Route element={<NavbarVertical />}>
         <Route path="/asdsad" element={<Overview />} />
-        <Route
-          path="/marketing/course-category/"
-          element={<CourseCategory />}
-        />
-        <Route
-          path="/marketing/courses/course-checkout/"
-          element={<CourseCheckout />}
-        />
-        <Route
-          path="/marketing/courses/course-filter-page/"
-          element={<CourseFilterPage />}
-        />
-        <Route
-          path="/marketing/instructor/add-new-course/"
-          element={<AddNewCourse />}
-        />
-        
-        <Route
-          path="/marketing/courses/course-path/"
-          element={<CoursePath />}
-        />
-        <Route
-          path="/marketing/courses/course-path-single/"
-          element={<CoursePathSingle />}
-        />
-        <Route
-          path="/marketing/courses/course-single/"
-          element={<CourseSingle />}
-        />
-        <Route
-          path="/marketing/courses/course-single2/"
-          element={<CourseSingle2 />}
-        />
-        <Route path="/marketing/pages/pricing/" element={<Pricing />} />
-        <Route
-          path="/marketing/blog/article-single/:id"
-          element={<BlogArticleSingle />}
-        />
-        <Route path="/marketing/blog/category/" element={<BlogCategory />} />
-        <Route path="/marketing/blog/listing/" element={<BlogListing />} />
-        <Route
-          path="/marketing/instructor/dashboard/"
-          element={<InstructorDashboard />}
-        />
-        <Route
-          path="/marketing/instructor/instructor-my-courses/"
-          element={<InstructorMyCourses />}
-        />
-        <Route
-          path="/marketing/instructor/instructor-reviews/"
-          element={<InstructorReviews />}
-        />
-        <Route
-          path="/marketing/instructor/instructor-earnings/"
-          element={<Earnings />}
-        />
-        <Route
-          path="/marketing/instructor/instructor-orders/"
-          element={<InstructorOrders />}
-        />
-        <Route
-          path="/marketing/instructor/instructor-students/"
-          element={<InstructorStudents />}
-        />
-        <Route
-          path="/marketing/instructor/instructor-payouts/"
-          element={<Payouts />}
-        />
-        <Route
-          path="/marketing/instructor/instructor-edit-profile/"
-          element={<EditProfile />}
-        />
-        <Route
-          path="/marketing/instructor/instructor-profile/"
-          element={<ViewProfile />}
-        />
-        <Route
-          path="/marketing/instructor/instructor-security/"
-          element={<Security />}
-        />
-        <Route
-          path="/marketing/instructor/instructor-social-profiles/"
-          element={<SocialProfiles />}
-        />
-        <Route
-          path="/marketing/instructor/instructor-notifications/"
-          element={<AccountNotifications />}
-        />
-        <Route
-          path="/marketing/instructor/instructor-profile-privacy/"
-          element={<ProfilePrivacy />}
-        />
-        <Route
-          path="/marketing/instructor/instructor-delete-profile/"
-          element={<DeleteProfile />}
-        />
-        <Route
-          path="/marketing/instructor/quiz/"
-          element={<InstructorQuiz />}
-        />
-        <Route
-          path="/marketing/instructor/quiz/single/"
-          element={<InstructorQuizSingle />}
-        />
-        <Route
-          path="/marketing/instructor/quiz/result/"
-          element={<InstructorQuizResult />}
-        />
-        <Route
-          path="/marketing/student/dashboard/"
-          element={<StudentDashboard />}
-        />
-        <Route
-          path="/marketing/student/student-subscriptions/"
-          element={<Subscriptions />}
-        />
-        <Route
-          path="/marketing/student/student-billing-info/"
-          element={<BillingInfo />}
-        />
-        <Route
-          path="/marketing/student/student-payment/"
-          element={<StudentPayment />}
-        />
-        <Route
-          path="/marketing/student/student-invoice/"
-          element={<Invoice />}
-        />
-        <Route
-          path="/marketing/student/student-invoice-details/"
-          element={<InvoiceDetails />}
-        />
-        <Route
-          path="/marketing/student/student-edit-profile/"
-          element={<EditProfile />}
-        />
-        <Route
-          path="/marketing/student/student-security/"
-          element={<Security />}
-        />
-        <Route
-          path="/marketing/student/student-social-profiles/"
-          element={<SocialProfiles />}
-        />
-        <Route
-          path="/marketing/student/student-notifications/"
-          element={<AccountNotifications />}
-        />
-        <Route
-          path="/marketing/student/student-profile-privacy/"
-          element={<ProfilePrivacy />}
-        />
-        <Route
-          path="/marketing/student/student-delete-profile/"
-          element={<DeleteProfile />}
-        />
-        <Route
-          path="/marketing/student/student-linked-accounts/"
-          element={<LinkedAccounts />}
-        />
-        <Route path="/marketing/student/quiz/" element={<StudentQuiz />} />
-        <Route
-          path="/marketing/student/quiz/attempt/"
-          element={<StudentQuizAttempt />}
-        />
-        <Route
-          path="/marketing/student/quiz/start/"
-          element={<StudentQuizStart />}
-        />
-        <Route
-          path="/marketing/student/quiz/result/"
-          element={<StudentQuizResult />}
-        />
       </Route>
 
       {/* Routes with BlankLayout */}
       <Route element={<BlankLayout />}>
-        <Route
-          path="/marketing/landings/landing-education/"
-          element={<LandingEducation />}
-        />
-        <Route
-          path="/marketing/landings/landing-courses/"
-          element={<LandingCourses />}
-        />
-        <Route
-          path="/marketing/landings/course-lead/"
-          element={<CourseLead />}
-        />
-        <Route
-          path="/marketing/landings/request-access/"
-          element={<RequestAccess />}
-        />
-        <Route
-          path="/marketing/landings/landing-sass/"
-          element={<LandingSass />}
-        />
-        <Route path="/marketing/pages/about/" element={<About />} />
-        <Route
-          path="/marketing/courses/course-resume/"
-          element={<CourseResume />}
-        />
-        <Route path="/marketing/pages/contact/" element={<Contact />} />
-        <Route path="/marketing/blog/sidebar/" element={<BlogSidebar />} />
-        <Route
-          path="/marketing/specialty/terms-and-conditions/"
-          element={<TermsAndConditions />}
-        />
-
         {/* Mentor Pages ( added in v2.3.0 ) */}
         {/* link: '/marketing/landings/mentor'
 						link: '/marketing/mentor/list/'
 						link: '/marketing/mentor/single/' */}
-        <Route path="/marketing/landings/mentor" element={<Mentor />} />
-        <Route path="/marketing/mentor/list" element={<MentorList />} />
-        <Route path="/marketing/mentor/single" element={<MentorSingle />} />
       </Route>
 
       {/* Routes with NotFound */}
-      <Route element={<NotFound />}>
-        <Route
-          path="/marketing/specialty/coming-soon/"
-          element={<ComingSoon />}
-        />
-        <Route path="/marketing/specialty/404-error/" element={<Error404 />} />
-        <Route
-          path="/marketing/specialty/maintenance-mode/"
-          element={<MaintenanceMode />}
-        />
-      </Route>
+      <Route element={<NotFound />}></Route>
 
       {/* Routes with JobListingLayout */}
       <Route element={<JobListingLayout />}>
-        <Route
-          path="/marketing/landings/landing-job/"
-          element={<LandingJob />}
-        />
-        <Route
-          path="/marketing/jobs/listing/job-list/"
-          element={<JobsList />}
-        />
-        <Route path="/marketing/jobs/listing/:slug" element={<JobSingle />} />
-        <Route path="/marketing/jobs/company-list/" element={<CompanyList />} />
-        <Route
-          path="/marketing/jobs/company/about/"
-          element={<CompanyAbout />}
-        />
-        <Route
-          path="/marketing/jobs/company/reviews/"
-          element={<CompanyReviews />}
-        />
-        <Route path="/marketing/jobs/company/jobs/" element={<CompanyJobs />} />
-        <Route
-          path="/marketing/jobs/company/benifits/"
-          element={<CompanyBenifits />}
-        />
-        <Route
-          path="/marketing/jobs/company/photos/"
-          element={<CompanyPhotos />}
-        />
-        <Route path="/marketing/jobs/post-a-job/" element={<PostAJob />} />
-        <Route
-          path="/marketing/jobs/upload-resume/"
-          element={<UploadResume />}
-        />
+    
       </Route>
 
       {/* Routes with LayoutFooterLinks */}
       <Route element={<LayoutFooterLinks />}>
-        <Route path="/marketing/portfolio/list/" element={<PortfolioList />} />
-        <Route
-          path="/marketing/portfolio/single/"
-          element={<PortfolioSingle />}
-        />
-        <Route
-          path="/marketing/pages/compare-plan/"
-          element={<ComparePlan />}
-        />
-        <Route path="/marketing/pages/career/" element={<Career />} />
-        <Route path="/marketing/pages/career-list/" element={<CareerList />} />
-        <Route
-          path="/marketing/pages/career-single/"
-          element={<CareerSingle />}
-        />
+    
       </Route>
 
       {/* Routes with AcademyLayout */}
-      <Route element={<AcademyLayout />}>
-        <Route
-          path="/marketing/landings/home-academy/"
-          element={<HomeAcademy />}
-        />
-      </Route>
+      <Route element={<AcademyLayout />}></Route>
 
-      {/* Routes with HelpCenterTransparentLayout */}
-      <Route element={<HelpCenterTransparentLayout />}>
-        <Route path="/marketing/help-center/" element={<HelpCenter />} />
-      </Route>
-
-      {/* Routes with HelpCenterLayout */}
-      <Route element={<HelpCenterLayout />}>
-        <Route path="/marketing/help-center/faq/" element={<HelpCenterFAQ />} />
-        <Route
-          path="/marketing/help-center/guide/"
-          element={<HelpCenterGuide />}
-        />
-        <Route
-          path="/marketing/help-center/guide-single/:categoryslug/:articleslug"
-          element={<HelpCenterGuideSingle />}
-        />
-        <Route
-          path="/marketing/help-center/support/"
-          element={<HelpCenterSupport />}
-        />
-      </Route>
       {/* Routes with AuthLayout */}
       <Route element={<AuthLayout />}>
         <Route path="/authentication/sign-in" element={<SignIn />} />
@@ -599,16 +155,8 @@ const AllRoutes = () => {
       <Route element={<DashboardIndex />}>
         <Route path="/" element={<Overview />} />
         <Route path="/dashboard/analytics" element={<Analytics />} />
-        <Route path="/courses/all-courses" element={<AllCourses />} />
-        <Route path="/courses/courses-category" element={<CoursesCategory />} />
-        <Route path="/courses/category-single" element={<CategorySingle />} />
         <Route path="/user/instructor" element={<Instructor />} />
         <Route path="/user/Cotizador" element={<Cotizador />} />
-        <Route path="/user/students" element={<Students />} />
-        <Route path="/cms/cms-dashboard" element={<CMSDashboard />} />
-        <Route path="/cms/all-posts" element={<AllPosts />} />
-        <Route path="/cms/add-new-post" element={<AddNewPost />} />
-        <Route path="/cms/category" element={<Category />} />
         <Route
           path="/authentication/notifications"
           element={<Notifications />}
@@ -623,16 +171,12 @@ const AllRoutes = () => {
         <Route path="/settings/google" element={<Google />} />
         <Route path="/settings/social" element={<Social />} />
         <Route path="/settings/social-login" element={<SocialLogin />} />
-        <Route path="/settings/payment" element={<Payment />} />
         <Route path="/settings/smtp-server" element={<SMTPServer />} />
 
         {/* PROJECTS ROUTERS */}
         <Route path="/dashboard/projects/grid" element={<ProjectGrid />} />
         <Route path="/dashboard/projects/list" element={<ProjectList />} />
-        <Route
-          path="/dashboard/projects/create-project"
-          element={<CreateProject />}
-        />
+
         <Route
           path="/dashboard/projects/single/budget"
           element={<ProjectBudget />}
@@ -704,35 +248,6 @@ const AllRoutes = () => {
         <Route path="/elements/tables" element={<Tables />} />
         <Route path="/elements/toasts" element={<Toasts />} />
         <Route path="/elements/tooltips" element={<Tooltips />} />
-        <Route path="/dashboard/documentation" element={<Documentation />} />
-        <Route path="/dashboard/changelog" element={<ChangeLog />} />
-        <Route path="/dashboard/calendar" element={<Calendar />} />
-
-        {/* ** Dashboard - Ecommerce -> Products Pages ( v2.2.0 ) */}
-        <Route
-          path="/dashboard/ecommerce/products/product-grid"
-          element={<ProductGrid />}
-        />
-        <Route
-          path="/dashboard/ecommerce/products/product-grid-with-sidebar"
-          element={<ProductGridWithSidebar />}
-        />
-        <Route
-          path="/dashboard/ecommerce/products"
-          element={<ProductsList />}
-        />
-        <Route
-          path="/dashboard/ecommerce/products/product-single"
-          element={<ProductSingle />}
-        />
-        <Route
-          path="/dashboard/ecommerce/products/product-single-v2"
-          element={<ProductSingleV2 />}
-        />
-        <Route
-          path="/dashboard/ecommerce/products/add-product"
-          element={<AddProduct />}
-        />
 
         {/* ** Dashboard - Tables Pages ( v2.2.0 ) */}
         <Route
@@ -744,58 +259,13 @@ const AllRoutes = () => {
 
       {/* Routes with EcommerceLayout (v2.2.0) */}
       <Route element={<EcommerceLayout />}>
-        {/* ** Dashboard - Ecommerce -> Cart Pages ( v2.2.0 )*/}
-        <Route
-          path="/dashboard/ecommerce/shopping-cart"
-          element={<ShoppingCart />}
-        />
-        <Route path="/dashboard/ecommerce/checkout" element={<Checkout />} />
-
-        {/* ** Dashboard - Ecommerce -> Order Pages ( v2.2.0 ) */}
-        <Route path="/dashboard/ecommerce/orders" element={<Orders />} />
-        <Route
-          path="/dashboard/ecommerce/order-single"
-          element={<OrderSingle />}
-        />
-        <Route
-          path="/dashboard/ecommerce/order-summary"
-          element={<OrderSummary />}
-        />
-        <Route
-          path="/dashboard/ecommerce/order-history"
-          element={<OrderHistory />}
-        />
-
         {/* ** Dashboard - Ecommerce -> Customers Pages ( v2.2.0 ) */}
-        <Route
-          path="/dashboard/ecommerce/customers"
-          element={<CustomersList />}
-        />
-        <Route
-          path="/dashboard/ecommerce/customer/:id"
-          element={<CustomerSingle />}
-        />
-        <Route
-          path="/dashboard/ecommerce/add-customer"
-          element={<AddCustomer />}
-        />
-      </Route>
 
-      {/* Routes with MailLayout */}
-      <Route element={<MailLayout />}>
-        <Route path="/dashboard/mail" element={<Mail />} />
-        <Route path="/dashboard/mail-draft" element={<MailDraft />} />
-        <Route path="/dashboard/mail-details" element={<MailDetails />} />
+      
       </Route>
 
       {/* Routes with ChatLayout */}
       <Route element={<ChatLayout />}>
-        <Route path="/dashboard/chat" element={<Chat />} />
-      </Route>
-
-      {/* Routes with TaskKanbanLayout */}
-      <Route element={<TaskKanbanLayout />}>
-        <Route path="/dashboard/task-kanban" element={<TaskKanban />} />
       </Route>
 
       {/* Routes with DashboardIndexTop */}

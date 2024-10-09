@@ -8,7 +8,6 @@ import { numberWithCommas, getCategoryColor } from 'helper/utils';
 import { SquareFill, ArrowDown, ArrowUp } from 'react-bootstrap-icons';
 
 // Import required data files
-import BudgetDetailsData from 'data/dashboard/projects/BudgetDetailsData';
 
 const BudgetDetailsCard = () => {
 	return (

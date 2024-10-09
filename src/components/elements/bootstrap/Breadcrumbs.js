@@ -6,7 +6,6 @@ import { Col, Row, Card, Breadcrumb, Nav, Tab } from 'react-bootstrap';
 import HighlightCode from 'components/elements/highlight-code/HighlightCode';
 
 // import react code data file
-import { BasicBreadcrumb } from 'data/code/BreadcrumbCode';
 
 const Breadcrumbs = () => {
 	return (

@@ -1,6 +1,6 @@
 /* eslint-disable */
 // import node module libraries
-import { Fragment, useContext, useEffect } from 'react';
+import { Fragment, useContext, useEffect, useState } from 'react';
 import { Form, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
@@ -8,30 +8,22 @@ import { Link } from 'react-router-dom';
 import { AppConfigContext } from 'context/Context';
 
 // import media file
-import LightModeIcon from 'assets/images/svg/sun.svg';
-import DarkModeIcon from 'assets/images/svg/moon.svg';
-
-// import required hook
-import useLocalStorage from 'hooks/useLocalStorage';
+import LightModeIcon from 'assets/images/sun.svg';
+import DarkModeIcon from 'assets/images/moon.svg';
 
 const DarkLightMode = ({ className }) => {
 	const ConfigContext = useContext(AppConfigContext);
-	const { storageValue, setStorageValue, getStorageValue } = useLocalStorage(
-		'skin',
-		ConfigContext.appStats.skin
-	);
-	useEffect(() => {
-		document
-			.querySelector('html')
-			.setAttribute('data-theme', getStorageValue('skin', 'light'));
-		ConfigContext.setAppConfig(storageValue);
-	}, [storageValue]);
+	const [theme, setTheme] = useState(ConfigContext.appStats.skin || 'light');
 
+	useEffect(() => {
+		document.querySelector('html').setAttribute('data-theme', theme);
+		ConfigContext.setAppConfig(theme);
+	}, [theme, ConfigContext]);
 
 	const changeColorMode = () => {
-		setStorageValue(storageValue === 'light' ? 'dark' : 'light');
-		ConfigContext.setAppConfig(storageValue);
+		setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
 	};
+
 	return (
 		<Fragment>
 			<Link
@@ -44,11 +36,11 @@ const DarkLightMode = ({ className }) => {
 				<Form.Check.Input
 					type="checkbox"
 					isValid
-					value={storageValue}
+					value={theme}
 					style={{ display: 'none' }}
 				/>
 				<Form.Check.Label style={{ cursor: 'pointer' }}>
-					<Image src={storageValue === 'dark' ? DarkModeIcon : LightModeIcon} />
+					<Image src={theme === 'dark' ? DarkModeIcon : LightModeIcon} />
 				</Form.Check.Label>
 			</Link>
 		</Fragment>

@@ -10,8 +10,6 @@ import ProjectCard from './ProjectCard';
 import OffcanvasCreateProjectForm from '../OffcanvasCreateProjectForm';
 
 // import data files
-import ProjectsGridData from 'data/dashboard/projects/ProjectsGridData';
-
 const ProjectGrid = () => {
 	const [show, setShow] = useState(false);
 
@@ -26,9 +24,7 @@ const ProjectGrid = () => {
 		{ value: 'Cancel', label: 'Cancel' }
 	];
 
-	const [ProjectsList, setProjectsList] = useState(
-		ProjectsGridData.slice(0, 500)
-	);
+	
 
 	// paging start
 	const [pageNumber, setPageNumber] = useState(0);
@@ -50,38 +46,7 @@ const ProjectGrid = () => {
 	// searching code started
 	const [searchTerm, setSearchTerm] = useState('');
 
-	const getSearchTerm = (event) => {
-		let searchTerm = event.target.value;
-		setSearchTerm(searchTerm);
-		if (searchTerm !== '') {
-			const newProjectsList = ProjectsGridData.filter((project) => {
-				return Object.values(project)
-					.join(' ')
-					.toLowerCase()
-					.includes(searchTerm.toLowerCase());
-			});
-			setProjectsList(newProjectsList.slice(0, 500));
-			setPageNumber(0);
-		} else {
-			setProjectsList(ProjectsGridData.slice(0, 500));
-		}
-	};
 
-	const getFilterTerm = (event) => {
-		let filterTerm = event.target.value;
-		if (filterTerm !== '') {
-			const newProjectsList = ProjectsGridData.filter((project) => {
-				return Object.values(project)
-					.join(' ')
-					.toLowerCase()
-					.includes(filterTerm.toLowerCase());
-			});
-			setProjectsList(newProjectsList.slice(0, 500));
-			setPageNumber(0);
-		} else {
-			setProjectsList(ProjectsGridData.slice(0, 500));
-		}
-	};
 	// end of searching code
 
 	return (

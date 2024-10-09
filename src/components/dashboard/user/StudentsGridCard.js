@@ -9,7 +9,6 @@ import ReactPaginate from 'react-paginate';
 import { numberWithCommas } from 'helper/utils';
 
 // import data files
-import { StudentsList } from 'data/users/StudentsData';
 
 const StudentsGridCard = () => {
 	const [students, setStudentsList] = useState(StudentsList.slice(0, 500));

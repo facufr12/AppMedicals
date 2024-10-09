@@ -5,7 +5,6 @@ import { Badge, Dropdown } from 'react-bootstrap';
 import { useMediaQuery } from 'react-responsive';
 
 // import data files
-import NavbarDefaultRoutes from 'routes/marketing/NavbarDefault';
 
 const CategoriesDropDown = () => {
 	const isDesktop = useMediaQuery({

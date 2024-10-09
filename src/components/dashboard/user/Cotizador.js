@@ -132,12 +132,7 @@ const CotizadorForm = () => {
             </div>
             <div className="d-md-flex">
               <div>
-                <img
-                  src="../assets/images/Zipper.PNG"
-                  alt=""
-                  className="img-4by3-xl rounded"
-                  width="120px"
-                />
+               
               </div>
               <div className="ms-md-4 mt-2">
                 <h4 className="mb-1 text-primary-hover">{key}</h4>

@@ -15,9 +15,6 @@ import TableNesting from './TableNesting'
 import TableActive from './TableActive'
 import TableSmall from './TableSmall'
 
-// import required data file
-import BasicTableData from 'data/dashboard/tables/BasicTableData'
-import BasicNestedTableData from 'data/dashboard/tables/BasicNestedTableData';
 
 const BasicTables = () => {
   return (

@@ -5,10 +5,6 @@ import { Card } from 'react-bootstrap';
 import ApexCharts from 'components/elements/charts/ApexCharts';
 
 // import data files
-import {
-	OverallProgressChartSeries,
-	OverallProgressChartOptions
-} from 'data/charts/ChartData';
 
 const OverallProgressChart = () => {
 	return (

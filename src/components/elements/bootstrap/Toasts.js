@@ -17,18 +17,7 @@ import {
 import HighlightCode from 'components/elements/highlight-code/HighlightCode';
 
 // Import required media files
-import Avatar1 from 'assets/images/avatar/avatar-1.jpg';
 
-// import react code data file
-import {
-	BasicExampleCode,
-	TranslucentToastsCode,
-	StackingCode,
-	PlacementCode1,
-	PlacementCode2,
-	PlacementCode3,
-	DismissibleCode
-} from 'data/code/ToastsCode';
 
 const Toasts = () => {
 	const [showA, setShowA] = useState(true);

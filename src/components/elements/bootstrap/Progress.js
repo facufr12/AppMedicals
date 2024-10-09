@@ -6,15 +6,6 @@ import { Card, Col, Row, ProgressBar, Tab, Nav } from 'react-bootstrap';
 import HighlightCode from 'components/elements/highlight-code/HighlightCode';
 
 // import react code data file
-import {
-	DefaultProgressCode,
-	ProgressLabelsCode,
-	ProgressHeightCode,
-	ProgressBackgroundsCode,
-	MultipleBarsCode,
-	StripedCode,
-	AnimatedCode
-} from 'data/code/ProgressCode';
 
 const Progress = () => {
 	return (

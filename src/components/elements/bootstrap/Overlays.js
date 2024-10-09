@@ -17,14 +17,7 @@ import {
 import HighlightCode from 'components/elements/highlight-code/HighlightCode';
 
 // import media files
-import Avatar1 from 'assets/images/avatar/avatar-1.jpg';
 
-// import react code data file
-import {
-	OverlayBasicCode,
-	OverlayTriggerCode,
-	TriggerBehaviorCode
-} from 'data/code/OverlaysCode';
 
 const Overlays = () => {
 	const [show, setShow] = useState(false);

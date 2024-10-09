@@ -14,24 +14,6 @@ import {
 // import code syntax highlighter
 import HighlightCode from 'components/elements/highlight-code/HighlightCode';
 
-// import media files
-import CardImage from 'assets/images/placeholder/placeholder-4by3.svg';
-
-// import react code data file
-import {
-	BasicCardCode,
-	CardBodyCode,
-	TitlesTextLinksCode,
-	ListGroups1Code,
-	ListGroups2Code,
-	CardImagesCode,
-	KitchenSinkCode,
-	HeaderFooterCode,
-	HeaderFooterCode2,
-	TextAlignmentCode,
-	ImagesTopBottomCode,
-	ImageOverlaysCode
-} from 'data/code/CardsCode';
 
 const Cards = () => {
 	return (

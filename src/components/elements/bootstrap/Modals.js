@@ -18,15 +18,6 @@ import {
 import HighlightCode from 'components/elements/highlight-code/HighlightCode';
 
 // import react code data file
-import {
-	SampleExamplesCode,
-	LiveDemoCode,
-	LongContentCode,
-	ScrollableModalCode,
-	VerticallyCenteredCode,
-	TooltipsPopoversCode,
-	OptionalSizesCode
-} from 'data/code/ModalsCode';
 
 const Modals = () => {
 	const [show, setShow] = useState(false);

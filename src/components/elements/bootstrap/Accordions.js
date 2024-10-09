@@ -6,10 +6,6 @@ import { Col, Row, Card, Accordion, Nav, Tab } from 'react-bootstrap';
 import HighlightCode from 'components/elements/highlight-code/HighlightCode';
 
 // import react code data file
-import {
-	AccordionBasicCode,
-	AccordionFlushCode
-} from 'data/code/AccordionCode';
 
 const Accordions = () => {
 	return (

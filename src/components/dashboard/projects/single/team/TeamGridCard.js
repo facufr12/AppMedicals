@@ -3,8 +3,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, Image, Dropdown } from 'react-bootstrap';
 
-// import custom components
-import GKTippy from 'components/elements/tooltips/GKTippy';
 
 const TeamGridCard = ({ item }) => {
 	// The forwardRef is important!!

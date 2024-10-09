@@ -6,11 +6,6 @@ import { Card, Dropdown } from 'react-bootstrap';
 // import custom components
 import ApexCharts from 'components/elements/charts/ApexCharts';
 
-// import data files
-import {
-	TaskSectionChartSeries,
-	TaskSectionChartOptions
-} from 'data/charts/ChartData';
 
 const TaskbySectionsChart = () => {
 	// The forwardRef is important!!

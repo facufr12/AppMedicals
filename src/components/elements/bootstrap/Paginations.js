@@ -12,16 +12,6 @@ import {
 // import code syntax highlighter
 import HighlightCode from 'components/elements/highlight-code/HighlightCode';
 
-// import react code data file
-import {
-	DefaultPaginationCode,
-	PaginationWithIconsCode,
-	DisabledActiveCode,
-	PaginationSizingCode,
-	PaginationSizingSmallCode,
-	AlignmentCode,
-	JustifyContentEndCode
-} from 'data/code/PaginationsCode';
 
 const Paginations = () => {
 	return (

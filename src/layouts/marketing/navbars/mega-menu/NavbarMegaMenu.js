@@ -11,10 +11,8 @@ import CategoriesDropDown from './CategoriesDropDown';
 import DarkLightMode from 'layouts/DarkLightMode';
 
 // import media files
-import Logo from 'assets/images/brand/logo/logo.svg';
 
 // import data files
-import NavbarDefaultRoutes from 'routes/marketing/NavbarDefault';
 
 const NavbarMegaMenu = () => {
 	const [expandedMenu, setExpandedMenu] = useState(false);

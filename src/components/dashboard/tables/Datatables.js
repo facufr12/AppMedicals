@@ -6,8 +6,6 @@ import DataTable from 'react-data-table-component';
 // import custom components
 import Pagination from 'components/elements/data-table/Pagination';
 
-// import data files
-import EmployeeData from 'data/dashboard/tables/EmployeeData';
 
 const Datatables = () => {
 	const [rowsPerPage, setRowsPerPage] = useState(10);

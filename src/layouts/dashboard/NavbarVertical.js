@@ -17,8 +17,7 @@ import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
 
 // import media files
-import InverseLogo from 'assets/images/brand/logo/logo-cober-ale.svg';
-import GiftBox from 'assets/images/background/giftbox.png';
+import InverseLogo from 'assets/images/logo-cober.svg';
 
 // import routes file
 import { DashboardMenu } from 'routes/dashboard/DashboardRoutes';

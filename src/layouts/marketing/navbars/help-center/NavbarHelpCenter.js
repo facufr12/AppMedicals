@@ -18,7 +18,6 @@ import HelpCenterDropDown from './HelpCenterDropDown';
 import DarkLightMode from '../../../DarkLightMode';
 
 // import media files
-import Logo from 'assets/images/brand/logo/logo.svg';
 
 const NavbarHelpCenter = ({ className = '' }) => {
 	const [open, setOpen] = useState(false);

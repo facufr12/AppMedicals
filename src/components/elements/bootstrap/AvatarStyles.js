@@ -3,11 +3,7 @@ import { Fragment } from 'react';
 import { Col, Row, Card, Nav, Tab, Badge } from 'react-bootstrap';
 
 // import media files
-import Avatar1 from 'assets/images/avatar/avatar-1.jpg';
-import Avatar2 from 'assets/images/avatar/avatar-2.jpg';
-import Avatar3 from 'assets/images/avatar/avatar-3.jpg';
-import Avatar4 from 'assets/images/avatar/avatar-4.jpg';
-import ImgPlaceholder from 'assets/images/placeholder/4by3.jpg';
+
 
 // import code syntax highlighter
 import HighlightCode from 'components/elements/highlight-code/HighlightCode';
@@ -16,17 +12,6 @@ import HighlightCode from 'components/elements/highlight-code/HighlightCode';
 import { AvatarGroup, Avatar, Ratio } from './Avatar';
 
 // import react code data file
-import {
-	AvatarsCode,
-	InitialsCode,
-	StatusIndicator,
-	AvatarGroups,
-	AvatarGroupsTooltip,
-	AvatarShapes,
-	AvatarRatio,
-	AvatarDarkColor,
-	AvatarSoftColor
-} from 'data/code/AvatarCode';
 
 const AvatarStyles = () => {
 	return (

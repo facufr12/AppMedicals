@@ -19,18 +19,6 @@ import {
 import HighlightCode from 'components/elements/highlight-code/HighlightCode';
 
 // import react code data file
-import {
-	BasicButtonGroupCode,
-	GroupLinksCode,
-	MixedStylesCode,
-	OutlineStylesCode,
-	CheckboxStyleCode,
-	RadioStyleCode,
-	ToolbarStyleCode,
-	ButtonSizingCode,
-	ButtonNestingCode,
-	VerticalButtonCode
-} from 'data/code/ButtonGroupCode';
 
 const ButtonGroups = () => {
 	return (

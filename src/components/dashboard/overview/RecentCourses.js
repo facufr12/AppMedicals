@@ -3,8 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Col, Row, Card, ListGroup, Dropdown, Image } from 'react-bootstrap';
 
-// import data files
-import { allcourses } from 'data/courses/AllCoursesData';
+
 
 const RecentCourses = ({ title }) => {
 	// The forwardRef is important!!
@@ -52,44 +51,7 @@ const RecentCourses = ({ title }) => {
 					View all
 				</Link>
 			</Card.Header>
-			<Card.Body>
-				<ListGroup variant="flush">
-					{allcourses.slice(0, 4).map((item, index) => (
-						<ListGroup.Item
-							className={`px-0 ${index === 0 ? 'pt-0' : ''}`}
-							key={index}
-						>
-							<Row>
-								<Col xs="auto">
-									<Link to="#">
-										<Image
-											src={item.image}
-											alt=""
-											className="img-fluid rounded img-4by3-lg"
-										/>
-									</Link>
-								</Col>
-								<Col className="ps-0">
-									<Link to="#">
-										<h5 className="text-primary-hover">{item.title}</h5>
-									</Link>
-									<div className="d-flex align-items-center">
-										<Image
-											src={item.instructor_image}
-											alt=""
-											className="rounded-circle avatar-xs me-2"
-										/>
-										<span className="fs-6">{item.instructor_name}</span>
-									</div>
-								</Col>
-								<Col xs="auto">
-									<ActionMenu />
-								</Col>
-							</Row>
-						</ListGroup.Item>
-					))}
-				</ListGroup>
-			</Card.Body>
+			
 		</Card>
 	);
 };

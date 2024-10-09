@@ -5,21 +5,7 @@ import { Col, Row, Card, Carousel, Image, Nav, Tab } from 'react-bootstrap';
 // import code syntax highlighter
 import HighlightCode from 'components/elements/highlight-code/HighlightCode';
 
-// import media files
-import CarouselImage1 from 'assets/images/background/slider-img-1.jpg';
-import CarouselImage2 from 'assets/images/background/slider-img-2.jpg';
-import CarouselImage3 from 'assets/images/background/slider-img-3.jpg';
 
-// import react code data file
-import {
-	SlidesOnlyCode,
-	WithControlCode,
-	WithIndicatorsCode,
-	WithCaptionCode,
-	CrossfadeCode,
-	IndividualCode,
-	DarkVariantCode
-} from 'data/code/CarouselsCode';
 
 const Carousels = () => {
 	const [index, setIndex] = useState(0);

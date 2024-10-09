@@ -6,23 +6,6 @@ import { Col, Row, Card, Nav, Tabs, Tab } from 'react-bootstrap';
 import HighlightCode from 'components/elements/highlight-code/HighlightCode';
 
 // import react code data file
-import {
-	MenuNavCode,
-	MenuNavFlexCode,
-	AlignmentCenterCode,
-	AlignmentRightCode,
-	VerticalFlexCode,
-	VerticalULLICode,
-	TabsNavCode,
-	PillsNavsCode,
-	FillPillsULLICode,
-	FillPillsLinkCode,
-	FillPillsJustifyCode,
-	NavsFlexUtilitiesCode,
-	NavsTabsCode,
-	NavsTabsPillsCode,
-	VerticalPillsCode
-} from 'data/code/NavsCode';
 
 const Navs = () => {
 	return (

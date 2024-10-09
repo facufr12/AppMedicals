@@ -20,7 +20,6 @@ import TanstackTable from 'components/elements/advance-table/TanstackTable';
 import { Avatar } from 'components/elements/bootstrap/Avatar';
 
 // import data files
-import { filesdata } from 'data/dashboard/projects/FilesData';
 
 // import utility file
 import { getFileExtension, getRandomNo } from 'helper/utils';

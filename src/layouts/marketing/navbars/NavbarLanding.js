@@ -10,10 +10,9 @@ import NavDropdownMain from 'layouts/marketing/navbars/NavDropdownMain';
 import DarkLightMode from 'layouts/DarkLightMode';
 
 // import media files
-import Logo from 'assets/images/brand/logo/logo.svg';
+import Logo from 'assets/images/logo-cober.svg';
 
 // import data files
-import NavbarDefaultRoutes from 'routes/marketing/NavbarDefault';
 
 const NavbarLanding = (transparent = false, center) => {
 	const [expandedMenu, setExpandedMenu] = useState(false);

@@ -15,16 +15,6 @@ import {
 // import code syntax highlighter
 import HighlightCode from 'components/elements/highlight-code/HighlightCode';
 
-// import media files
-import Logo from 'assets/images/brand/logo/logo.svg';
-import LogoIcon from 'assets/images/brand/logo/logo-icon.svg';
-
-// import data files
-import {
-	DefaultNavbar,
-	BrandNavbar,
-	ColorSchemesCode
-} from 'data/code/NavbarsCode';
 
 const Navbars = () => {
 	return (

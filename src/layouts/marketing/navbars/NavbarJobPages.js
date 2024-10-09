@@ -9,10 +9,9 @@ import DarkLightMode from '../../DarkLightMode';
 import NavDropdownMain from 'layouts/marketing/navbars/NavDropdownMain';
 
 // import media files
-import Logo from 'assets/images/brand/logo/logo.svg';
+import Logo from 'assets/images/logo-cober.svg';
 
 // import data files
-import JobListingRoutes from 'routes/marketing/JobListingRoutes';
 
 const NavbarJobPages = () => {
 	const [expandedMenu, setExpandedMenu] = useState(false);

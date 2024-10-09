@@ -1,8 +1,6 @@
 // import node module libraries
 import { Row, Col } from 'react-bootstrap';
 
-// import custom components
-import StatCenterInfo from 'components/dashboard/common/stats/StatCenterInfo';
 
 const TaskStats = () => {
 	return (

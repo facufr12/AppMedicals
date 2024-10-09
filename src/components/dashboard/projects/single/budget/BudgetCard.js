@@ -2,7 +2,6 @@
 import { Row, Col, Card, ProgressBar } from 'react-bootstrap';
 
 // import custom components
-import StatRightCenterIcon from 'components/dashboard/common/stats/StatRightCenterIcon';
 
 const BudgetCard = () => {
 	return (

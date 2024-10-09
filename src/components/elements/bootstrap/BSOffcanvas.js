@@ -15,11 +15,6 @@ import {
 import HighlightCode from 'components/elements/highlight-code/HighlightCode';
 
 // import react code data file
-import {
-	OffcanvasBasicCode,
-	OffCanvasPlacementCode,
-	OffCanvasBackdropCode
-} from 'data/code/OffcanvasCode';
 
 const BSOffcanvas = () => {
 	const [show, setShow] = useState(false);

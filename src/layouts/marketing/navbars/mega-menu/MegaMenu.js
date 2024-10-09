@@ -6,7 +6,6 @@ import { NavDropdown } from 'react-bootstrap';
 import { Row, Col } from 'react-bootstrap';
 
 // import data files
-import NavbarMegaMenuRoutes from 'routes/marketing/NavbarMegaMenuRoutes';
 
 const MegaMenu = () => {
 	const isDesktop = useMediaQuery({

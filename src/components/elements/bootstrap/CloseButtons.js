@@ -6,11 +6,6 @@ import { Col, Row, Card, CloseButton, Nav, Tab } from 'react-bootstrap';
 import HighlightCode from 'components/elements/highlight-code/HighlightCode';
 
 // import react code data file
-import {
-	GenericCloseButtonCode,
-	DisabledStateCode,
-	WhiteVariantCode
-} from 'data/code/CloseCode';
 
 const CloseButtons = () => {
 	return (

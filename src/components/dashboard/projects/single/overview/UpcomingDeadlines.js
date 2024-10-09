@@ -1,8 +1,6 @@
 // import node module libraries
 import { Card, Table, ProgressBar, Image } from 'react-bootstrap';
 
-// import data files
-import UpcomingDeadlinesData from 'data/dashboard/projects/UpcomingDeadlinesData';
 
 const UpcomingDeadlines = () => {
 	return (

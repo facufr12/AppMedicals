@@ -1,9 +1,8 @@
 import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { Col, Row, Card, Form, Button, Image } from 'react-bootstrap';
+import Logo from "../../../assets/images/logo-cober.svg"
 
-// import media files
-import Logo from 'assets/images/brand/logo/logo-cober.svg';
 
 const ForgetPassword = () => {
 	return (
@@ -15,7 +14,7 @@ const ForgetPassword = () => {
 							<div className="mb-4">
 								<Link to="/">
 									<Image 
-										src={Logo} 
+										src={Logo}
 										className="mb-4" 
 										alt="" 
 										style={{ width: '150px' }} // Se achica el logo

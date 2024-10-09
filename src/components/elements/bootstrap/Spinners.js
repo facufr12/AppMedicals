@@ -6,21 +6,6 @@ import { Col, Row, Card, Spinner, Button, Nav, Tab } from 'react-bootstrap';
 import HighlightCode from 'components/elements/highlight-code/HighlightCode';
 
 // import react code data file
-import {
-	BorderSpinnerCode,
-	SpinnersColorsCode,
-	GrowingSpinnerCode,
-	GrowColorsCode,
-	AlignmentCode,
-	PlacementCenterCode,
-	PlacementLoadingCode,
-	FloatsCode,
-	TextAlignCode,
-	SizeSpinnersCode,
-	StyleCSSCode,
-	ButtonsCode,
-	Buttons2Code
-} from 'data/code/SpinnersCode';
 
 const Spinners = () => {
 	return (

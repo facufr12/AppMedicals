@@ -10,7 +10,7 @@ import DocumentMenu from 'layouts/marketing/navbars/DocumentMenu';
 import NavDropdownMain from 'layouts/marketing/navbars/NavDropdownMain';
 
 // import media files
-import Logo from 'assets/images/mentor/geeks-mentor.svg';
+import Logo from 'assets/images/logo-cober.svg';
 
 // import data files
 import NavbarDefaultRoutes from 'routes/marketing/NavbarDefault';

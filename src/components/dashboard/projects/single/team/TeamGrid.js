@@ -8,7 +8,6 @@ import { ChevronLeft, ChevronRight } from 'react-feather';
 import TeamGridCard from './TeamGridCard';
 
 // import data files
-import { TeamData } from 'data/dashboard/projects/TeamData';
 
 const TeamGrid = () => {
 	const [teamMembers, setTeamMembersList] = useState(TeamData.slice(0, 500));

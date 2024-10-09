@@ -2,9 +2,6 @@
 import { Link } from 'react-router-dom';
 import { Card, Table } from 'react-bootstrap';
 
-// import data files
-import PageStatistics from 'data/dashboard/PageStatistics';
-
 const MostViewPages = ({ title }) => {
 	return (
 		<Card className="h-100">

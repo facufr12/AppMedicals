@@ -10,9 +10,6 @@ import {
 	Image
 } from 'react-bootstrap';
 
-// import media files
-import Paypal from 'assets/images/brand/paypal.svg';
-import Stripe from 'assets/images/brand/stripe.svg';
 
 const PaymentSetting = () => {
 	const onChange = () => {

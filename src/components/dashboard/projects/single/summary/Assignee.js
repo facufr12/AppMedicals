@@ -5,13 +5,6 @@ import { Image, Card } from 'react-bootstrap';
 // import custom components
 import { Avatar } from 'components/elements/bootstrap/Avatar';
 
-// import media files
-import Avatar1 from 'assets/images/avatar/avatar-1.jpg';
-import Avatar2 from 'assets/images/avatar/avatar-2.jpg';
-import Avatar3 from 'assets/images/avatar/avatar-3.jpg';
-import Avatar4 from 'assets/images/avatar/avatar-4.jpg';
-import Avatar5 from 'assets/images/avatar/avatar-5.jpg';
-import Avatar6 from 'assets/images/avatar/avatar-6.jpg';
 
 const Assignee = () => {
 	return (

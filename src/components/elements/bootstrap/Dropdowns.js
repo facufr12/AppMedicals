@@ -18,21 +18,6 @@ import {
 import HighlightCode from 'components/elements/highlight-code/HighlightCode';
 
 // import react code data file
-import {
-	BasicDropdownCode,
-	SplitDropdownCode,
-	DropdownVariantCode,
-	DropdownSizingCode,
-	DirectionsCode,
-	MenuAlignmentCode,
-	ResponsiveMenuAlignmentCode1,
-	ResponsiveMenuAlignmentCode2,
-	MenuContentCode,
-	DividersCode,
-	FormsCode1,
-	FormsCode2
-} from 'data/code/DropdownsCode';
-
 const Dropdowns = () => {
 	return (
 		<Fragment>

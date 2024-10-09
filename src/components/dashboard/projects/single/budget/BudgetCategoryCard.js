@@ -8,7 +8,6 @@ import { numberWithCommas, getCategoryColor } from 'helper/utils';
 import { SquareFill } from 'react-bootstrap-icons';
 
 // Import required data files
-import BudgetCategoryData from 'data/dashboard/projects/BudgetCategoryData';
 
 const BudgetCategoryCard = () => {
 	return (

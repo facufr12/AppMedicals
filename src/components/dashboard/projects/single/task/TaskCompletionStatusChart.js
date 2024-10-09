@@ -7,10 +7,6 @@ import { Card, Dropdown } from 'react-bootstrap';
 import ApexCharts from 'components/elements/charts/ApexCharts';
 
 // import data files
-import {
-	TaskStatusChartSeries,
-	TaskStatusChartOptions
-} from 'data/charts/ChartData';
 
 const TaskCompletionStatusChart = () => {
 	// The forwardRef is important!!

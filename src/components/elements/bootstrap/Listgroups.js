@@ -19,24 +19,7 @@ import DotBadge from './DotBadge';
 import HighlightCode from 'components/elements/highlight-code/HighlightCode';
 
 // import media files
-import Avatar1 from 'assets/images/avatar/avatar-1.jpg';
 
-// import react code data file
-import {
-	BasicListgroupCode,
-	ActiveItemCode,
-	DisabledItemsCode,
-	LinksButtonsCode,
-	ListButtonCode,
-	FlushListgroupCode,
-	HorizontalListgroupCode,
-	HorizontalListgroupCode2,
-	ContextualClassesCode,
-	WithBadgesCode,
-	CustomContentCode,
-	WithIconCode,
-	GroupWithIconCode
-} from 'data/code/ListgroupsCode';
 
 const Listgroups = () => {
 	function alertClicked() {

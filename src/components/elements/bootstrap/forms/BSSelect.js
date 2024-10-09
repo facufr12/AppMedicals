@@ -9,10 +9,6 @@ import PageHeading from 'components/elements/bootstrap/common/PageHeading';
 import HighlightCode from 'components/elements/highlight-code/HighlightCode';
 
 // import react code file
-import {
-	DefaultSelectCode,
-	SizingSelectCode
-} from 'data/code/forms/FormSelectCode';
 
 const BSSelect = () => {
 	return (
