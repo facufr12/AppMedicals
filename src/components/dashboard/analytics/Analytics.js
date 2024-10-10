@@ -41,7 +41,6 @@ const Analytics = () => {
               <h4 className="mb-0">Users by Country</h4>
             </Card.Header>
             <Card.Body className="py-0">
-              <UsersbyCountry />
               <Table borderless size="sm">
                 <tbody>
                   <tr>

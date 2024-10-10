@@ -1,43 +1,27 @@
 // ** Import from react dom
 import { Route, Routes, Navigate } from "react-router-dom";
-
-// ** Import core SCSS styles
 import "assets/scss/theme.scss";
-
-// ** Import Layouts
 import DashboardIndex from "layouts/dashboard/DashboardIndex";
 import AuthLayout from "layouts/dashboard/AuthLayout";
 import DashboardIndexCompact from "layouts/dashboard/DashboardIndexCompact"; // ( added in v1.3.0 )
 import DashboardIndexTop from "layouts/dashboard/DashboardIndexTop"; // ( added in v1.3.0 )
 import JobListingLayout from "layouts/marketing/JobListingLayout"; // ( added in v2.0.0 )
-
 import ChatLayout from "./dashboard/ChatLayout"; // ( added in v2.0.0 )
 import TaskKanbanLayout from "./dashboard/TaskKanbanLayout"; // ( added in v2.0.0 )
 import EcommerceLayout from "./dashboard/EcommerceLayout"; // ( added in v2.2.0 )
 import Cotizador from "components/dashboard/user/Cotizador";
-// ** Import Dahbaord Menu Pages
 import Overview from "components/dashboard/overview/Overview";
 import Analytics from "components/dashboard/analytics/Analytics";
-
-// ** Import Users Pages
 import Instructor from "components/dashboard/user/Instructor";
-
-// ** Import CMS Pages
-
-// ** Import Authentication components
 import SignIn from "components/dashboard/authentication/SignIn";
 import SignUp from "components/dashboard/authentication/SignUp";
 import ForgetPassword from "components/dashboard/authentication/ForgetPassword";
 import Notifications from "components/dashboard/authentication/Notifications";
-
-// ** Import Settings components
 import General from "components/dashboard/settings/General";
 import Google from "components/dashboard/settings/Google";
 import Social from "components/dashboard/settings/Social";
 import SocialLogin from "components/dashboard/settings/SocialLogin";
 import SMTPServer from "components/dashboard/settings/SMTPServer";
-
-// Dashboard Projects ( new v1.2.0 )
 import ProjectGrid from "components/dashboard/projects/grid/ProjectGrid";
 import ProjectList from "components/dashboard/projects/list/ProjectList";
 import ProjectBudget from "components/dashboard/projects/single/budget/ProjectBudget";
@@ -46,14 +30,8 @@ import ProjectOverview from "components/dashboard/projects/single/overview/Proje
 import ProjectSummary from "components/dashboard/projects/single/summary/ProjectSummary";
 import ProjectTask from "components/dashboard/projects/single/task/ProjectTask";
 import ProjectTeam from "components/dashboard/projects/single/team/ProjectTeam";
-
-// ** Ecommerce -> Customers Pages
-
-// Dashboard - Tables Pages  ( v2.2.0 )
 import BasicTables from "components/dashboard/tables/basic/BasicTables";
 import Datatables from "components/dashboard/tables/Datatables";
-
-// ** Boostrap Forms components
 import ChecksRadios from "components/elements/bootstrap/forms/ChecksRadios";
 import FloatingLabels from "components/elements/bootstrap/forms/FloatingLabels";
 import FormControls from "components/elements/bootstrap/forms/FormControls";
@@ -63,7 +41,6 @@ import Layouts from "components/elements/bootstrap/forms/Layouts";
 import Range from "components/elements/bootstrap/forms/Range";
 import BSSelect from "components/elements/bootstrap/forms/BSSelect";
 import Validation from "components/elements/bootstrap/forms/Validation";
-
 // ** Boostrap components
 import Accordions from "components/elements/bootstrap/Accordions";
 import Alerts from "components/elements/bootstrap/Alerts";
@@ -90,57 +67,33 @@ import Modals from "components/elements/bootstrap/Modals";
 import Tables from "components/elements/bootstrap/Tables";
 import Toasts from "components/elements/bootstrap/Toasts";
 import Tooltips from "components/elements/bootstrap/Tooltips";
-
-// ** Import docs and change log pages
-
-/* ----------------------------------- */
-/* IMPORTS FOR MARKETING PAGES - START */
 import DefaultLayout from "layouts/marketing/DefaultLayout";
 import LayoutFooterLinks from "layouts/marketing/LayoutFooterLinks";
 import BlankLayout from "layouts/marketing/BlankLayout";
 import NotFound from "layouts/marketing/NotFound";
 import AcademyLayout from "layouts/marketing/AcademyLayout"; // added in 2.0.0
-
-// Portfolio Pages ( v2.2.0)
-
 // Mentor Pages (v2.3.0)
 import NavbarVertical from "./dashboard/NavbarVertical";
 import NavbarBrandOnly from "./marketing/navbars/NavbarBrandOnly";
 import NavbarCompact from "./dashboard/navbars/NavbarCompact";
 import SimpleBar from "simplebar-react";
-
 const AllRoutes = () => {
   return (
     <Routes>
       {/* Routes with DefaultLayout */}
       <Route element={<NavbarVertical />}>
-        <Route path="/asdsad" element={<Overview />} />
+        <Route path="/home" element={<Overview />} />
       </Route>
-
       {/* Routes with BlankLayout */}
-      <Route element={<BlankLayout />}>
-        {/* Mentor Pages ( added in v2.3.0 ) */}
-        {/* link: '/marketing/landings/mentor'
-						link: '/marketing/mentor/list/'
-						link: '/marketing/mentor/single/' */}
-      </Route>
-
+      <Route element={<BlankLayout />}></Route>
       {/* Routes with NotFound */}
       <Route element={<NotFound />}></Route>
-
       {/* Routes with JobListingLayout */}
-      <Route element={<JobListingLayout />}>
-    
-      </Route>
-
+      <Route element={<JobListingLayout />}></Route>
       {/* Routes with LayoutFooterLinks */}
-      <Route element={<LayoutFooterLinks />}>
-    
-      </Route>
-
+      <Route element={<LayoutFooterLinks />}></Route>
       {/* Routes with AcademyLayout */}
       <Route element={<AcademyLayout />}></Route>
-
       {/* Routes with AuthLayout */}
       <Route element={<AuthLayout />}>
         <Route path="/authentication/sign-in" element={<SignIn />} />
@@ -150,7 +103,6 @@ const AllRoutes = () => {
           element={<ForgetPassword />}
         />
       </Route>
-
       {/* Routes (DASHBOARD ROUTERS) with DashboardIndex */}
       <Route element={<DashboardIndex />}>
         <Route path="/" element={<Overview />} />
@@ -165,14 +117,12 @@ const AllRoutes = () => {
           path="/dashboard/layouts/layout-vertical"
           element={<Overview />}
         />
-
         {/* SETTINGS ROUTERS */}
         <Route path="/settings/general" element={<General />} />
         <Route path="/settings/google" element={<Google />} />
         <Route path="/settings/social" element={<Social />} />
         <Route path="/settings/social-login" element={<SocialLogin />} />
         <Route path="/settings/smtp-server" element={<SMTPServer />} />
-
         {/* PROJECTS ROUTERS */}
         <Route path="/dashboard/projects/grid" element={<ProjectGrid />} />
         <Route path="/dashboard/projects/list" element={<ProjectList />} />
@@ -248,7 +198,6 @@ const AllRoutes = () => {
         <Route path="/elements/tables" element={<Tables />} />
         <Route path="/elements/toasts" element={<Toasts />} />
         <Route path="/elements/tooltips" element={<Tooltips />} />
-
         {/* ** Dashboard - Tables Pages ( v2.2.0 ) */}
         <Route
           path="/dashboard/tables/basic-tables"
@@ -256,17 +205,12 @@ const AllRoutes = () => {
         />
         <Route path="/dashboard/tables/datatables" element={<Datatables />} />
       </Route>
-
       {/* Routes with EcommerceLayout (v2.2.0) */}
       <Route element={<EcommerceLayout />}>
         {/* ** Dashboard - Ecommerce -> Customers Pages ( v2.2.0 ) */}
-
-      
       </Route>
-
       {/* Routes with ChatLayout */}
-      <Route element={<ChatLayout />}>
-      </Route>
+      <Route element={<ChatLayout />}></Route>
 
       {/* Routes with DashboardIndexTop */}
       <Route element={<DashboardIndexTop />}>
@@ -275,7 +219,6 @@ const AllRoutes = () => {
           element={<Overview />}
         />
       </Route>
-
       {/* Routes with DashboardIndexCompact */}
       <Route element={<DashboardIndexCompact />}>
         <Route
@@ -283,7 +226,6 @@ const AllRoutes = () => {
           element={<Overview />}
         />
       </Route>
-
       {/*Redirect*/}
       <Route
         path="*"
