@@ -1,8 +1,15 @@
 // import node module libraries
 import { Card, Table, ProgressBar, Image } from 'react-bootstrap';
 
-
 const UpcomingDeadlines = () => {
+	// Define los datos directamente aquí
+	const upcomingDeadlinesData = [
+		{ memberimage: '/path/to/image1.jpg', member: 'Alice', task: 'Design Mockup', deadline: '2024-10-15', workload: 50 },
+		{ memberimage: '/path/to/image2.jpg', member: 'Bob', task: 'Develop Feature', deadline: '2024-10-20', workload: 70 },
+		{ memberimage: '/path/to/image3.jpg', member: 'Charlie', task: 'Testing', deadline: '2024-10-25', workload: 30 },
+		// Agrega más datos según sea necesario
+	];
+
 	return (
 		<Card>
 			<Card.Header>
@@ -21,7 +28,7 @@ const UpcomingDeadlines = () => {
 						</tr>
 					</thead>
 					<tbody>
-						{UpcomingDeadlinesData.map((item, index) => {
+						{upcomingDeadlinesData.map((item, index) => {
 							return (
 								<tr key={index}>
 									<td>
@@ -62,4 +69,5 @@ const UpcomingDeadlines = () => {
 		</Card>
 	);
 };
+
 export default UpcomingDeadlines;

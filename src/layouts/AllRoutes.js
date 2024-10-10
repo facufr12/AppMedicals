@@ -85,6 +85,10 @@ const AllRoutes = () => {
       <Route element={<NavbarVertical />}>
         <Route path="/home" element={<Overview />} />
       </Route>
+         <Route
+          path="/dashboard/projects/single/overview"
+          element={<ProjectOverview />}
+        />
       {/* Routes with BlankLayout */}
    
       {/* Routes with AuthLayout */}
@@ -125,10 +129,7 @@ const AllRoutes = () => {
           path="/dashboard/projects/single/files"
           element={<ProjectFiles />}
         />
-        <Route
-          path="/dashboard/projects/single/overview"
-          element={<ProjectOverview />}
-        />
+     
         <Route
           path="/dashboard/projects/single/summary"
           element={<ProjectSummary />}

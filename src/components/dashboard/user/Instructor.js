@@ -37,14 +37,18 @@ const Instructor = () => {
   }, []);
 
   // Función para manejar la redirección al hacer clic en "Detalles del Prospecto"
-  const handleDetailsClick = () => {
-    navigate("/Cotizador"); // Redirige a la URL deseada
-  };
+
 
   const createCards = (data, page) => {
     const start = (page - 1) * cardsPerPage;
     const end = start + cardsPerPage;
     const paginatedData = data.slice(start, end);
+    const navigate = useNavigate(); // Inicializa el hook useNavigate
+  // Función para manejar la redirección al hacer clic en "Detalles del Prospecto"
+  const handleDetailsClick = () => {
+    navigate("/dashboard/projects/single/overview"); // Redirige a la URL deseada
+  };
+
 
     return (
       <Row>
@@ -178,7 +182,7 @@ const Instructor = () => {
                   </div>
                 </div>
                 <div className="d-flex justify-content-end mt-5">
-                  <Button onClick={handleDetailsClick} variant="primary">
+                <Button onClick={handleDetailsClick} variant="primary">
                     Detalles del Prospecto
                   </Button>
                 </div>

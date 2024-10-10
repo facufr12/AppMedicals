@@ -11,7 +11,7 @@ export const DashboardMenu = [
     title: "Inicio",
     icon: "home",
     children: [
-      { id: uuid(), link: "/", name: "Bienvenida" }, // Ruta de bienvenida
+      { id: uuid(), link: "/", name: "Bienvenido" }, // Ruta de bienvenida
       { id: uuid(), link: "/dashboard/analytics", name: "Overview" }
     ]
   },
@@ -25,6 +25,15 @@ export const DashboardMenu = [
       { id: uuid(), link: "/user/cotizador", name: "Cotizador" } // Nueva suburl "Cotizador"
     ]
   },
+
+  {
+    id: uuid(),
+    title: "Proyectos", // Título del nuevo grupo
+    icon: "folder", // Puedes cambiar el ícono si lo deseas
+    children: [
+      { id: uuid(), link: "/dashboard/projects/single/overview", name: "Overview del Proyecto" } // Nueva ruta
+    ]
+  }
 ];
 
 export default DashboardMenu;
