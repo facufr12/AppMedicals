@@ -11,7 +11,7 @@ import TaskKanbanLayout from "./dashboard/TaskKanbanLayout"; // ( added in v2.0.
 import EcommerceLayout from "./dashboard/EcommerceLayout"; // ( added in v2.2.0 )
 import Cotizador from "components/dashboard/user/Cotizador";
 import Overview from "components/dashboard/overview/Overview";
-import Analytics from "components/dashboard/analytics/Analytics";
+import Metrics from "components/dashboard/analytics/Metrics";
 import Instructor from "components/dashboard/user/Instructor";
 import SignIn from "components/dashboard/authentication/SignIn";
 import SignUp from "components/dashboard/authentication/SignUp";
@@ -72,7 +72,8 @@ import LayoutFooterLinks from "layouts/marketing/LayoutFooterLinks";
 import BlankLayout from "layouts/marketing/BlankLayout";
 import NotFound from "layouts/marketing/NotFound";
 import AcademyLayout from "layouts/marketing/AcademyLayout"; // added in 2.0.0
-// Mentor Pages (v2.3.0)
+
+// Mentor Pages (v2.3.
 import NavbarVertical from "./dashboard/NavbarVertical";
 import NavbarBrandOnly from "./marketing/navbars/NavbarBrandOnly";
 import NavbarCompact from "./dashboard/navbars/NavbarCompact";
@@ -85,15 +86,7 @@ const AllRoutes = () => {
         <Route path="/home" element={<Overview />} />
       </Route>
       {/* Routes with BlankLayout */}
-      <Route element={<BlankLayout />}></Route>
-      {/* Routes with NotFound */}
-      <Route element={<NotFound />}></Route>
-      {/* Routes with JobListingLayout */}
-      <Route element={<JobListingLayout />}></Route>
-      {/* Routes with LayoutFooterLinks */}
-      <Route element={<LayoutFooterLinks />}></Route>
-      {/* Routes with AcademyLayout */}
-      <Route element={<AcademyLayout />}></Route>
+   
       {/* Routes with AuthLayout */}
       <Route element={<AuthLayout />}>
         <Route path="/authentication/sign-in" element={<SignIn />} />
@@ -106,13 +99,10 @@ const AllRoutes = () => {
       {/* Routes (DASHBOARD ROUTERS) with DashboardIndex */}
       <Route element={<DashboardIndex />}>
         <Route path="/" element={<Overview />} />
-        <Route path="/dashboard/analytics" element={<Analytics />} />
+        <Route path="/dashboard/analytics" element={<Metrics />} />
         <Route path="/user/instructor" element={<Instructor />} />
         <Route path="/user/Cotizador" element={<Cotizador />} />
-        <Route
-          path="/authentication/notifications"
-          element={<Notifications />}
-        />
+      
         <Route
           path="/dashboard/layouts/layout-vertical"
           element={<Overview />}
