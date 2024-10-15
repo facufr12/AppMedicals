@@ -1,6 +1,7 @@
 // ** Import from react dom
 import { Route, Routes, Navigate } from "react-router-dom";
 import "assets/scss/theme.scss";
+import ProspectForm from "components/dashboard/user/addform";
 import DashboardIndex from "layouts/dashboard/DashboardIndex";
 import AuthLayout from "layouts/dashboard/AuthLayout";
 import DashboardIndexCompact from "layouts/dashboard/DashboardIndexCompact"; // ( added in v1.3.0 )
@@ -72,25 +73,23 @@ import LayoutFooterLinks from "layouts/marketing/LayoutFooterLinks";
 import BlankLayout from "layouts/marketing/BlankLayout";
 import NotFound from "layouts/marketing/NotFound";
 import AcademyLayout from "layouts/marketing/AcademyLayout"; // added in 2.0.0
-
 // Mentor Pages (v2.3.
 import NavbarVertical from "./dashboard/NavbarVertical";
 import NavbarBrandOnly from "./marketing/navbars/NavbarBrandOnly";
 import NavbarCompact from "./dashboard/navbars/NavbarCompact";
 import SimpleBar from "simplebar-react";
+
 const AllRoutes = () => {
   return (
     <Routes>
       {/* Routes with DefaultLayout */}
+<Route path="/" element={<SignIn />} />
       <Route element={<NavbarVertical />}>
-        <Route path="/home" element={<Overview />} />
       </Route>
-         <Route
-          path="/dashboard/projects/single/overview"
-          element={<ProjectOverview />}
-        />
+
+    
       {/* Routes with BlankLayout */}
-   
+
       {/* Routes with AuthLayout */}
       <Route element={<AuthLayout />}>
         <Route path="/authentication/sign-in" element={<SignIn />} />
@@ -102,11 +101,15 @@ const AllRoutes = () => {
       </Route>
       {/* Routes (DASHBOARD ROUTERS) with DashboardIndex */}
       <Route element={<DashboardIndex />}>
-        <Route path="/" element={<Overview />} />
+        <Route path="/overview" element={<Overview />} />
         <Route path="/dashboard/analytics" element={<Metrics />} />
         <Route path="/user/instructor" element={<Instructor />} />
         <Route path="/user/Cotizador" element={<Cotizador />} />
-      
+        <Route path="/user/addform" element={<ProspectForm />} />
+        <Route
+        path="/dashboard/projects/single/overview"
+        element={<ProjectOverview />}
+      />
         <Route
           path="/dashboard/layouts/layout-vertical"
           element={<Overview />}
@@ -129,7 +132,7 @@ const AllRoutes = () => {
           path="/dashboard/projects/single/files"
           element={<ProjectFiles />}
         />
-     
+
         <Route
           path="/dashboard/projects/single/summary"
           element={<ProjectSummary />}
@@ -190,10 +193,7 @@ const AllRoutes = () => {
         <Route path="/elements/toasts" element={<Toasts />} />
         <Route path="/elements/tooltips" element={<Tooltips />} />
         {/* ** Dashboard - Tables Pages ( v2.2.0 ) */}
-        <Route
-          path="/dashboard/tables/basic-tables"
-          element={<BasicTables />}
-        />
+
         <Route path="/dashboard/tables/datatables" element={<Datatables />} />
       </Route>
       {/* Routes with EcommerceLayout (v2.2.0) */}

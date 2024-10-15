@@ -38,7 +38,11 @@ const ForgetPassword = () => {
 									</Col>
 									<Col lg={12} md={12} className="mb-3 d-grid gap-2">
 										{/* Button */}
-										<Button variant="primary" type="submit">
+										<Button 
+											variant="primary" 
+											type="submit" 
+											style={{ borderRadius: '20px', marginBottom: '1rem',marginTop: '1rem' }}
+										>
 											Enviar al email
 										</Button>
 									</Col>

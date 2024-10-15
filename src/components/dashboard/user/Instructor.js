@@ -1,300 +1,370 @@
-// import node module libraries
 import { Fragment, useState, useEffect } from "react";
-import { Col, Row, Card, Tab, Breadcrumb, Button, Table } from "react-bootstrap";
+import {
+  Col,
+  Row,
+  Breadcrumb,
+  Button,
+  Table,
+  Spinner,
+  Pagination,
+  Form,
+  Modal
+} from "react-bootstrap";
 import { FaWhatsapp } from "react-icons/fa";
-import { useNavigate } from "react-router-dom"; // Importa el hook useNavigate
-
-// import sub components
-import InstructorsGridView from "./InstructorsGridCard";
-import InstructorsListItems from "./InstructorsListItems";
+import { useNavigate } from "react-router-dom";
+import ProspectForm from "../user/addform";
 
 const Instructor = () => {
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [cardsPerPage, setCardsPerPage] = useState(9);
   const [isTableView, setIsTableView] = useState(false);
-  const navigate = useNavigate(); // Inicializa el hook useNavigate
+  const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedEstado, setSelectedEstado] = useState("");
+  const [showModal, setShowModal] = useState(false);
+
+  const estados = [
+    "Cotizacion Enviada",
+    "Desestimado Preexistencia",
+    "Desestimado Fuera de Zona",
+    "Desestimado por Edad",
+    "Pasa de Vigencia",
+    "No Contesta",
+    "Prueba Interna",
+    "Busca Aporte x Aporte",
+    "No Contesta",
+    "Ya es Socio",
+    "Buscas Otra Cobertura",
+    "Teléfono Erróneo",
+    "Email Erróneo",
+    "No le Interesa por Costos",
+    "No le Interesa por Cartilla",
+    "Tomó Otra Cobertura"
+  ];
+
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const apiUrl =
-      "https://script.googleusercontent.com/macros/echo?user_content_key=gIdVyLfZVXlhTXU4uuU2XnPLpnrRfk1hzAl8XVeXlYzMlieUYvq5IGabbou2u0IOGMsVD0EV5clmds2lgJVbW3P1RmrawUZEm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnGl29ebRzV5W6uyGQ719j1FkITB3Rt2REr1pZZbDsf3A25jJWAnGi-e7pGUVOMvitr1rG2gmFWXHZjyC-rd-UKymlTLhpyY2jg&lib=MSmCyi5M1QFWbYo20HW2AZnFr3qi2vAlX";
+    const apiUrl = "https://script.google.com/macros/s/AKfycbxNn3wU0BDPbf6laTTq3PCaq6N7SkyVIdrzrKZkWrUW0pzcHU0Ku-tMQiZVsl6pZBRSGA/exec?func=obtenerDatos";
 
     const fetchGoogleSheetsData = async () => {
       try {
         const response = await fetch(apiUrl);
         const data = await response.json();
-        const normalizedData = data.map((person) => ({
-          ...person,
-          evolución: Math.round(Number(person.evolución) / 25) * 25
-        }));
-        setData(normalizedData);
+        
+        setData(data);
       } catch (error) {
         console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchGoogleSheetsData();
   }, []);
 
-  // Función para manejar la redirección al hacer clic en "Detalles del Prospecto"
+  const filteredData = data.filter((person) =>
+    person.nombre.toLowerCase().includes(searchTerm.toLowerCase()) &&
+    (selectedEstado === "" || person.estado === selectedEstado)
+  );
 
+  const handleEstadoChange = (person, newEstado) => {
+    setData(prevData =>
+      prevData.map(p => (p.id === person.id ? { ...p, estado: newEstado } : p))
+    );
+  };
+
+  const enviarDatos = async (id, estado) => {
+    try {
+      const response = await fetch(
+        "https://script.google.com/macros/s/AKfycbxNn3wU0BDPbf6laTTq3PCaq6N7SkyVIdrzrKZkWrUW0pzcHU0Ku-tMQiZVsl6pZBRSGA/exec?func=cambiarEstadoDato",
+        {
+          method: "POST",
+          body: JSON.stringify({ id, estado })
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Error al enviar los datos");
+      }
+      const resultado = await response.json();
+      alert("Datos enviados correctamente: " + JSON.stringify(resultado));
+    } catch (error) {
+      console.error("Error en la solicitud:", error);
+      alert("Error al enviar los datos. Por favor, intenta nuevamente.");
+    }
+  };
 
   const createCards = (data, page) => {
     const start = (page - 1) * cardsPerPage;
     const end = start + cardsPerPage;
     const paginatedData = data.slice(start, end);
-    const navigate = useNavigate(); // Inicializa el hook useNavigate
-  // Función para manejar la redirección al hacer clic en "Detalles del Prospecto"
-  const handleDetailsClick = () => {
-    navigate("/dashboard/projects/single/overview"); // Redirige a la URL deseada
-  };
 
-
+    const handleDetailsClick = (person) => {
+      navigate("/dashboard/projects/single/overview", { state: { prospecto: person } });
+    };
+    
     return (
-      <Row>
-        {paginatedData.map((person, index) => (
-          <Col key={index} xl={4} lg={6} md={6} xs={12} className="mb-4">
-            <div
-              className="card border-light shadow-sm"
-              style={{ borderRadius: "40px" }}
-            >
-              <div className="card-body" style={{ padding: "50px" }}>
-                <div className="text-start">
-                  <div className="position-relative">
-                    <div
-                      className="avatar"
-                      style={{
-                        backgroundColor: "#754ffe",
-                        color: "white",
-                        width: "70px",
-                        height: "70px",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        borderRadius: "40px",
-                        fontSize: "24px",
-                        fontWeight: "bold",
-                        marginBottom: "15px"
-                      }}
-                    >
-                      {person.nombre
-                        .split(" ")
-                        .map((n) => n[0])
-                        .join("")
-                        .toUpperCase()}
-                    </div>
-                    <a href="#" className="position-absolute mb-5 mt-8 ms-n5">
-                      <span className="status bg-success"></span>
-                    </a>
-                  </div>
-                  <h6
-                    className="text-uppercase mb-1"
-                    style={{ color: "#754ffe" }}
-                  >
-                    {person.Partido || "SIN PARTIDO"}
-                  </h6>
-                  <h4 className="mb-0">{person.nombre}</h4>
-                </div>
-                <div className="mt-4 p-0">
-                  <div className="d-flex justify-content-between">
-                    <div className="w-100 py -2 px-3 border-top border-bottom">
-                      <h6 className="mb-0">Fecha de Ingreso:</h6>
- <p className="text-dark fs-6 fw-semibold mb-0">
-                        {new Date(person.Fecha).toLocaleDateString()}
-                      </p>
-                    </div>
-                    <div className="w-100 py-2 px-3 border-top border-bottom">
-                      <h6 className="mb-0">Hora de Ingreso:</h6>
-                      <p className="text-dark fs-6 fw-semibold mb-0">
-                        {person.Hora}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="d-flex justify-content-between border-bottom py-2">
-                  <span>Edad</span>
-                  <span className="text-dark">{person.Edad}</span>
-                </div>
-                <div className="d-flex justify-content-between border-bottom py-2 mt-3">
-                  <span>Tipo de Afiliación</span>
-                  <span className="text-dark">{person.tipoafiliacion}</span>
-                </div>
-                <div className="d-flex justify-content-between border-bottom py-2 mt-3">
-                  <span>Grupo Familiar</span>
-                  <span className="text-dark">{person.grupofamiliar}</span>
-                </div>
-                <div className="d-flex justify-content-between border-bottom py-2 mt-3">
-                  <span>Celular</span>
-                  <span className="text-dark d-flex align-items-center">
-                    <a
-                      href={`https://wa.me/+54${person.Celular}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={{ display: "flex", alignItems: "center" }}
-                    >
-                      <FaWhatsapp
+      <>
+        <ProspectForm show={showModal} handleClose={() => setShowModal(false)} />
+        <Row>
+          {paginatedData.map((person, index) => (
+            <Col key={index} xl={4} lg={6} md={6} xs={12} className="mb-4">
+              <div className="card border-light shadow-sm" style={{ borderRadius: "40px" }}>
+                <div className="card-body" style={{ padding: "50px" }}>
+                  <div className="text-start">
+                    <div className="position-relative">
+                      <div
+                        className="avatar"
                         style={{
-                          width: "34px",
-                          height: "34px",
-                          color: "#25D366"
+                          backgroundColor: "#754ffe",
+                          color: "white",
+                          width: "70px",
+                          height: "70px",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          borderRadius: "40px",
+                          fontSize: "24px",
+                          fontWeight: "bold",
+                          marginBottom: "15px",
                         }}
-                      />
-                    </a>
-                  </span>
-                </div>
-                <div className="d-flex justify-content-between pt-2">
-                  <div className="pt-2">
+                      >
+                        {person.nombre.split(" ").map((n) => n[0]).join("").toUpperCase()}
+                      </div>
+                      <a href="#" className="position-absolute mb-5 mt-8 ms-n5">
+                        <span className="status bg-success"></span>
+                      </a>
+                    </div>
+                    <h6 className="text-uppercase mb-1" style={{ color: "#754ffe" }}>{person.partido || "SIN PARTIDO"}</h6>
+                    <h4 className="mb-0">{person.nombre.toUpperCase()}</h4>
+                  </div>
+                  <div className="mt-4 p-0">
+                    <div className="d-flex justify-content-between">
+                      <div className="w-100 py-2 px-3 border-top border-bottom">
+                        <h6 className="mb-0">Fecha de Ingreso:</h6>
+                        <p className="text-dark fs-6 fw-semibold mb-0">{new Date(person.fecha).toLocaleDateString()}</p>
+                      </div>
+                      <div className="w-100 py-2 px-3 border-top border-bottom">
+                        <h6 className="mb-0">Hora de Ingreso:</h6>
+                        <p className="text-dark fs-6 fw-semibold mb-0">{person.hora}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="d-flex justify-content-between border-bottom py-2 align-items-center">
                     <span>Estado</span>
+                    <div className="d-flex align-items-center">
+                      <Form.Select
+                        value={person.estado}
+                        onChange={(e) => handleEstadoChange(person, e.target.value)}
+                        className="text-dark ms-3"
+                        style={{ marginLeft: "10px", width: "150px" }}
+                      >
+                        {estados.map((estado, index) => (
+                          <option key={index} value={estado}>
+                            {estado}
+                          </option>
+                        ))}
+                      </Form.Select>
+                      <Button
+                        variant="primary"
+                        style={{
+                          marginLeft: "10px",
+                          padding: "2px 5px",
+                          fontSize: "15px",
+                        }}
+                        onClick={() => enviarDatos(person.id, person.estado)}
+                      >
+                        <i className="fas fa-arrow-up"></i>
+                      </Button>
+                    </div>
                   </div>
-                  <select
-                    className="form-select w-65 d-flex text-center"
-                    id="category"
-                  >
-                    <option value="">
-                      {person.estado || "Seleccionar Estado"}
-                    </option>
-                    <option value="Venta Cerrada">Venta Cerrada</option>
-                    <option value="Pago Pendiente">Pago Pendiente</option>
-                    <option value="En Espera">En Espera</option>
-                    <option value="Pasa de Vigencia">Pasa de Vigencia</option>
-                    <option value="Es Afiliado">Es Afiliado</option>
-                    <option value="Duplicado">Duplicado</option>
-                    <option value="Desestimado Por Cober">
-                      Desestimado Por Cober
-                    </option>
-                    <option value="No Le Interesa">No Le Interesa</option>
-                    <option value="Rechazado">Rechazado</option>
-                  </select>
-                </div>
-                <div className="progress progress-tooltip mt-5">
-                  <div
-                    className="progress-bar"
-                    role="progressbar"
-                    style={{
-                      width: `${person.evolución}%`,
-                      backgroundColor: "#754ffe"
-                    }}
-                    aria-valuenow={person.evolución}
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  >
-                    <span style={{ color: "white" }}>{person.evolución}%</span>
+
+                  <div className="d-flex justify-content-between border-bottom py-2 mt-3">
+                    <span>Edad</span>
+                    <span className="text-dark">{person.edad}</span>
                   </div>
-                </div>
-                <div className="d-flex justify-content-end mt-5">
-                <Button onClick={handleDetailsClick} variant="primary">
-                    Detalles del Prospecto
+                  <div className="d-flex justify-content-between border-bottom py-2 mt-3">
+                    <span>Tipo de Afiliación</span>
+                    <span className="text-dark">{person.tAfiliacion}</span>
+                  </div>
+                  <div className="d-flex justify-content-between border-bottom py-2 mt-3">
+                    <span>Grupo Familiar</span>
+                    <span className="text-dark">{person.gpFamiliar}</span>
+                  </div>
+                  <div className="d-flex justify-content-between border-bottom py-2 mt-3">
+                    <span>Celular</span>
+                    <span className="text-dark d-flex align-items-center">
+                      <a href={`https://wa.me/+54${person.cel}`} target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center" }}>
+                        <FaWhatsapp style={{ width: "34px", height: "34px", color: "#25D366" }} />
+                      </a>
+                    </span>
+                  </div>
+
+                  {/* Agregando el Progress Bar para la evolución */}
+                  <div className="mt-3">
+  <span>Evolución</span>
+  <div className="position-relative mt-2">
+    <div className="progress" style={{ height: '20px' }}>
+      <div
+        className="progress-bar"
+        role="progressbar"
+        style={{
+          width: `${person.evolucion}%`,
+          backgroundColor: '#4caf50',
+        }}
+        aria-valuenow={person.evolucion}
+        aria-valuemin="0"
+        aria-valuemax="100"
+      />
+    </div>
+    <span
+      style={{
+        position: 'absolute',
+        top: '-25px', // Ajusta la posición vertical según sea necesario
+        left: '50%',
+        transform: 'translateX(-50%)',
+        color: 'white', // Cambia el color si es necesario
+        fontWeight: 'bold',
+      }}
+    >
+      {person.evolucion}%
+    </span>
+  </div>
+</div>
+
+
+                  <Button onClick={() => handleDetailsClick(person)} variant="primary" className="mt-4" style={{ width: "100%", borderRadius: "20px" }}>
+                    Ver Más Detalles
                   </Button>
                 </div>
               </div>
-            </div>
-          </Col>
-        ))}
-      </Row>
-    );
-  };
-
-  const createTable = (data) => {
-    return (
-      <Table className="text-nowrap">
-        <thead className="table-light">
-          <tr>
-            <th scope="col">Nombre</th>
-            <th scope="col">Fecha de Ingreso</th>
-            <th scope="col">Hora de Ingreso</th>
-            <th scope="col">Edad</th>
-            <th scope="col">Tipo de Afiliación</th>
-            <th scope="col">Grupo Familiar</th>
-            <th scope="col">Celular</th>
-            <th scope="col">Estado</th>
-            <th scope="col">Evolución</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((person, index) => (
-            <tr key={index}>
-              <td>{person.nombre}</td>
-              <td>{new Date(person.Fecha).toLocaleDateString()}</td>
-              <td>{person.Hora}</td>
-              <td>{person.Edad}</td>
-              <td>{person .tipoafiliacion}</td>
-              <td>{person.grupofamiliar}</td>
-              <td>{person.Celular}</td>
-              <td>{person.estado}</td>
-              <td>
-                <div className="progress progress-tooltip">
-                  <div
-                    className="progress-bar"
-                    role="progressbar"
-                    style={{
-                      width: `${person.evolución}%`,
-                      backgroundColor: "#754ffe"
-                    }}
-                    aria-valuenow={person.evolución}
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  >
-                    <span style={{ color: "white" }}>{person.evolución}%</span>
-                  </div>
-                </div>
-              </td>
-            </tr>
+            </Col>
           ))}
-        </tbody>
-      </Table>
+        </Row>
+        <Pagination className="mt-4">
+          {Array.from({ length: Math.ceil(filteredData.length / cardsPerPage) }, (_, index) => (
+            <Pagination.Item key={index} active={index + 1 === currentPage} onClick={() => setCurrentPage(index + 1)}>
+              {index + 1}
+            </Pagination.Item>
+          ))}
+        </Pagination>
+      </>
     );
   };
 
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
-
-  const handleToggleView = () => {
-    setIsTableView(!isTableView);
-  };
+  const createTable = (data) => (
+    <Table striped bordered hover>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Partido</th>
+          <th>Estado</th>
+          <th>Edad</th>
+          <th>Tipo de Afiliación</th>
+          <th>Celular</th>
+          <th>Acciones</th>
+          <th>Evolución</th> {/* Nueva columna de evolución */}
+        </tr>
+      </thead>
+      <tbody>
+        {data.map((person, index) => (
+          <tr key={index}>
+            <td>{person.nombre}</td>
+            <td>{person.partido}</td>
+            <td>{person.estado}</td>
+            <td>{person.edad}</td>
+            <td>{person.tAfiliacion}</td>
+            <td>
+              <a href={`https://wa.me/+54${person.cel}`} target="_blank" rel="noopener noreferrer">
+                <FaWhatsapp />
+              </a>
+            </td>
+            <td>
+              <Button onClick={() => navigate("/dashboard/projects/single/overview", { state: { prospecto: person } })} variant="primary">
+                Ver Más Detalles
+              </Button>
+            </td>
+            <td>
+              <div className="progress" style={{ height: '20px' }}>
+                <div
+                  className="progress-bar"
+                  role="progressbar"
+                  style={{ width: `${person.evolucion}%`, backgroundColor: '#4caf50' }} // Usa el valor de evolución directamente
+                  aria-valuenow={person.evolucion}
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                >
+                  <span style={{ position: 'absolute', left: `${person.evolucion}%`, transform: 'translateX(-50%)', color: 'white', fontWeight: 'bold' }}>
+                    {person.evolucion}%
+                  </span>
+                </div>
+              </div>
+            </td> {/* Progreso de evolución en la tabla */}
+          </tr>
+        ))}
+      </tbody>
+    </Table>
+  );
 
   return (
     <Fragment>
-      <Tab.Container defaultActiveKey="grid">
-        <Row>
-          <Col lg={12} md={12} sm={12}>
-            <div className="border-bottom pb-4 mb-4 d-flex align-items-center justify-content-between">
-              <div className="mb-3 mb-md-0">
-                <h1 className="mb-1 h2 fw-bold">
-                  Prospectos <span className="fs-5 text-muted"></span>
-                </h1>
-                <Breadcrumb>
-                  <Breadcrumb.Item href="#">Dashboard</Breadcrumb.Item>
-                  <Breadcrumb.Item active>Prospecto</Breadcrumb.Item>
-                </Breadcrumb>
-              </div>
-              <div>
-                <Button
-                  variant="primary"
-                  onClick={handleToggleView}
-                >
-                  {isTableView ? "Ver como tarjetas" : "Ver como lista"}
-                </Button>
-              </div>
-            </div>
-          </Col>
-        </Row>
-        <Tab.Content>
-          <Tab.Pane eventKey="grid" className="pb-4">
-            {isTableView ? createTable(data) : createCards(data, currentPage)}
-          </Tab.Pane>
-          <Tab.Pane eventKey="list" className="pb-4">
-            <Card className="mb-5 ">
-              <Card.Body className="p-0">
-                {isTableView
-                  ? createTable(data)
-                  : createCards(data, currentPage)}
-              </Card.Body>
-            </Card>
-          </Tab.Pane>
-        </Tab.Content>
-      </Tab.Container>
+      <Row className="mb-4">
+        <Col>
+          <Breadcrumb>
+            <Breadcrumb.Item href="#">Inicio</Breadcrumb.Item>
+            <Breadcrumb.Item active>Prospectos</Breadcrumb.Item>
+          </Breadcrumb>
+          <h1>Prospectos</h1>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Button onClick={() => setIsTableView(!isTableView)} variant="secondary" className="mb-3 me-3">
+            {isTableView ? "Ver como Tarjetas" : "Ver como Tabla"}
+          </Button>
+          <Button onClick={() => setShowModal(true)} variant="primary" className="mb-3">
+            Agregar Prospecto
+          </Button>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Form.Control
+            type="text"
+            placeholder="Buscar Prospectos"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="mb-3"
+          />
+        </Col>
+        <Col>
+          <Form.Select
+            value={selectedEstado}
+            onChange={(e) => setSelectedEstado(e.target.value)}
+            className="mb-3"
+          >
+            <option value="">Filtrar por Estado</option>
+            {estados.map((estado, index) => (
+              <option key={index} value={estado}>
+                {estado}
+              </option>
+            ))}
+          </Form.Select>
+        </Col>
+      </Row>
+      {loading ? (
+        <div className="text-center">
+          <Spinner animation="border" />
+        </div>
+      ) : isTableView ? (
+        createTable(filteredData)
+      ) : (
+        createCards(filteredData, currentPage)
+      )}
     </Fragment>
   );
 };
+
 export default Instructor;

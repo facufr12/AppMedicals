@@ -1,4 +1,3 @@
-/* eslint-disable */
 // import node module libraries
 import { Fragment, useContext, useEffect, useState } from 'react';
 import { Form, Image } from 'react-bootstrap';
@@ -16,9 +15,14 @@ const DarkLightMode = ({ className }) => {
 	const [theme, setTheme] = useState(ConfigContext.appStats.skin || 'light');
 
 	useEffect(() => {
+		// Cambia el atributo data-theme en el html
 		document.querySelector('html').setAttribute('data-theme', theme);
-		ConfigContext.setAppConfig(theme);
-	}, [theme, ConfigContext]);
+		
+		// Solo actualiza el contexto si el tema ha cambiado
+		if (ConfigContext.appStats.skin !== theme) {
+			ConfigContext.setAppConfig(theme);
+		}
+	}, [theme, ConfigContext]); // Asegúrate de que ConfigContext no cambie
 
 	const changeColorMode = () => {
 		setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));

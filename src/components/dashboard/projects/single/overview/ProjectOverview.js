@@ -21,16 +21,13 @@ const ProjectOverview = () => {
           <Row>
             <Col xs={12} className="mb-4">
               {/* project summary section */}
-              <ProjectSummary />
+      
             </Col>
             <Col md={12} className="mb-4">
               {/* project budget section */}
               <BudgetSection />
             </Col>
-            <Col md={12} className="mb-4">
-              {/* upcoming deadlines table section */}
-              <UpcomingDeadlines />
-            </Col>
+          
           </Row>
         </Col>
         <Col md={12} xl={4} xs={12}>
@@ -40,8 +37,7 @@ const ProjectOverview = () => {
           {/* overall progress chart  */}
           <OverallProgressChart />
 
-          {/* recent activities section  */}
-          <RecentActivity />
+  
         </Col>
       </Row>
     </Fragment>
