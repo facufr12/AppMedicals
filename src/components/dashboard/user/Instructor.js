@@ -251,61 +251,49 @@ const Instructor = () => {
       </>
     );
   };
-
+  const handleDetailsClick = (person) => {
+    navigate("/dashboard/projects/single/overview", { state: { prospecto: person } });
+  };
   const createTable = (data) => (
-    <Table striped bordered hover>
-      <thead>
-        <tr>
-          <th>Nombre</th>
-          <th>Partido</th>
-          <th>Estado</th>
-          <th>Edad</th>
-          <th>Tipo de Afiliación</th>
-          <th>Celular</th>
-          <th>Acciones</th>
-          <th>Evolución</th> {/* Nueva columna de evolución */}
-        </tr>
-      </thead>
-      <tbody>
-        {data.map((person, index) => (
-          <tr key={index}>
-            <td>{person.nombre}</td>
-            <td>{person.partido}</td>
-            <td>{person.estado}</td>
-            <td>{person.edad}</td>
-            <td>{person.tAfiliacion}</td>
-            <td>
-              <a href={`https://wa.me/+54${person.cel}`} target="_blank" rel="noopener noreferrer">
-                <FaWhatsapp />
-              </a>
-            </td>
-            <td>
-           <Button onClick={() => handleDetailsClick(person)} variant="primary" className="mt-4" style={{ width: "100%", borderRadius: "20px" }}>
-    Ver Más Detalles
-</Button>
-            </td>
-            <td>
-              <div className="progress" style={{ height: '20px' }}>
-                <div
-                  className="progress-bar"
-                  role="progressbar"
-                  style={{ width: `${person.evolucion}%`, backgroundColor: '#4caf50' }} // Usa el valor de evolución directamente
-                  aria-valuenow={person.evolucion}
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                >
-                  <span style={{ position: 'absolute', left: `${person.evolucion}%`, transform: 'translateX(-50%)', color: 'white', fontWeight: 'bold' }}>
-                    {person.evolucion}%
-                  </span>
-                </div>
-              </div>
-            </td> {/* Progreso de evolución en la tabla */}
+    <div style={{ overflowX: 'auto' }}>
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Edad</th>
+            <th>Partido</th>
+            <th>Estado</th>
+            <th>Tipo de Afiliación</th>
+            <th>Celular</th>
+            <th>Acciones</th>
           </tr>
-        ))}
-      </tbody>
-    </Table>
+        </thead>
+        <tbody>
+          {data.map((person, index) => (
+            <tr key={index}>
+              <td>{person.nombre}</td>
+              <td>{person.edad}</td>
+              <td>{person.partido}</td>
+              <td>{person.estado}</td>
+              <td>{person.tAfiliacion}</td>
+              <td>
+                <a href={`https://wa.me/+54${person.cel}`} target="_blank" rel="noopener noreferrer">
+                  <FaWhatsapp size={30} /> {/* O usa style={{ fontSize: '30px' }} */}
+                </a>
+              </td>
+              <td>
+                <Button onClick={() => handleDetailsClick(person)} variant="primary" className="mt-1 mb-1" style={{ width: "100%", borderRadius: "20px" }}>
+                  Ver Más Detalles
+                </Button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    </div>
   );
-
+  
+  
   return (
     <Fragment>
       <Row className="mb-4">
