@@ -54,10 +54,10 @@ const ProjectSummary = () => {
     <Card>
    
       <Card.Body>
-        <p>
+        <h5 class="mb-4">
           En la siguiente pestaña se muestran los detalles del prospecto
           seleccionado
-        </p>
+        </h5>
         <ListGroup variant="flush">
           <ListGroup.Item className="px-0">
             <div className="d-flex justify-content-between align-items-center">
