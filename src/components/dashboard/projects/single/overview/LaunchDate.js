@@ -11,13 +11,19 @@ const LaunchDate = () => {
     const calcularDiasDesdeIngreso = (fechaIngreso) => {
         const fechaIngresoDate = new Date(fechaIngreso);
         const fechaActual = new Date();
+
+        // Validar si fechaIngreso es una fecha válida
+        if (isNaN(fechaIngresoDate)) {
+            return null; // Retornar null si no es válida
+        }
+
         const diferenciaEnTiempo = fechaActual - fechaIngresoDate; // Diferencia en milisegundos
         const diferenciaEnDias = Math.floor(diferenciaEnTiempo / (1000 * 60 * 60 * 24)); // Convertir a días
         return diferenciaEnDias;
     };
 
     // Calcula los días transcurridos si hay fecha de ingreso
-    const diasDesdeIngreso = prospecto ? calcularDiasDesdeIngreso(prospecto.fechaIngreso) : null;
+    const diasDesdeIngreso = prospecto && prospecto.fecha ? calcularDiasDesdeIngreso(prospecto.fecha) : null;
 
     return (
         <Card className="mb-4 bg-primary border-primary">
@@ -30,7 +36,9 @@ const LaunchDate = () => {
                         {/* Muestra los detalles del prospecto */}
                         {prospecto ? (
                             <>
-                                <h1 className="display-4 text-white mb-1">{diasDesdeIngreso !== null ? `${diasDesdeIngreso} Días ` : "Error al traer los datos "}</h1>
+                                <h1 className="display-4 text-white mb-1">
+                                    {diasDesdeIngreso !== null ? `${diasDesdeIngreso} Días ` : "Fecha de ingreso no válida"}
+                                </h1>
                                 <p className="mb-0 text-white">{prospecto.fechaIngreso}</p>
                                 <p className="mb-0 text-white">{prospecto.hora}</p>
                             </>
