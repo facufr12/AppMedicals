@@ -3,15 +3,36 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Row, Col, Card, ListGroup } from 'react-bootstrap';
 
-const RecentActivity = () => {
-	// Define los datos directamente aquí
-	const recentActivityData = [
-		{ id: 1, icon: 'activity', activity: 'User signed in', activitybrief: 'John Doe logged in', time: '10 mins ago' },
-		{ id: 2, icon: 'message-square', activity: 'New message', activitybrief: 'Alice sent you a message', time: '15 mins ago' },
-		{ id: 3, icon: 'user-plus', activity: 'New user registered', activitybrief: 'Bob has joined', time: '30 mins ago' },
-		// Agrega más datos según sea necesario
-	];
+// Define los datos de la actividad reciente
+const RecentActivityData = [
+	{
+		icon: 'user',
+		activity: 'Nuevo usuario registrado',
+		activitybrief: 'Juan Pérez se ha registrado en el sistema.',
+		time: 'Hace 2 minutos',
+	},
+	{
+		icon: 'check-circle',
+		activity: 'Tarea completada',
+		activitybrief: 'María López ha completado la tarea "Diseñar interfaz".',
+		time: 'Hace 30 minutos',
+	},
+	{
+		icon: 'message-circle',
+		activity: 'Nuevo comentario',
+		activitybrief: 'Luis García ha comentado en el proyecto "Rediseño".',
+		time: 'Hace 1 hora',
+	},
+	{
+		icon: 'file-text',
+		activity: 'Nuevo archivo subido',
+		activitybrief: 'Se ha subido el archivo "Especificaciones del proyecto".',
+		time: 'Hace 3 horas',
+	},
+	// Agrega más actividades según sea necesario
+];
 
+const RecentActivity = () => {
 	return (
 		<Card>
 			{/* Card header */}
@@ -30,9 +51,9 @@ const RecentActivity = () => {
 			<Card.Body>
 				{/* List group */}
 				<ListGroup variant="flush" className="list-timeline-activity">
-					{recentActivityData.map((item) => {
+					{RecentActivityData.map((item, index) => {
 						return (
-							<ListGroup.Item className="px-0 pt-0 border-0 pb-6" key={item.id}>
+							<ListGroup.Item className="px-0 pt-0 border-0 pb-6" key={index}>
 								<Row className="position-relative">
 									<Col xs="auto">
 										<div className="icon-shape icon-md bg-light-primary text-primary rounded-circle">

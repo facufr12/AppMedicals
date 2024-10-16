@@ -103,7 +103,8 @@ const Instructor = () => {
 
     const handleDetailsClick = (person) => {
       navigate("/dashboard/projects/single/overview", { state: { prospecto: person } });
-    };
+  };
+  
     
     return (
       <>
@@ -201,7 +202,6 @@ const Instructor = () => {
                       </a>
                     </span>
                   </div>
-
                   {/* Agregando el Progress Bar para la evolución */}
                   <div className="mt-3">
   <span>Evolución</span>
@@ -233,8 +233,6 @@ const Instructor = () => {
     </span>
   </div>
 </div>
-
-
                   <Button onClick={() => handleDetailsClick(person)} variant="primary" className="mt-4" style={{ width: "100%", borderRadius: "20px" }}>
                     Ver Más Detalles
                   </Button>
@@ -282,9 +280,9 @@ const Instructor = () => {
               </a>
             </td>
             <td>
-              <Button onClick={() => navigate("/dashboard/projects/single/overview", { state: { prospecto: person } })} variant="primary">
-                Ver Más Detalles
-              </Button>
+           <Button onClick={() => handleDetailsClick(person)} variant="primary" className="mt-4" style={{ width: "100%", borderRadius: "20px" }}>
+    Ver Más Detalles
+</Button>
             </td>
             <td>
               <div className="progress" style={{ height: '20px' }}>

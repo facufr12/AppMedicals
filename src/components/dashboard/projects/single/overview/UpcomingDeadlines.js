@@ -1,15 +1,33 @@
 // import node module libraries
 import { Card, Table, ProgressBar, Image } from 'react-bootstrap';
 
-const UpcomingDeadlines = () => {
-	// Define los datos directamente aquí
-	const upcomingDeadlinesData = [
-		{ memberimage: '/path/to/image1.jpg', member: 'Alice', task: 'Design Mockup', deadline: '2024-10-15', workload: 50 },
-		{ memberimage: '/path/to/image2.jpg', member: 'Bob', task: 'Develop Feature', deadline: '2024-10-20', workload: 70 },
-		{ memberimage: '/path/to/image3.jpg', member: 'Charlie', task: 'Testing', deadline: '2024-10-25', workload: 30 },
-		// Agrega más datos según sea necesario
-	];
+// Define los datos de ejemplo
+const UpcomingDeadlinesData = [
+	{
+		member: 'Juan Pérez',
+		memberimage: 'ruta/a/imagen1.jpg',
+		task: 'Desarrollar la API',
+		deadline: '2024-10-20',
+		workload: 70,
+	},
+	{
+		member: 'María López',
+		memberimage: 'ruta/a/imagen2.jpg',
+		task: 'Diseñar la interfaz',
+		deadline: '2024-10-25',
+		workload: 50,
+	},
+	{
+		member: 'Luis García',
+		memberimage: 'ruta/a/imagen3.jpg',
+		task: 'Pruebas de calidad',
+		deadline: '2024-10-30',
+		workload: 30,
+	},
+	// Agrega más miembros según sea necesario
+];
 
+const UpcomingDeadlines = () => {
 	return (
 		<Card>
 			<Card.Header>
@@ -28,7 +46,7 @@ const UpcomingDeadlines = () => {
 						</tr>
 					</thead>
 					<tbody>
-						{upcomingDeadlinesData.map((item, index) => {
+						{UpcomingDeadlinesData.map((item, index) => {
 							return (
 								<tr key={index}>
 									<td>

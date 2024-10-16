@@ -3,13 +3,7 @@ import { Fragment } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Col, Row, ListGroup } from 'react-bootstrap';
 
-// import custom components
-import { AvatarGroup, Avatar } from 'components/elements/bootstrap/Avatar';
-
-
 // import routes file
-// Here we have used routers list of Projects->Single-> all children
-// If you are changing main routes titles, you also need to modify on this component.
 import { DashboardMenu } from 'routes/dashboard/DashboardRoutes';
 
 const CommonHeaderTabs = () => {
@@ -19,68 +13,16 @@ const CommonHeaderTabs = () => {
 		<Fragment>
 			<Row>
 				<Col lg={12} md={12} xs={12} className="mb-2">
-					{/*  Page header */}
-					<div
-						className="d-lg-flex
-                align-items-center justify-content-between"
-					>
+					{/* Page header */}
+					<div className="d-lg-flex align-items-center justify-content-between">
 						<div className="mb-2 mb-lg-0">
 							<h1 className="mb-0 h2 fw-bold">
-								Geeks UI - Design &amp; Development{' '}
+								Detalles del Prospecto
 							</h1>
 						</div>
 						<div className="d-flex align-items-center">
-							{/*  avatar group */}
-							<AvatarGroup className="me-0">
-								<Avatar
-									size="md"
-									src={Avatar1}
-									type="image"
-									name="Paul Haney"
-									className="rounded-circle"
-									imgtooltip
-								/>
-								<Avatar
-									size="md"
-									src={Avatar2}
-									type="image"
-									name="Gali Linear"
-									className="rounded-circle"
-									imgtooltip
-								/>
-								<Avatar
-									size="md"
-									src={Avatar3}
-									type="image"
-									name="Mary Holler"
-									className="rounded-circle"
-									imgtooltip
-								/>
-								<Avatar
-									size="md"
-									src={Avatar4}
-									type="image"
-									name="Lio Nordal"
-									className="rounded-circle"
-									imgtooltip
-								/>
-								<Avatar
-									size="md"
-									type="initial"
-									name="5+"
-									variant="light"
-									className="rounded-circle text-dark"
-									showExact
-								/>
-							</AvatarGroup>
 							{/*  icon  */}
-							<Link
-								to="#"
-								className="btn btn-icon btn-white border border-2 rounded-circle btn-dashed ms-2"
-							>
-								{' '}
-								+
-							</Link>
+						
 						</div>
 					</div>
 				</Col>

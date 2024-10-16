@@ -1,37 +1,47 @@
-import { Card } from 'react-bootstrap';
+// Importa las librerías necesarias
+import React from 'react';
 import { useLocation } from 'react-router-dom';
+import { Card } from 'react-bootstrap';
 
 const LaunchDate = () => {
     const location = useLocation();
-    const prospecto = location.state?.prospecto; // Usar encadenamiento opcional
+    const { prospecto } = location.state || {}; // Obtener prospecto del estado
 
-    // Calcular los días transcurridos
-    const calcularDiasDesdeFecha = (fecha) => {
-        const fechaLanzamiento = new Date(fecha);
-        const hoy = new Date();
-        const diferenciaTiempo = hoy - fechaLanzamiento; // Diferencia en milisegundos
-        const diasTranscurridos = Math.floor(diferenciaTiempo / (1000 * 60 * 60 * 24)); // Convertir a días
-        return diasTranscurridos;
+    // Función para calcular los días transcurridos
+    const calcularDiasDesdeIngreso = (fechaIngreso) => {
+        const fechaIngresoDate = new Date(fechaIngreso);
+        const fechaActual = new Date();
+        const diferenciaEnTiempo = fechaActual - fechaIngresoDate; // Diferencia en milisegundos
+        const diferenciaEnDias = Math.floor(diferenciaEnTiempo / (1000 * 60 * 60 * 24)); // Convertir a días
+        return diferenciaEnDias;
     };
+
+    // Calcula los días transcurridos si hay fecha de ingreso
+    const diasDesdeIngreso = prospecto ? calcularDiasDesdeIngreso(prospecto.fechaIngreso) : null;
 
     return (
         <Card className="mb-4 bg-primary border-primary">
             <Card.Body>
                 <Card.Title className="text-white" as="h4">
-                    Fecha de Lanzamiento
+                    Fecha De Ingreso
                 </Card.Title>
-                {prospecto ? (
-                    <>
-                        <h1 className="text-white">
-                            {calcularDiasDesdeFecha(prospecto.fecha)} días
-                        </h1>
-                        <span className="text-white">
-                            {`Fecha de Inicio: ${new Date(prospecto.fecha).toLocaleDateString()}`}
-                        </span>
-                    </>
-                ) : (
-                    <p className="text-white">No se encontró información del prospecto.</p>
-                )}
+                <div className="d-flex justify-content-between align-items-center mt-8">
+                    <div>
+                        {/* Muestra los detalles del prospecto */}
+                        {prospecto ? (
+                            <>
+                                <h1 className="display-4 text-white mb-1">{diasDesdeIngreso !== null ? `${diasDesdeIngreso} Días ` : "Error al traer los datos "}</h1>
+                                <p className="mb-0 text-white">{prospecto.fechaIngreso}</p>
+                                <p className="mb-0 text-white">{prospecto.hora}</p>
+                            </>
+                        ) : (
+                            <p className="text-white">No hay información de prospecto disponible.</p>
+                        )}
+                    </div>
+                    <div>
+                        <i className="fe fe-flag fs-1 text-light-primary"></i>
+                    </div>
+                </div>
             </Card.Body>
         </Card>
     );
