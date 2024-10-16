@@ -20,7 +20,6 @@ const ProspectForm = ({ show, handleClose }) => {
         "https://script.google.com/macros/s/AKfycbxNn3wU0BDPbf6laTTq3PCaq6N7SkyVIdrzrKZkWrUW0pzcHU0Ku-tMQiZVsl6pZBRSGA/exec?func=añadirDato",
         {
           method: "POST",
-      
           body: JSON.stringify({
             nombre,
             edad,
@@ -53,6 +52,10 @@ const ProspectForm = ({ show, handleClose }) => {
     }
   };
 
+  const isAlphabets = (str) => /^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$/.test(str);
+  const isValidCel = (cel) => /^\d{10}$/.test(cel); // Suponiendo que el celular debe tener 10 dígitos
+  const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
@@ -68,8 +71,13 @@ const ProspectForm = ({ show, handleClose }) => {
               value={nombre}
               onChange={(e) => setNombre(e.target.value)}
               required
+              isInvalid={!isAlphabets(nombre) && nombre.length > 0}
             />
+            <Form.Control.Feedback type="invalid">
+              Solo se permiten caracteres alfabéticos.
+            </Form.Control.Feedback>
           </Form.Group>
+
           <Form.Group controlId="edad">
             <Form.Label style={{ marginTop: '1rem' }}>Edad</Form.Label>
             <Form.Control
@@ -78,8 +86,13 @@ const ProspectForm = ({ show, handleClose }) => {
               value={edad}
               onChange={(e) => setEdad(e.target.value)}
               required
+              isInvalid={edad <= 0 || edad > 120}
             />
+            <Form.Control.Feedback type="invalid">
+              Introduzca un dato correcto.
+            </Form.Control.Feedback>
           </Form.Group>
+
           <Form.Group controlId="tAfiliacion">
             <Form.Label style={{ marginTop: '1rem' }}>Tipo Afiliación</Form.Label>
             <Form.Control
@@ -88,8 +101,13 @@ const ProspectForm = ({ show, handleClose }) => {
               value={tAfiliacion}
               onChange={(e) => setTAfiliacion(e.target.value)}
               required
+              isInvalid={!isAlphabets(tAfiliacion) && tAfiliacion.length > 0}
             />
+            <Form.Control.Feedback type="invalid">
+              Solo se permiten caracteres alfabéticos.
+            </Form.Control.Feedback>
           </Form.Group>
+
           <Form.Group controlId="gpFamiliar">
             <Form.Label style={{ marginTop: '1rem' }}>Grupo Familiar</Form.Label>
             <Form.Control
@@ -98,8 +116,13 @@ const ProspectForm = ({ show, handleClose }) => {
               value={gpFamiliar}
               onChange={(e) => setGpFamiliar(e.target.value)}
               required
+              isInvalid={!isAlphabets(gpFamiliar) && gpFamiliar.length > 0}
             />
+            <Form.Control.Feedback type="invalid">
+              Solo se permiten caracteres alfabéticos.
+            </Form.Control.Feedback>
           </Form.Group>
+
           <Form.Group controlId="cel">
             <Form.Label style={{ marginTop: '1rem' }}>Celular</Form.Label>
             <Form.Control
@@ -108,8 +131,13 @@ const ProspectForm = ({ show, handleClose }) => {
               value={cel}
               onChange={(e) => setCel(e.target.value)}
               required
+              isInvalid={!isValidCel(cel) && cel.length > 0}
             />
+            <Form.Control.Feedback type="invalid">
+              Debe ser un número de 10 dígitos.
+            </Form.Control.Feedback>
           </Form.Group>
+
           <Form.Group controlId="correo">
             <Form.Label style={{ marginTop: '1rem' }}>Correo</Form.Label>
             <Form.Control
@@ -118,8 +146,13 @@ const ProspectForm = ({ show, handleClose }) => {
               value={correo}
               onChange={(e) => setCorreo(e.target.value)}
               required
+              isInvalid={!isValidEmail(correo) && correo.length > 0}
             />
+            <Form.Control.Feedback type="invalid">
+              Por favor ingresa un correo válido.
+            </Form.Control.Feedback>
           </Form.Group>
+
           <Form.Group controlId="partido">
             <Form.Label style={{ marginTop: '1rem' }}>Partido</Form.Label>
             <Form.Control
@@ -128,8 +161,13 @@ const ProspectForm = ({ show, handleClose }) => {
               value={partido}
               onChange={(e) => setPartido(e.target.value)}
               required
+              isInvalid={!isAlphabets(partido) && partido.length > 0}
             />
+            <Form.Control.Feedback type="invalid">
+              Solo se permiten caracteres alfabéticos.
+            </Form.Control.Feedback>
           </Form.Group>
+
           <Form.Group controlId="estado">
             <Form.Label style={{ marginTop: '1rem' }}>Estado</Form.Label>
             <Form.Control
@@ -151,6 +189,7 @@ const ProspectForm = ({ show, handleClose }) => {
               <option value="Rechazado">Rechazado</option>
             </Form.Control>
           </Form.Group>
+
           <Button variant="primary" type="submit" className="mt-3">
             Guardar Prospecto
           </Button>
