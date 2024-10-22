@@ -13,7 +13,7 @@ import {
 import { FaWhatsapp } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import ProspectForm from "../user/addform";
-
+import { useAuth } from "../authentication/AuthContext";
 const Instructor = () => {
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -23,7 +23,7 @@ const Instructor = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedEstado, setSelectedEstado] = useState("");
   const [showModal, setShowModal] = useState(false);
-
+  const { userData } = useAuth(); 
   const estados = [
     "Cotizacion Enviada",
     "Desestimado Preexistencia",
@@ -46,7 +46,8 @@ const Instructor = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const apiUrl = "https://script.google.com/macros/s/AKfycbxNn3wU0BDPbf6laTTq3PCaq6N7SkyVIdrzrKZkWrUW0pzcHU0Ku-tMQiZVsl6pZBRSGA/exec?func=obtenerDatos";
+    const apiUrl = `https://script.google.com/macros/s/AKfycbxNn3wU0BDPbf6laTTq3PCaq6N7SkyVIdrzrKZkWrUW0pzcHU0Ku-tMQiZVsl6pZBRSGA/exec?vendedor=${userData.vendedor}&func=obtenerDatos`;
+
 
     const fetchGoogleSheetsData = async () => {
       try {
@@ -293,7 +294,6 @@ const Instructor = () => {
     </div>
   );
   
-  
   return (
     <Fragment>
       <Row className="mb-4">
@@ -303,6 +303,7 @@ const Instructor = () => {
             <Breadcrumb.Item active>Prospectos</Breadcrumb.Item>
           </Breadcrumb>
           <h1>Prospectos</h1>
+          {userData && <h2>Bienvenido, {userData.vendedor}!</h2>}
         </Col>
       </Row>
       <Row>

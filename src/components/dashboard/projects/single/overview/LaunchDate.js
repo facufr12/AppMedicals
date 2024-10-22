@@ -22,8 +22,16 @@ const LaunchDate = () => {
         return diferenciaEnDias;
     };
 
+    // Validar si la fecha es futura
+    const esFechaFutura = (fechaIngreso) => {
+        const fechaIngresoDate = new Date(fechaIngreso);
+        const fechaActual = new Date();
+        return fechaIngresoDate > fechaActual; // Retorna true si la fecha es futura
+    };
+
     // Calcula los días transcurridos si hay fecha de ingreso
     const diasDesdeIngreso = prospecto && prospecto.fecha ? calcularDiasDesdeIngreso(prospecto.fecha) : null;
+    const fechaEsFutura = prospecto && prospecto.fecha ? esFechaFutura(prospecto.fecha) : false;
 
     return (
         <Card className="mb-4 bg-primary border-primary">
@@ -36,9 +44,13 @@ const LaunchDate = () => {
                         {/* Muestra los detalles del prospecto */}
                         {prospecto ? (
                             <>
-                                <h1 className="display-4 text-white mb-1">
-                                    {diasDesdeIngreso !== null ? `${diasDesdeIngreso} Días ` : "Fecha de ingreso no válida"}
-                                </h1>
+                                {fechaEsFutura ? (
+                                    <h1 className="display-4 text-danger mb-1">Fecha Invalida</h1>
+                                ) : (
+                                    <h1 className="display-4 text-white mb-1">
+                                        {diasDesdeIngreso !== null ? `${diasDesdeIngreso} Días ` : "Fecha de ingreso no válida"}
+                                    </h1>
+                                )}
                                 <p className="mb-0 text-white">{prospecto.fechaIngreso}</p>
                                 <p className="mb-0 text-white">{prospecto.hora}</p>
                             </>

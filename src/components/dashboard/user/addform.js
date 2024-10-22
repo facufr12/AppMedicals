@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
+import { useAuth } from "../authentication/AuthContext";
 
 const ProspectForm = ({ show, handleClose }) => {
+  const { userData } = useAuth(); // Obtener userData desde el contexto
   const [nombre, setNombre] = useState("");
   const [edad, setEdad] = useState("");
   const [tAfiliacion, setTAfiliacion] = useState("");
@@ -10,6 +12,7 @@ const ProspectForm = ({ show, handleClose }) => {
   const [correo, setCorreo] = useState("");
   const [partido, setPartido] = useState("");
   const [estado, setEstado] = useState("");
+  const [asignarVendedor, setAsignarVendedor] = useState(false); // Estado para el checkbox
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,7 +32,9 @@ const ProspectForm = ({ show, handleClose }) => {
             correo,
             partido,
             estado,
+            vendedor: asignarVendedor ? userData?.vendedor : null, // Envío del vendedor desde userData si se selecciona el checkbox
           }),
+       
         }
       );
 
@@ -64,7 +69,7 @@ const ProspectForm = ({ show, handleClose }) => {
       <Modal.Body>
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId="nombre">
-            <Form.Label style={{ marginTop: '1rem' }}>Nombre</Form.Label>
+            <Form.Label style={{ marginTop: "1rem" }}>Nombre</Form.Label>
             <Form.Control
               type="text"
               placeholder="Ingresa el nombre"
@@ -79,7 +84,7 @@ const ProspectForm = ({ show, handleClose }) => {
           </Form.Group>
 
           <Form.Group controlId="edad">
-            <Form.Label style={{ marginTop: '1rem' }}>Edad</Form.Label>
+            <Form.Label style={{ marginTop: "1rem" }}>Edad</Form.Label>
             <Form.Control
               type="number"
               placeholder="Ingresa la edad"
@@ -94,7 +99,7 @@ const ProspectForm = ({ show, handleClose }) => {
           </Form.Group>
 
           <Form.Group controlId="tAfiliacion">
-            <Form.Label style={{ marginTop: '1rem' }}>Tipo Afiliación</Form.Label>
+            <Form.Label style={{ marginTop: "1rem" }}>Tipo Afiliación</Form.Label>
             <Form.Control
               type="text"
               placeholder="Tipo de Afiliación"
@@ -109,7 +114,7 @@ const ProspectForm = ({ show, handleClose }) => {
           </Form.Group>
 
           <Form.Group controlId="gpFamiliar">
-            <Form.Label style={{ marginTop: '1rem' }}>Grupo Familiar</Form.Label>
+            <Form.Label style={{ marginTop: "1rem" }}>Grupo Familiar</Form.Label>
             <Form.Control
               type="text"
               placeholder="Grupo Familiar"
@@ -124,7 +129,7 @@ const ProspectForm = ({ show, handleClose }) => {
           </Form.Group>
 
           <Form.Group controlId="cel">
-            <Form.Label style={{ marginTop: '1rem' }}>Celular</Form.Label>
+            <Form.Label style={{ marginTop: "1rem" }}>Celular</Form.Label>
             <Form.Control
               type="text"
               placeholder="Celular"
@@ -139,7 +144,7 @@ const ProspectForm = ({ show, handleClose }) => {
           </Form.Group>
 
           <Form.Group controlId="correo">
-            <Form.Label style={{ marginTop: '1rem' }}>Correo</Form.Label>
+            <Form.Label style={{ marginTop: "1rem" }}>Correo</Form.Label>
             <Form.Control
               type="email"
               placeholder="Correo"
@@ -154,7 +159,7 @@ const ProspectForm = ({ show, handleClose }) => {
           </Form.Group>
 
           <Form.Group controlId="partido">
-            <Form.Label style={{ marginTop: '1rem' }}>Partido</Form.Label>
+            <Form.Label style={{ marginTop: "1rem" }}>Partido</Form.Label>
             <Form.Control
               type="text"
               placeholder="Partido"
@@ -168,8 +173,17 @@ const ProspectForm = ({ show, handleClose }) => {
             </Form.Control.Feedback>
           </Form.Group>
 
+          <Form.Group controlId="vendedor">
+            <Form.Check
+              type="checkbox"
+              label="¿Asignar vendedor?"
+              checked={asignarVendedor}
+              onChange={(e) => setAsignarVendedor(e.target.checked)}
+            />
+          </Form.Group>
+
           <Form.Group controlId="estado">
-            <Form.Label style={{ marginTop: '1rem' }}>Estado</Form.Label>
+            <Form.Label style={{ marginTop: "1rem" }}>Estado</Form.Label>
             <Form.Control
               as="select"
               value={estado}
