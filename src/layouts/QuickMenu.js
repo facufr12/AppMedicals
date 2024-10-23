@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom"; 
 import { Fragment, useState, useEffect } from "react";
 import { Row, Col, Dropdown, ListGroup, Modal, Button } from "react-bootstrap";
 import SimpleBar from "simplebar-react";
@@ -6,11 +6,15 @@ import "simplebar/dist/simplebar.min.css";
 import DotBadge from "components/elements/bootstrap/DotBadge";
 import DarkLightMode from "layouts/DarkLightMode";
 import { useAuth } from "components/dashboard/authentication/AuthContext";
+import CustomToast from "components/dashboard/authentication/Toast"; // Importa tu CustomToast
 
 const QuickMenu = () => {
   const [showModal, setShowModal] = useState(false);
-  
-  const { userData } = useAuth();
+  const [showToast, setShowToast] = useState(false); // Estado para el toast
+  const [toastMessage, setToastMessage] = useState(""); // Mensaje del toast
+  const [toastTitle, setToastTitle] = useState(""); // Título del toast
+  const { userData, logout } = useAuth();
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -34,7 +38,15 @@ const QuickMenu = () => {
     ? getInitials(userData.vendedor) 
     : 'XX';
 
-  const apiUrl = `https://script.google.com/macros/s/AKfycbxNn3wU0BDPbf6laTTq3PCaq6N7SkyVIdrzrKZkWrUW0pzcHU0Ku-tMQiZVsl6pZBRSGA/exec?vendedor=${!loading && userData ? userData.vendedor : 'aletest'}&func=obtenerDatos`;
+  const handleLogout = () => {
+    logout(); // Llama al método de cierre de sesión
+    setToastTitle("Sesión cerrada");
+    setToastMessage("Sesion Cerrada Correctamente.");
+    setShowToast(true); // Muestra el toast
+    setTimeout(() => {
+      navigate('/'); // Redirige a la página de inicio de sesión
+    }, 2000); // Espera 2 segundos antes de redirigir
+  };
 
   return (
     <Fragment>
@@ -100,7 +112,7 @@ const QuickMenu = () => {
               <i className="fe fe-settings me-2"></i> Configuración
             </Dropdown.Item>
             <Dropdown.Divider />
-            <Dropdown.Item className="mb-3">
+            <Dropdown.Item className="mb-3" onClick={handleLogout}>
               <i className="fe fe-power me-2"></i> Cerrar Sesión
             </Dropdown.Item>
           </Dropdown.Menu>
@@ -155,6 +167,14 @@ const QuickMenu = () => {
           </Button>
         </Modal.Footer>
       </Modal>
+
+      {/* Componente Toast */}
+      <CustomToast 
+        show={showToast} 
+        onClose={() => setShowToast(false)} 
+        message={toastMessage} 
+        title={toastTitle} 
+      />
     </Fragment>
   );
 };

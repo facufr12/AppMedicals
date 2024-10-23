@@ -10,6 +10,7 @@ import {
   Form,
   Modal
 } from "react-bootstrap";
+import CustomToast from "../authentication/Toast";
 import { FaWhatsapp } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import ProspectForm from "../user/addform";
@@ -43,6 +44,7 @@ const Instructor = () => {
     "Tomó Otra Cobertura"
   ];
 
+ 
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -65,11 +67,15 @@ const Instructor = () => {
     fetchGoogleSheetsData();
   }, []);
 
+  const [showToast, setShowToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState("");
+  const [toastTitle, setToastTitle] = useState("");
+
   const filteredData = data.filter((person) =>
     person.nombre.toLowerCase().includes(searchTerm.toLowerCase()) &&
     (selectedEstado === "" || person.estado === selectedEstado)
   );
-
+  const [isLoading, setIsLoading] = useState(false);
   const handleEstadoChange = (person, newEstado) => {
     setData(prevData =>
       prevData.map(p => (p.id === person.id ? { ...p, estado: newEstado } : p))
@@ -77,6 +83,7 @@ const Instructor = () => {
   };
 
   const enviarDatos = async (id, estado) => {
+    setIsLoading(true); // Deshabilitar el botón
     try {
       const response = await fetch(
         "https://script.google.com/macros/s/AKfycbxNn3wU0BDPbf6laTTq3PCaq6N7SkyVIdrzrKZkWrUW0pzcHU0Ku-tMQiZVsl6pZBRSGA/exec?func=cambiarEstadoDato",
@@ -90,12 +97,23 @@ const Instructor = () => {
         throw new Error("Error al enviar los datos");
       }
       const resultado = await response.json();
-      alert("Datos enviados correctamente: " + JSON.stringify(resultado));
+        // Mostrar Toast de éxito
+        setToastTitle("Éxito");
+        setToastMessage("Datos enviados correctamente: " + JSON.stringify(resultado));
+        setShowToast(true);
     } catch (error) {
       console.error("Error en la solicitud:", error);
-      alert("Error al enviar los datos. Por favor, intenta nuevamente.");
-    }
+      
+      // Mostrar Toast de error
+      setToastTitle("Error");
+      setToastMessage("Error al enviar los datos. Por favor, intenta nuevamente.");
+      setShowToast(true);
+    }finally {
+      setIsLoading(false); // Habilitar el botón nuevamente
+  }
   };
+
+  
 
   const createCards = (data, page) => {
     const start = (page - 1) * cardsPerPage;
@@ -109,8 +127,11 @@ const Instructor = () => {
     
     return (
       <>
+    
         <ProspectForm show={showModal} handleClose={() => setShowModal(false)} />
         <Row>
+   
+
           {paginatedData.map((person, index) => (
             <Col key={index} xl={4} lg={6} md={6} xs={12} className="mb-4">
               <div className="card border-light shadow-sm" style={{ borderRadius: "40px" }}>
@@ -145,11 +166,11 @@ const Instructor = () => {
                   <div className="mt-4 p-0">
                     <div className="d-flex justify-content-between">
                       <div className="w-100 py-2 px-3 border-top border-bottom">
-                        <h6 className="mb-0">Fecha de Ingreso:</h6>
+                        <h6 className="mb-0">Fecha :</h6>
                         <p className="text-dark fs-6 fw-semibold mb-0">{new Date(person.fecha).toLocaleDateString()}</p>
                       </div>
                       <div className="w-100 py-2 px-3 border-top border-bottom">
-                        <h6 className="mb-0">Hora de Ingreso:</h6>
+                        <h6 className="mb-0">Hora :</h6>
                         <p className="text-dark fs-6 fw-semibold mb-0">{person.hora}</p>
                       </div>
                     </div>
@@ -170,16 +191,19 @@ const Instructor = () => {
                         ))}
                       </Form.Select>
                       <Button
-                        variant="primary"
-                        style={{
-                          marginLeft: "10px",
-                          padding: "2px 5px",
-                          fontSize: "15px",
-                        }}
-                        onClick={() => enviarDatos(person.id, person.estado)}
-                      >
-                        <i className="fas fa-arrow-up"></i>
-                      </Button>
+    variant="primary"
+    style={{
+        marginLeft: "10px",
+        padding: "2px 5px",
+        fontSize: "17px",
+    }}
+    onClick={() => enviarDatos(person.id, person.estado)}
+    disabled={isLoading} // Deshabilitar el botón
+>
+    <i className="fas fa-arrow-up"></i>
+</Button>
+
+
                     </div>
                   </div>
 
@@ -213,7 +237,7 @@ const Instructor = () => {
         role="progressbar"
         style={{
           width: `${person.evolucion}%`,
-          backgroundColor: '#4caf50',
+          backgroundColor: '#754ffe',
         }}
         aria-valuenow={person.evolucion}
         aria-valuemin="0"
@@ -226,7 +250,7 @@ const Instructor = () => {
         top: '-25px', // Ajusta la posición vertical según sea necesario
         left: '50%',
         transform: 'translateX(-50%)',
-        color: 'white', // Cambia el color si es necesario
+        color: '#754ffe', 
         fontWeight: 'bold',
       }}
     >
@@ -242,13 +266,37 @@ const Instructor = () => {
             </Col>
           ))}
         </Row>
-        <Pagination className="mt-4">
-          {Array.from({ length: Math.ceil(filteredData.length / cardsPerPage) }, (_, index) => (
-            <Pagination.Item key={index} active={index + 1 === currentPage} onClick={() => setCurrentPage(index + 1)}>
-              {index + 1}
-            </Pagination.Item>
-          ))}
-        </Pagination>
+        <div className="d-flex justify-content-center mt-4">
+  <Pagination>
+    <Pagination.Prev 
+      onClick={() => setCurrentPage(currentPage - 1)} 
+      disabled={currentPage === 1} 
+    />
+    
+    {Array.from({ length: Math.min(6, Math.ceil(filteredData.length / cardsPerPage)) }, (_, index) => {
+      const pageNumber = index + Math.max(1, currentPage - 3);
+      return (
+        <Pagination.Item 
+          key={index} 
+          active={pageNumber === currentPage} 
+          onClick={() => setCurrentPage(pageNumber)} 
+          disabled={pageNumber > Math.ceil(filteredData.length / cardsPerPage)}
+        >
+          {pageNumber}
+        </Pagination.Item>
+      );
+    })}
+    
+    <Pagination.Next 
+      onClick={() => setCurrentPage(currentPage + 1)} 
+      disabled={currentPage === Math.ceil(filteredData.length / cardsPerPage)} 
+    />
+  </Pagination>
+</div>
+
+
+ 
+
       </>
     );
   };
@@ -296,6 +344,12 @@ const Instructor = () => {
   
   return (
     <Fragment>
+           <CustomToast 
+    show={showToast} 
+    onClose={() => setShowToast(false)} 
+    message={toastMessage} 
+    title={toastTitle} 
+  />
       <Row className="mb-4">
         <Col>
           <Breadcrumb>
@@ -314,6 +368,7 @@ const Instructor = () => {
           <Button onClick={() => setShowModal(true)} variant="primary" className="mb-3">
             Agregar Prospecto
           </Button>
+          
         </Col>
       </Row>
       <Row>

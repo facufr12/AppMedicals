@@ -1,16 +1,16 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Card, ListGroup, Dropdown } from "react-bootstrap";
-
-import {
-  BsPersonFill,
-  BsPersonVcardFill,
-  BsTelephoneFill,
-  BsHouseFill,
-  BsGeoAltFill,
-  BsFillEnvelopeOpenFill,
-  BsCreditCard2BackFill,
-  BsFillSendFill
+import { FaWhatsapp } from "react-icons/fa"; // Asegúrate de importar el ícono de WhatsApp
+import { 
+  BsPersonFill, 
+  BsPersonVcardFill, 
+  BsTelephoneFill, 
+  BsHouseFill, 
+  BsGeoAltFill, 
+  BsFillEnvelopeOpenFill, 
+  BsCreditCard2BackFill, 
+  BsFillSendFill 
 } from "react-icons/bs";
 
 const ProjectSummary = () => {
@@ -50,13 +50,17 @@ const ProjectSummary = () => {
     return <p>No hay información de prospecto disponible.</p>;
   }
 
+  // Función para generar el enlace de WhatsApp
+  const getWhatsAppLink = (number) => {
+    const message = "Hola, Querías solicitar un asesor?."; // Mensaje por defecto
+    return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
+  };
+
   return (
     <Card>
-   
       <Card.Body>
-        <h5 class="mb-4">
-          En la siguiente pestaña se muestran los detalles del prospecto
-          seleccionado
+        <h5 className="mb-4">
+          En la siguiente pestaña se muestran los detalles del prospecto seleccionado
         </h5>
         <ListGroup variant="flush">
           <ListGroup.Item className="px-0">
@@ -126,7 +130,9 @@ const ProjectSummary = () => {
                 </div>
               </div>
               <div>
-                <p className="text-dark mb-0 fw-semi-bold">{prospecto.cel}</p>
+                <a href={getWhatsAppLink(prospecto.cel)} target="_blank" rel="noopener noreferrer">
+                  <FaWhatsapp size={20} className="text-success" />
+                </a>
               </div>
             </div>
           </ListGroup.Item>

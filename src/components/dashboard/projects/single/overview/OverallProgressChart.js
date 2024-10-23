@@ -21,9 +21,11 @@ const OverallProgressChartOptions = {
                 },
                 value: {
                     fontSize: '40px', // Tamaño del dato (aumentado)
-                    color: '#fff', // Color del dato
+                    color: '#754ffe', // Color del dato
+                    fontWeight: 'bold', // Hace el texto más grueso
                     offsetY: 0,
                 },
+                
             },
         },
     },

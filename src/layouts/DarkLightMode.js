@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 
 // import context file
 import { AppConfigContext } from 'context/Context';
-
 // import media file
 import LightModeIcon from 'assets/images/sun.svg';
 import DarkModeIcon from 'assets/images/moon.svg';

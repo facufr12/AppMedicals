@@ -1,7 +1,7 @@
 // import node module libraries
 import { Fragment } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Col, Row, ListGroup } from 'react-bootstrap';
+import { Col, Row, ListGroup, Button } from 'react-bootstrap';
 
 // import routes file
 import { DashboardMenu } from 'routes/dashboard/DashboardRoutes';
@@ -21,8 +21,14 @@ const CommonHeaderTabs = () => {
 							</h1>
 						</div>
 						<div className="d-flex align-items-center">
-							{/*  icon  */}
-						
+							{/* Botón "Crear Póliza" */}
+							<Button 
+								variant="primary" 
+								className="ms-3 mb-2 "
+								onClick={() => alert('Crear Póliza')} // Cambiar esta acción según tu lógica
+							>
+								Crear Póliza
+							</Button>
 						</div>
 					</div>
 				</Col>

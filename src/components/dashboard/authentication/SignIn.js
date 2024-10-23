@@ -1,21 +1,27 @@
 import { Fragment, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Col, Row, Card, Form, Button, Image } from "react-bootstrap";
+import { Col, Row, Card, Form, Button, Image, Spinner } from "react-bootstrap"; // Importa Spinner
 import Logo from "../../../assets/images/logo-cober.svg";
 import DarkLightMode from "layouts/DarkLightMode";
 import authService from "./authService";
 import { useAuth } from './AuthContext'; // Importa el contexto
+import CustomToast from "./Toast"; // Asegúrate de que la ruta sea correcta
 
 const SignIn = () => {
     const [usuario, setUsuario] = useState("");
     const [contraseña, setContraseña] = useState("");
     const [error, setError] = useState("");
+    const [showToast, setShowToast] = useState(false); // Estado para el Toast
+    const [toastMessage, setToastMessage] = useState(""); // Mensaje del Toast
+    const [toastTitle, setToastTitle] = useState(""); // Título del Toast
+    const [loading, setLoading] = useState(false); // Estado para controlar el spinner
     const navigate = useNavigate();
     const { setUserData } = useAuth(); // Usa el hook para acceder a setUserData
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         setError("");
+        setLoading(true); // Activar el spinner
 
         try {
             const credentials = { usuario, contraseña };
@@ -23,21 +29,33 @@ const SignIn = () => {
 
             console.log("Respuesta del servidor:", data);
 
-            // Verifica si la respuesta incluye las propiedades necesarias
             if (data && data.vendedor && data.email && data.cel && data.categoria) {
                 console.log("Inicio de sesión exitoso:", data);
                 setUserData(data); // Guarda los datos en el contexto
-                navigate("/user/instructor");
+                setToastTitle("Éxito");
+                setToastMessage("Inicio de sesión exitoso.");
+                setShowToast(true);
+
+                setTimeout(() => {
+                    navigate("/user/instructor");
+                }, 2000);
             } else if (data.error) {
-                alert(data.error);
                 console.error("Credenciales inválidas:", data.error);
-                setError(data.error);
+                setToastTitle("Error");
+                setToastMessage(data.error);
+                setShowToast(true);
             } else {
-                setError("Error en el inicio de sesión. Verifica tus credenciales.");
+                setToastTitle("Error");
+                setToastMessage("Error en el inicio de sesión. Verifica tus credenciales.");
+                setShowToast(true);
             }
         } catch (err) {
             console.error("Error capturado:", err);
-            setError(err.message || "Error en el inicio de sesión. Verifica tus credenciales.");
+            setToastTitle("Error");
+            setToastMessage(err.message || "Error en el inicio de sesión. Verifica tus credenciales.");
+            setShowToast(true);
+        } finally {
+            setLoading(false); // Desactivar el spinner
         }
     };
 
@@ -105,8 +123,22 @@ const SignIn = () => {
                                         </div>
                                     </Col>
                                     <Col lg={12} className="mb-0 d-grid gap-2">
-                                        <Button variant="primary" type="submit">
-                                            Iniciar Sesión
+                                        <Button variant="primary" type="submit" disabled={loading}>
+                                            {loading ? (
+                                                <>
+                                                    <Spinner
+                                                        as="span"
+                                                        animation="border"
+                                                        size="sm"
+                                                        role="status"
+                                                        aria-hidden="true"
+                                                        className="me-2"
+                                                    />
+                                                    Cargando...
+                                                </>
+                                            ) : (
+                                                "Iniciar Sesión"
+                                            )}
                                         </Button>
                                     </Col>
                                     {error && (
@@ -121,6 +153,14 @@ const SignIn = () => {
                     </Card>
                 </Col>
             </Row>
+
+            {/* Componente Toast */}
+            <CustomToast 
+                show={showToast} 
+                onClose={() => setShowToast(false)} 
+                message={toastMessage} 
+                title={toastTitle} 
+            />
         </Fragment>
     );
 };

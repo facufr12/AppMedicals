@@ -17,8 +17,8 @@ import Instructor from "components/dashboard/user/Instructor";
 import SignIn from "components/dashboard/authentication/SignIn";
 import SignUp from "components/dashboard/authentication/SignUp";
 import ForgetPassword from "components/dashboard/authentication/ForgetPassword";
-import Notifications from "components/dashboard/authentication/Notifications";
 import General from "components/dashboard/settings/General";
+import CustomToast from "components/dashboard/authentication/Toast";
 import Google from "components/dashboard/settings/Google";
 import Social from "components/dashboard/settings/Social";
 import SocialLogin from "components/dashboard/settings/SocialLogin";
@@ -78,7 +78,7 @@ import NavbarVertical from "./dashboard/NavbarVertical";
 import NavbarBrandOnly from "./marketing/navbars/NavbarBrandOnly";
 import NavbarCompact from "./dashboard/navbars/NavbarCompact";
 import SimpleBar from "simplebar-react";
-
+import Checkout from "../components/dashboard/projects/single/overview/Checkout"
 const AllRoutes = () => {
   return (
     <Routes>
@@ -106,6 +106,7 @@ const AllRoutes = () => {
         <Route path="/user/instructor" element={<Instructor />} />
         <Route path="/user/Cotizador" element={<Cotizador />} />
         <Route path="/user/addform" element={<ProspectForm />} />
+        <Route path="/user/checkout" element={<Checkout />} />
         <Route
         path="/dashboard/projects/single/overview"
         element={<ProjectOverview />}
