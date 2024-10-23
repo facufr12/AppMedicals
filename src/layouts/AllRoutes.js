@@ -74,11 +74,11 @@ import BlankLayout from "layouts/marketing/BlankLayout";
 import NotFound from "layouts/marketing/NotFound";
 import AcademyLayout from "layouts/marketing/AcademyLayout"; // added in 2.0.0
 // Mentor Pages (v2.3.
+import Checkout from "components/dashboard/checkout/Checkout";
 import NavbarVertical from "./dashboard/NavbarVertical";
 import NavbarBrandOnly from "./marketing/navbars/NavbarBrandOnly";
 import NavbarCompact from "./dashboard/navbars/NavbarCompact";
 import SimpleBar from "simplebar-react";
-import Checkout from "../components/dashboard/projects/single/overview/Checkout"
 const AllRoutes = () => {
   return (
     <Routes>
@@ -106,6 +106,7 @@ const AllRoutes = () => {
         <Route path="/user/instructor" element={<Instructor />} />
         <Route path="/user/Cotizador" element={<Cotizador />} />
         <Route path="/user/addform" element={<ProspectForm />} />
+        
         <Route path="/user/checkout" element={<Checkout />} />
         <Route
         path="/dashboard/projects/single/overview"
