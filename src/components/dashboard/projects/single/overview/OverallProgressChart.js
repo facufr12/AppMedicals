@@ -25,9 +25,15 @@ const OverallProgressChartOptions = {
                     fontWeight: 'bold', // Hace el texto más grueso
                     offsetY: 0,
                 },
-                
+            },
+            track: {
+                background: '#e0e0e0', // Color de fondo de la barra
+                strokeWidth: '100%', // Ancho de la barra de fondo
             },
         },
+    },
+    fill: {
+        colors: ['#754ffe'], // Color de la barra radial
     },
     labels: [''], // Esto se puede usar para los labels en el gráfico
 };

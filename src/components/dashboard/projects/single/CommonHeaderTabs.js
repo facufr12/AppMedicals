@@ -2,13 +2,14 @@
 import { Fragment } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Col, Row, ListGroup, Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 // import routes file
 import { DashboardMenu } from 'routes/dashboard/DashboardRoutes';
 
 const CommonHeaderTabs = () => {
 	const location = useLocation();
-
+	const navigate = useNavigate();
 	return (
 		<Fragment>
 			<Row>
@@ -25,7 +26,7 @@ const CommonHeaderTabs = () => {
 							<Button 
 								variant="primary" 
 								className="ms-3 mb-2 "
-								onClick={() => alert('Crear Póliza')} // Cambiar esta acción según tu lógica
+								onClick={() => navigate('/user/Checkout')}
 							>
 								Crear Póliza
 							</Button>

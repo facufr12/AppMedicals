@@ -9,7 +9,7 @@ const SMTPServer = () => {
 				<Col lg={12} md={12} sm={12}>
 					<div className="border-bottom pb-4 mb-4 d-md-flex align-items-center justify-content-between">
 						<div className="mb-3 mb-md-0">
-							<h1 className="mb-1 h2 font-weight-bold">SMTP Server Setting</h1>
+							<h1 className="mb-1 h2 font-weight-bold"> Crear Póliza</h1>
 							<Breadcrumb>
 								<Breadcrumb.Item href="#">Dashboard</Breadcrumb.Item>
 								<Breadcrumb.Item href="#">Settings</Breadcrumb.Item>
@@ -22,7 +22,7 @@ const SMTPServer = () => {
 
 			<Card>
 				<Card.Header>
-					<h2 className="mb-0">SMTP Server Setting</h2>
+					<h2 className="mb-0">Datos de Afiliacion</h2>
 				</Card.Header>
 				<Card.Body>
 					<Form>
