@@ -134,10 +134,11 @@ const PaymentSelection = (props) => {
 					{/* Button */}
 					<div className="d-flex justify-content-between mt-3">
 						<Button variant='outline-primary' className="mb-2 mb-md-0" onClick={previous}>
-							Back to shipping
+						Declaración de Salud
+
 						</Button>
 						<Button disabled={!termsAccepted}>
-							Complete Order
+							Confirmar Afiliación
 						</Button>
 					</div>
 				</div>
