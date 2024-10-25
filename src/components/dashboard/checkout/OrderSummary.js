@@ -11,7 +11,7 @@ const OrderSummary = () => {
 
     // Asegúrate de que el contexto no sea undefined
     if (!cartContext) {
-        return <div>Error: No se pudo cargar el contexto.</div>;
+        return <div>Póliza Generada Acá.</div>;
     }
 
     const cartItems = cartContext.CartState?.cartItems || [];

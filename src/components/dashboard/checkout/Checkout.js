@@ -1,21 +1,22 @@
-// import node module libraries
 import { useState } from 'react';
-import { Col, Row, Breadcrumb } from 'react-bootstrap';
-import { FaUser, FaClipboardCheck, FaCheckCircle } from 'react-icons/fa'; // Importa los íconos
+import { Col, Row, Breadcrumb, Button } from 'react-bootstrap';
+import { FaUser, FaClipboardCheck, FaCheckCircle } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom'; // Importa useNavigate
 
-// import sub components ( Steps )
+// Importa sub componentes (Steps)
 import BillingInformation from './steps/BillingInformation';
 import PaymentSelection from './steps/PaymentSelection';
 import ShippingInformation from './steps/ShippingInformation';
 import OrderSummary from './OrderSummary';
 
-// import custom components
+// Importa componentes personalizados
 import GKStepper3 from 'components/elements/stepper/GKStepper3';
 
 const Checkout = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState();
-  
+  const navigate = useNavigate(); // Inicializa useNavigate
+
   const handleChange = (event) => {
     setFormData({
       ...formData,
@@ -25,18 +26,22 @@ const Checkout = () => {
   };
 
   const next = () => {
-    setCurrentStep(currentStep === 3 ? 1 : currentStep + 1); // Cambié 4 por 3
+    setCurrentStep(currentStep === 3 ? 1 : currentStep + 1);
   };
 
   const previous = () => {
     setCurrentStep(currentStep === 1 ? 1 : currentStep - 1);
   };
 
+  const handleBack = () => {
+    navigate('/dashboard/projects/single/overview'); // Redirige al hacer clic en el botón
+  };
+
   const steps = [
     {
       id: 1,
       title: 'Datos de Afiliación',
-      icon: <FaUser />, // Ícono para Datos de Afiliación
+      icon: <FaUser />,
       content: (
         <BillingInformation data={formData} handleChange={handleChange} next={next} />
       )
@@ -44,7 +49,7 @@ const Checkout = () => {
     {
       id: 2,
       title: 'Declaración de Salud',
-      icon: <FaClipboardCheck />, // Ícono para Declaración de Salud
+      icon: <FaClipboardCheck />,
       content: (
         <ShippingInformation
           data={formData}
@@ -57,7 +62,7 @@ const Checkout = () => {
     {
       id: 3,
       title: 'Confirmación',
-      icon: <FaCheckCircle />, // Ícono para Confirmación
+      icon: <FaCheckCircle />,
       content: (
         <PaymentSelection
           data={formData}
@@ -73,15 +78,14 @@ const Checkout = () => {
     <div>
       <Row>
         <Col lg={12} md={12} xs={12}>
-          <div className="border-bottom pb-3 mb-3 ">
-            <div className="mb-2 mb-lg-0">
-              <h1 className="mb-0 h2 fw-bold"> Checkout </h1>
-              <Breadcrumb>
-                <Breadcrumb.Item to="#">Dashboard</Breadcrumb.Item>
-                <Breadcrumb.Item to="#">Ecommerce</Breadcrumb.Item>
-                <Breadcrumb.Item active>Checkout</Breadcrumb.Item>
-              </Breadcrumb>
+          <div className="border-bottom pb-3 mb-3">
+            <div className="d-flex justify-content-between align-items-center mb-2 mb-lg-0">
+              <h1 className="mb-0 h2 fw-bold"> Crear Póliza </h1>
+              <Button onClick={handleBack} variant="secondary">Volver</Button>
             </div>
+            <Breadcrumb>
+              <Breadcrumb.Item active>Póliza</Breadcrumb.Item>
+            </Breadcrumb>
           </div>
         </Col>
       </Row>
@@ -90,7 +94,6 @@ const Checkout = () => {
           <div id="stepperForm" className="bs-stepper">
             <Row>
               <div>
-                {/* Stepper Button and content */}
                 <GKStepper3 currentStep={currentStep} steps={steps} />
               </div>
             </Row>

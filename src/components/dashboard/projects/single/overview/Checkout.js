@@ -8,6 +8,7 @@ const SMTPServer = () => {
 			<Row>
 				<Col lg={12} md={12} sm={12}>
 					<div className="border-bottom pb-4 mb-4 d-md-flex align-items-center justify-content-between">
+						
 						<div className="mb-3 mb-md-0">
 							<h1 className="mb-1 h2 font-weight-bold">Crear Póliza</h1>
 							<Breadcrumb>
