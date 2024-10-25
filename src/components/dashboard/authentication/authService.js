@@ -5,7 +5,7 @@ const login = async (credentials) => {
   try {
     const response = await fetch(API_URL, {
       method: "POST",
-   
+ 
       body: JSON.stringify({
         usuario: credentials.usuario,
         contraseña: credentials.contraseña,
@@ -21,6 +21,11 @@ const login = async (credentials) => {
     }
 
     console.log('Datos recibidos del servidor:', data); // Log de la respuesta del servidor
+
+    // Guarda la información necesaria en localStorage
+    localStorage.setItem('userData', JSON.stringify(data.user)); // Ajusta según la estructura de tu respuesta
+    localStorage.setItem('token', data.token); // Suponiendo que también recibes un token
+
     return data; // Devuelve la respuesta del servidor
   } catch (error) {
     console.error("Error en el login:", error);

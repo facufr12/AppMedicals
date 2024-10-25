@@ -145,7 +145,7 @@ const BillingInformation = (props) => {
 					{/* Button */}
 					<div className="d-flex justify-content-end">
 						<Button variant="primary" onClick={next}>
-							Proceed to Shipping <i className="fe fe-shopping-bag ms-1"></i>
+							Avanzar a "Declaración de Salud" <i className="fe fe-shopping-bag ms-1"></i>
 						</Button>
 					</div>
 				</div>

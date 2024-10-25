@@ -1,16 +1,29 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import CustomToast from './Toast'; // Asegúrate de que la ruta sea correcta
 
 const AuthContext = createContext();
 const ToastContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-    const [userData, setUserData] = useState(null);
+    const [userData, setUserData] = useState(() => {
+        // Cargar datos de localStorage al iniciar
+        const savedUserData = localStorage.getItem('userData');
+        return savedUserData ? JSON.parse(savedUserData) : null;
+    });
     const [toastData, setToastData] = useState({
         show: false,
         message: '',
         title: '',
     });
+
+    // Efecto para guardar userData en localStorage cada vez que cambia
+    useEffect(() => {
+        if (userData) {
+            localStorage.setItem('userData', JSON.stringify(userData));
+        } else {
+            localStorage.removeItem('userData'); // Limpia el localStorage al cerrar sesión
+        }
+    }, [userData]);
 
     const logout = () => {
         setUserData(null); // Limpia el usuario
