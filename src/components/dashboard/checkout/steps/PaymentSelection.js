@@ -1,12 +1,11 @@
-// import node module libraries
 import InputMask from 'react-input-mask';
-import { Card, Row, Col, Form, Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Card, Row, Col, Form, Button } from 'react-bootstrap';
 import { useState } from 'react';
 
 const PaymentSelection = (props) => {
 	const { previous } = props;
 	const [termsAccepted, setTermsAccepted] = useState(false);
+	const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('');
 
 	const states = [
 		{ value: 'CABA', label: 'CABA' },
@@ -15,8 +14,8 @@ const PaymentSelection = (props) => {
 		{ value: 'Zona Sur', label: 'Zona Sur' }
 	];
 	const paymentMethods = [
-		{ value: 'Tajeta Crédito', label: 'Tajeta Crédito' },
-		{ value: 'Tajeta Débito', label: 'Tajeta Débito' },
+		{ value: 'Tarjeta Crédito', label: 'Tarjeta Crédito' },
+		{ value: 'Tarjeta Débito', label: 'Tarjeta Débito' },
 		{ value: 'Mercado Pago', label: 'Mercado Pago' },
 	];
 
@@ -44,17 +43,18 @@ const PaymentSelection = (props) => {
 		</InputMask>
 	);
 
+	const handlePaymentMethodChange = (event) => {
+		setSelectedPaymentMethod(event.target.value);
+	};
+
 	return (
 		<Form>
 			<div className="bs-stepper-content">
-				{/* Content three */}
 				<div role="tabpanel" className="bs-stepper-pane ">
-					{/* Card */}
 					<div className="mb-5">
 						<h3 className="mb-1">Domicilio y Datos de Facturación</h3>
 					</div>
 
-					{/* Dirección y número */}
 					<Row className="mb-4">
 						<Col md={6}>
 							<Form.Group className="mb-3">
@@ -70,7 +70,6 @@ const PaymentSelection = (props) => {
 						</Col>
 					</Row>
 
-					{/* Nombre y apellido */}
 					<Row className="mb-4">
 						<Col md={6}>
 							<Form.Group className="mb-3">
@@ -86,7 +85,6 @@ const PaymentSelection = (props) => {
 						</Col>
 					</Row>
 
-					{/* Localidad */}
 					<Row className="mb-4">
 						<Col xs={12}>
 							<Form.Group className="mb-3">
@@ -101,12 +99,11 @@ const PaymentSelection = (props) => {
 						</Col>
 					</Row>
 
-					{/* Método de Pago */}
 					<Row className="mb-4">
 						<Col xs={12}>
 							<Form.Group className="mb-3">
 								<Form.Label htmlFor='metodoPago'>Método de Pago</Form.Label>
-								<Form.Control as="select" id="metodoPago">
+								<Form.Control as="select" id="metodoPago" onChange={handlePaymentMethodChange}>
 									<option value="">Seleccione Método de Pago</option>
 									{paymentMethods.map(method => (
 										<option key={method.value} value={method.value}>{method.label}</option>
@@ -116,7 +113,25 @@ const PaymentSelection = (props) => {
 						</Col>
 					</Row>
 
-					{/* Checkbox de aceptación de términos */}
+					{(selectedPaymentMethod === 'Tarjeta Crédito' || selectedPaymentMethod === 'Tarjeta Débito') && (
+						<>
+							<Row className="mb-4">
+								<Col md={6}>
+									<Form.Group className="mb-3">
+										<Form.Label htmlFor='cardNumber'>Número de Tarjeta</Form.Label>
+										<CardNumberInput id="cardNumber" />
+									</Form.Group>
+								</Col>
+								<Col md={6}>
+									<Form.Group className="mb-3">
+										<Form.Label htmlFor='expiryDate'>Fecha de Expiración</Form.Label>
+										<ExpiryDate mask="99/99" placeholder="MM/AA" id="expiryDate" />
+									</Form.Group>
+								</Col>
+							</Row>
+						</>
+					)}
+
 					<Row className="mb-4">
 						<Col xs={12}>
 							<Form.Group>
@@ -131,11 +146,9 @@ const PaymentSelection = (props) => {
 						</Col>
 					</Row>
 
-					{/* Button */}
 					<div className="d-flex justify-content-between mt-3">
 						<Button variant='outline-primary' className="mb-2 mb-md-0" onClick={previous}>
-						Declaración de Salud
-
+							Declaración de Salud
 						</Button>
 						<Button disabled={!termsAccepted}>
 							Confirmar Afiliación
