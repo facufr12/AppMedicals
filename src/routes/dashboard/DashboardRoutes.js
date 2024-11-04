@@ -14,15 +14,16 @@ export const DashboardMenu = [
       { id: uuid(), link: "/dashboard/analytics", name: "Overview" }
     ]
   },
-
   {
     id: uuid(),
     title: "Prospectos",
     icon: "user",
     children: [
       { id: uuid(), link: "/user/instructor", name: "Prospectos" },
-      { id: uuid(), link: "/user/cotizador", name: "Cotizador" }, // Nueva suburl "Cotizador"
-    ]
+       // { id: uuid(), link: "/user/cotizador", name: "Cotizador" }, // Nueva suburl "Cotizador"
+    
+       { id: uuid(), link: "/prestadores/projectprestadores", name: "Planes" },
+      ]
   },
 ];
 

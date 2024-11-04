@@ -22,9 +22,8 @@ import SocialLogin from "components/dashboard/settings/SocialLogin";
 import SMTPServer from "components/dashboard/settings/SMTPServer";
 import ProjectGrid from "components/dashboard/projects/grid/ProjectGrid";
 import ProjectList from "components/dashboard/projects/list/ProjectList";
-
 import ProjectOverview from "components/dashboard/projects/single/overview/ProjectOverview";
-
+import ProjectPrestadores from "components/dashboard/prestadores/ProjectOverview";
 import Datatables from "components/dashboard/tables/Datatables";
 // ** Boostrap components
 
@@ -55,6 +54,7 @@ const AllRoutes = () => {
         <Route path="/overview" element={<Overview />} />
         <Route path="/dashboard/analytics" element={<Metrics />} />
         <Route path="/user/instructor" element={<Instructor />} />
+        <Route path="/prestadores/projectprestadores" element={<ProjectPrestadores />} />
         <Route path="/user/Cotizador" element={<Cotizador />} />
         <Route path="/user/addform" element={<ProspectForm />} />
 
