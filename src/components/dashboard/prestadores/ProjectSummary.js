@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react"; 
+<<<<<<< HEAD
 import { Accordion, Card, Dropdown, ListGroup, Spinner } from "react-bootstrap"; 
+=======
+import { Accordion, Card, Dropdown, ListGroup, Spinner, Table } from "react-bootstrap"; 
+>>>>>>> 1f14548 (Tabla accordeon)
 import { Link } from "react-router-dom";
 
 const ProjectSummary = () => {
@@ -156,7 +160,11 @@ const ProjectSummary = () => {
                               </Accordion.Item>
                             </Accordion>
                           </ListGroup.Item>
+<<<<<<< HEAD
                         ))}
+=======
+                        ))}  
+>>>>>>> 1f14548 (Tabla accordeon)
                     </ListGroup>
                   </Accordion.Body>
                 </Accordion.Item>
@@ -165,6 +173,10 @@ const ProjectSummary = () => {
           })}
         </Card.Body>
       </Card>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1f14548 (Tabla accordeon)
       <Card className="mt-4">
         <Card.Header className="card-header">
           <div className="d-flex justify-content-between align-items-center">
@@ -174,6 +186,17 @@ const ProjectSummary = () => {
         <Card.Body>
           {sheetCobertura.map((sheetName, sheetIndex) => {
             const sheetData = allData[sheetName] || []; 
+<<<<<<< HEAD
+=======
+            const columns = Object.keys(sheetData[0] || {}); // Obtener las claves del primer objeto
+            
+            // Dividir las columnas en bloques de 3
+            const chunkedColumns = [];
+            for (let i = 0; i < columns.length; i += 3) {
+              chunkedColumns.push(columns.slice(i, i + 3));
+            }
+
+>>>>>>> 1f14548 (Tabla accordeon)
             return (
               <Accordion key={sheetName}>
                 <Accordion.Item eventKey={String(sheetIndex)}>
@@ -183,6 +206,7 @@ const ProjectSummary = () => {
                     </h5>
                   </Accordion.Header>
                   <Accordion.Body>
+<<<<<<< HEAD
                     <ListGroup variant="flush">
                       {sheetData.length > 0 &&
                         Object.keys(sheetData[0]).map((header, colIndex) => (
@@ -207,6 +231,33 @@ const ProjectSummary = () => {
                           </ListGroup.Item>
                         ))}
                     </ListGroup>
+=======
+                    {chunkedColumns.map((columnGroup, groupIndex) => (
+                      <div className="table-responsive" key={groupIndex}>
+                        <Table className="text-nowrap">
+                          <thead className="table-light">
+                            <tr>
+                              {columnGroup.map((header, index) => (
+                                <th key={index} scope="col">{header}</th>
+                              ))}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {sheetData.map((row, rowIndex) => {
+                              const hasData = columnGroup.some(key => row[key]); // Verifica si al menos una celda tiene valor
+                              return hasData ? ( // Solo renderiza la fila si tiene datos
+                                <tr key={rowIndex}>
+                                  {columnGroup.map((key, index) => (
+                                    <td key={index}>{row[key]}</td> // Renderiza el valor de la celda
+                                  ))}
+                                </tr>
+                              ) : null; // Si no hay datos, no renderiza la fila
+                            })}
+                          </tbody>
+                        </Table>
+                      </div>
+                    ))}
+>>>>>>> 1f14548 (Tabla accordeon)
                   </Accordion.Body>
                 </Accordion.Item>
               </Accordion>

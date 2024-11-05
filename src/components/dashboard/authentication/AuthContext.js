@@ -55,4 +55,8 @@ export const AuthProvider = ({ children }) => {
 
 export const useAuth = () => {
     return useContext(AuthContext);
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> 1f14548 (Tabla accordeon)
