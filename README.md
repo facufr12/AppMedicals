@@ -8,3 +8,6 @@ para levantar el proyecto en nuestra local La Aplicacion Rutea desde App.js El c
 MUY IMPORTANTE
 VERSION ESTABLE DE NODE 20.17.
 Facundo Fierro MKT PERFORMANCE.
+
+
+
