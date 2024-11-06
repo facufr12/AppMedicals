@@ -3,6 +3,19 @@ import { Accordion, Card, Dropdown, ListGroup, Spinner, Table } from "react-boot
 import { Link } from "react-router-dom";
 
 const ProjectSummary = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+  
+  const paddingStyle = isMobile ? { padding: "0px", margin: "0px" } : { padding: "10px" };
+
+
   const sheetNames = [
     "WagonPrestadores",
     "ClassicXPrestadores",
@@ -116,17 +129,17 @@ const ProjectSummary = () => {
 
   return (
     <>
-      <Card>
-        <Card.Header className="card-header">
+      <Card style={paddingStyle}>
+        <Card.Header   className="card-header">
           <div className="d-flex justify-content-between align-items-center">
-            <h3 className="mb-2 mt-2">Planes Por Zona</h3>
+            <h3 className="mb-2 mt-2">Prestadores Por Zona</h3>
           </div>
         </Card.Header>
-        <Card.Body>
+        <Card.Body  style={paddingStyle}>
           {sheetNames.map((sheetName, sheetIndex) => {
             const sheetData = allData[sheetName] || []; 
             return (
-              <Accordion key={sheetName}>
+              <Accordion style={paddingStyle} key={sheetName}>
                 <Accordion.Item eventKey={String(sheetIndex)}>
                   <Accordion.Header className="text-center">
                     <h5 className="mb-3 font-weight-bold text-uppercase">
@@ -137,19 +150,19 @@ const ProjectSummary = () => {
                     <ListGroup variant="flush">
                       {sheetData.length > 0 &&
                         Object.keys(sheetData[0]).map((header, colIndex) => (
-                          <ListGroup.Item key={header}>
+                          <ListGroup.Item   style={paddingStyle} key={header}>
                             <Accordion>
                               <Accordion.Item eventKey={String(colIndex)}>
                                 <Accordion.Header className="font-weight-bold text-uppercase">
                                   {header}
                                 </Accordion.Header>
-                                <Accordion.Body>
+                                <Accordion.Body  style={paddingStyle}>
                                   <ul>
                                     {sheetData.map((row, rowIndex) => {
                                       const value = row[header];
-                                      return value ? ( // Verifica que el valor no sea vacío
+                                      return value ? (
                                         <li key={rowIndex}>{value}</li>
-                                      ) : null; // Si está vacío, no renderiza nada
+                                      ) : null;
                                     })}
                                   </ul>
                                 </Accordion.Body>
@@ -165,32 +178,31 @@ const ProjectSummary = () => {
           })}
         </Card.Body>
       </Card>
-      <Card className="mt-4">
-        <Card.Header className="card-header">
+      <Card  className="mt-4 p-0 p-lg-3">
+        <Card.Header  className="card-header">
           <div className="d-flex justify-content-between align-items-center">
-            <h3 className="mb-2 mt-2">Planes Por Cobertura</h3>
+            <h3 className="mb-2 mt-2">Cobertura por Plan</h3>
           </div>
         </Card.Header>
-        <Card.Body>
+        <Card.Body  style={paddingStyle}>
           {sheetCobertura.map((sheetName, sheetIndex) => {
             const sheetData = allData[sheetName] || []; 
-            const columns = Object.keys(sheetData[0] || {}); // Obtener las claves del primer objeto
-            
-            // Dividir las columnas en bloques de 3
+            const columns = Object.keys(sheetData[0] || {});
+
             const chunkedColumns = [];
             for (let i = 0; i < columns.length; i += 3) {
               chunkedColumns.push(columns.slice(i, i + 3));
             }
 
             return (
-              <Accordion key={sheetName}>
-                <Accordion.Item eventKey={String(sheetIndex)}>
-                  <Accordion.Header className="text-center">
+              <Accordion  style={paddingStyle} key={sheetName}>
+                <Accordion.Item  style={paddingStyle} eventKey={String(sheetIndex)}>
+                  <Accordion.Header  style={paddingStyle} className="text-center">
                     <h5 className="mb-3 font-weight-bold text-uppercase">
                       {sheetDisplayNames[sheetName]}
                     </h5>
                   </Accordion.Header>
-                  <Accordion.Body>
+                  <Accordion.Body  style={paddingStyle}>
                     {chunkedColumns.map((columnGroup, groupIndex) => (
                       <div className="table-responsive" key={groupIndex}>
                         <Table className="text-nowrap">
@@ -203,14 +215,14 @@ const ProjectSummary = () => {
                           </thead>
                           <tbody>
                             {sheetData.map((row, rowIndex) => {
-                              const hasData = columnGroup.some(key => row[key]); // Verifica si al menos una celda tiene valor
-                              return hasData ? ( // Solo renderiza la fila si tiene datos
+                              const hasData = columnGroup.some(key => row[key]);
+                              return hasData ? (
                                 <tr key={rowIndex}>
                                   {columnGroup.map((key, index) => (
-                                    <td key={index}>{row[key]}</td> // Renderiza el valor de la celda
+                                    <td key={index}>{row[key]}</td>
                                   ))}
                                 </tr>
-                              ) : null; // Si no hay datos, no renderiza la fila
+                              ) : null;
                             })}
                           </tbody>
                         </Table>

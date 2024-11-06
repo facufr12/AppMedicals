@@ -1,27 +1,28 @@
 import { Fragment, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Col, Row, Card, Form, Button, Image, Spinner } from "react-bootstrap"; // Importa Spinner
+import { Col, Row, Card, Form, Button, Image, Spinner } from "react-bootstrap";
 import Logo from "../../../assets/images/logo-cober.svg";
 import DarkLightMode from "layouts/DarkLightMode";
 import authService from "./authService";
-import { useAuth } from './AuthContext'; // Importa el contexto
-import CustomToast from "./Toast"; // Asegúrate de que la ruta sea correcta
+import { useAuth } from './AuthContext';
+import CustomToast from "./Toast";
 
 const SignIn = () => {
     const [usuario, setUsuario] = useState("");
     const [contraseña, setContraseña] = useState("");
     const [error, setError] = useState("");
-    const [showToast, setShowToast] = useState(false); // Estado para el Toast
-    const [toastMessage, setToastMessage] = useState(""); // Mensaje del Toast
-    const [toastTitle, setToastTitle] = useState(""); // Título del Toast
-    const [loading, setLoading] = useState(false); // Estado para controlar el spinner
+    const [showToast, setShowToast] = useState(false);
+    const [toastMessage, setToastMessage] = useState("");
+    const [toastTitle, setToastTitle] = useState("");
+    const [toastVariant, setToastVariant] = useState("success"); // Estado para definir el color del Toast
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
-    const { setUserData } = useAuth(); // Usa el hook para acceder a setUserData
+    const { setUserData } = useAuth();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         setError("");
-        setLoading(true); // Activar el spinner
+        setLoading(true);
 
         try {
             const credentials = { usuario, contraseña };
@@ -31,9 +32,10 @@ const SignIn = () => {
 
             if (data && data.vendedor && data.email && data.cel && data.categoria) {
                 console.log("Inicio de sesión exitoso:", data);
-                setUserData(data); // Guarda los datos en el contexto
+                setUserData(data);
                 setToastTitle("Éxito");
                 setToastMessage("Inicio de sesión exitoso.");
+                setToastVariant("success");
                 setShowToast(true);
 
                 setTimeout(() => {
@@ -43,24 +45,28 @@ const SignIn = () => {
                 console.error("Credenciales inválidas:", data.error);
                 setToastTitle("Error");
                 setToastMessage(data.error);
+                setToastVariant("danger");
                 setShowToast(true);
             } else {
                 setToastTitle("Error");
                 setToastMessage("Error en el inicio de sesión. Verifica tus credenciales.");
+                setToastVariant("danger");
                 setShowToast(true);
             }
         } catch (err) {
             console.error("Error capturado:", err);
             setToastTitle("Error");
             setToastMessage(err.message || "Error en el inicio de sesión. Verifica tus credenciales.");
+            setToastVariant("danger");
             setShowToast(true);
         } finally {
-            setLoading(false); // Desactivar el spinner
+            setLoading(false);
         }
     };
 
     return (
         <Fragment>
+            {/* Formulario de inicio de sesión */}
             <Row className="align-items-center justify-content-center g-0 min-vh-100">
                 <Col lg={5} md={5} className="py-8 py-xl-0">
                     <Card style={{ borderRadius: "40px" }}>
@@ -160,6 +166,7 @@ const SignIn = () => {
                 onClose={() => setShowToast(false)} 
                 message={toastMessage} 
                 title={toastTitle} 
+                variant={toastVariant} // Pasa el color como prop
             />
         </Fragment>
     );

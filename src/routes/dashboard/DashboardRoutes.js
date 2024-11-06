@@ -1,8 +1,5 @@
 /* eslint-disable */
 import { v4 as uuid } from "uuid";
-// import MDI icons
-import Icon from "@mdi/react";
-import { mdiTrello, mdiCalendar } from "@mdi/js";
 
 export const DashboardMenu = [
   {
@@ -20,10 +17,17 @@ export const DashboardMenu = [
     icon: "user",
     children: [
       { id: uuid(), link: "/user/instructor", name: "Prospectos" },
-       // { id: uuid(), link: "/user/cotizador", name: "Cotizador" }, // Nueva suburl "Cotizador"
-    
-       { id: uuid(), link: "/prestadores/projectprestadores", name: "Planes" },
-      ]
+      // { id: uuid(), link: "/user/cotizador", name: "Cotizador" }, // Nueva suburl "Cotizador"
+    ]
+  },
+  // Nuevo objeto para "Planes"
+  {
+    id: uuid(),
+    title: "Planes",
+    icon: "calendar", // Usando el icono "calendar" disponible
+    children: [
+      { id: uuid(), link: "/prestadores/projectprestadores", name: "Cobertura / Zonas" }
+    ]
   },
 ];
 
