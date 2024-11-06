@@ -3,12 +3,7 @@ import { Fragment } from "react";
 import { Row, Col } from "react-bootstrap";
 
 // import sub components
-import ProjectSummary from "./ProjectSummary";
-import BudgetSection from "./BudgetSection";
-import UpcomingDeadlines from "./UpcomingDeadlines";
-import LaunchDate from "./LaunchDate";
-import OverallProgressChart from "./OverallProgressChart";
-import RecentActivity from "./RecentActivity";
+import ProjectSummary from "./Planes";
 
 const ProjectPrestadores = () => {
   return (

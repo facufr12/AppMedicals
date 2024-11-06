@@ -20,10 +20,8 @@ import Google from "components/dashboard/settings/Google";
 import Social from "components/dashboard/settings/Social";
 import SocialLogin from "components/dashboard/settings/SocialLogin";
 import SMTPServer from "components/dashboard/settings/SMTPServer";
-import ProjectGrid from "components/dashboard/projects/grid/ProjectGrid";
-import ProjectList from "components/dashboard/projects/list/ProjectList";
 import ProjectOverview from "components/dashboard/projects/single/overview/ProjectOverview";
-import ProjectPrestadores from "components/dashboard/prestadores/ProjectOverview";
+import ProjectPrestadores from "components/dashboard/prestadores/Planesheader";
 import Datatables from "components/dashboard/tables/Datatables";
 // ** Boostrap components
 
@@ -74,8 +72,7 @@ const AllRoutes = () => {
         <Route path="/settings/social-login" element={<SocialLogin />} />
         <Route path="/settings/smtp-server" element={<SMTPServer />} />
         {/* PROJECTS ROUTERS */}
-        <Route path="/dashboard/projects/grid" element={<ProjectGrid />} />
-        <Route path="/dashboard/projects/list" element={<ProjectList />} />
+    
 
         {/* ** Dashboard - Tables Pages ( v2.2.0 ) */}
 

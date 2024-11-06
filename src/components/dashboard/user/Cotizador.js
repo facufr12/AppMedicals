@@ -306,7 +306,6 @@ const CotizadorForm = () => {
           </div>
         </div>
       </div>
-
       {/* Card de Registro Detallado del Prospecto */}
       <div className="card mt-4">
         <div className="card-header">
