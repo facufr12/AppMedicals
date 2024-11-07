@@ -82,10 +82,12 @@ const SignIn = () => {
                                 </Link>
                                 <h1 className="mb-1 fw-bold">Inicio de Sesión</h1>
                                 <span>
+                                        {/*
                                     ¿No tienes acceso?{" "}
                                     <Link to="/authentication/sign-up" className="ms-1">
                                         Registrarse
                                     </Link>
+                                         */}
                                 </span>
                             </div>
                             <div className="text-center mb-4">
@@ -116,6 +118,7 @@ const SignIn = () => {
                                         />
                                     </Col>
                                     <Col lg={12} className="mb-3">
+                                          {/* 
                                         <div className="d-md-flex justify-content-between align-items-center">
                                             <Form.Group
                                                 className="mb-3 mb-md-0"
@@ -127,6 +130,7 @@ const SignIn = () => {
                                                 ¿Olvidaste tu contraseña?
                                             </Link>
                                         </div>
+                                            */}
                                     </Col>
                                     <Col lg={12} className="mb-0 d-grid gap-2">
                                         <Button variant="primary" type="submit" disabled={loading}>

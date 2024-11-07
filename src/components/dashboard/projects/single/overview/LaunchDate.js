@@ -1,4 +1,3 @@
-// Importa las librerías necesarias
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
@@ -45,14 +44,19 @@ const LaunchDate = () => {
                         {prospecto ? (
                             <>
                                 {fechaEsFutura ? (
-                                    <h1 className="display-4 text-danger mb-1">Fecha Invalida</h1>
+                                    <h1 className="display-4 text-danger mb-1">Fecha Inválida</h1>
                                 ) : (
                                     <h1 className="display-4 text-white mb-1">
-                                        {diasDesdeIngreso !== null ? `${diasDesdeIngreso} Días ` : "Fecha de ingreso no válida"}
+                                        {diasDesdeIngreso !== null ? `${diasDesdeIngreso} Días` : "Fecha de ingreso no válida"}
                                     </h1>
                                 )}
-                                <p className="mb-0 text-white">{prospecto.fechaIngreso}</p>
-                                <p className="mb-0 text-white">{prospecto.hora}</p>
+                                {/* Muestra la fecha y hora de ingreso */}
+                                <p className="mb-0 text-white">
+                                    {prospecto.fechaIngreso ? new Date(prospecto.fechaIngreso).toLocaleDateString() : "Fecha no disponible"}
+                                </p>
+                                <p className="mb-0 text-white">
+                                    {prospecto.hora ? prospecto.hora : "Hora no disponible"}
+                                </p>
                             </>
                         ) : (
                             <p className="text-white">No hay información de prospecto disponible.</p>

@@ -109,7 +109,7 @@ const QuickMenu = () => {
               <i className="fe fe-user me-2"></i> Perfil
             </Dropdown.Item>
             <Dropdown.Item as={Link} to="/settings/general">
-              <i className="fe fe-settings me-2"></i> Configuración
+              <i className="fe fe-settings me-2"></i> Configuración (en desarrollo)
             </Dropdown.Item>
             <Dropdown.Divider />
             <Dropdown.Item className="mb-3" onClick={handleLogout}>
