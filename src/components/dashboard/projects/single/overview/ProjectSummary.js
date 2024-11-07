@@ -189,11 +189,7 @@ const ProjectSummary = () => {
               </div>
             </ListGroup.Item>
           </ListGroup>
-        </Card.Body>
-      </Card>
-
-      {/* Botón para abrir el modal */}
-      <Button variant="primary" className="mt-4" onClick={handleShowModal}>
+          <Button variant="primary" className="mt-4" onClick={handleShowModal}>
         Agregar Comentario
       </Button>
 
@@ -215,6 +211,12 @@ const ProjectSummary = () => {
           </Button>
         </Modal.Footer>
       </Modal>
+        </Card.Body>
+        
+      </Card>
+
+      {/* Botón para abrir el modal */}
+ 
     </div>
   );
 };
