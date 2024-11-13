@@ -24,7 +24,7 @@ import ProjectOverview from "components/dashboard/projects/single/overview/Proje
 import ProjectPrestadores from "components/dashboard/prestadores/Planesheader";
 import Datatables from "components/dashboard/tables/Datatables";
 // ** Boostrap components
-
+import NotfoundPage from "components/notfound/notfoundpage";
 // Mentor Pages (v2.3.
 import Checkout from "components/dashboard/checkout/Checkout";
 import NavbarVertical from "./dashboard/NavbarVertical";
@@ -98,10 +98,10 @@ const AllRoutes = () => {
         />
       </Route>
       {/*Redirect*/}
-      <Route
-        path="*"
-        element={<Navigate to="/marketing/specialty/404-error/" replace />}
-      />
+      <Route path="/error" element={<NotfoundPage />} /> {/* Ruta para error */}
+      
+      {/* Redirección de rutas no definidas a la ruta de error */}
+      <Route path="*" element={<Navigate to="/error" replace />} />
     </Routes>
   );
 };

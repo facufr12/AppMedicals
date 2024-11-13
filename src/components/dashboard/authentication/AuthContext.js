@@ -26,11 +26,19 @@ export const AuthProvider = ({ children }) => {
     }, [userData]);
 
     const logout = () => {
-        setUserData(null); // Limpia el usuario
-        localStorage.removeItem('token'); // Ajusta según tu implementación
-
-        // Muestra el toast al cerrar sesión
+        setUserData(null);  // Limpia el estado de usuario
+        localStorage.removeItem('token');  // Limpia el token de localStorage
         showToast('Sesión cerrada', 'Has cerrado sesión correctamente.');
+
+        // Logout de Google API (si estás usando gapi)
+        if (window.gapi) {
+            gapi.auth2.getAuthInstance().signOut().then(() => {
+                console.log('Deslogueado de Google');
+            });
+        }
+
+        // Redirigir a login usando window.location.href
+        window.location.href = '/';  // Redirige a la página de login
     };
 
     const showToast = (title, message) => {
