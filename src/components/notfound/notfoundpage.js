@@ -1,14 +1,15 @@
 import React from 'react';
 import './notfound.css';
+
 const NotfoundPage = () => {
-  return (
-    <div className="notfound-container">
-      <div className="error-message">
-        <h1>¡Error 404!</h1>
-        <p>La página que buscas no existe.</p>
+    return (
+      <div className="notfound-container">
+        <div className="error-message">
+          <h1>¡404!</h1>
+          <p>La página que buscas no existe.</p>
+        </div>
       </div>
-    </div>
-  );
-}
+    );
+  }
 
 export default NotfoundPage;

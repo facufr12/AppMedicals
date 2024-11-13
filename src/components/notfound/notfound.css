@@ -16,16 +16,16 @@
     text-align: center;
     flex-direction: column;
     font-family: Arial, sans-serif;
-  }
-  
-  .error-message h1 {
+}
+
+.error-message h1 {
     font-size: 4rem;
     margin: 0;
+    color: white;
     font-weight: bold;
-  }
-  
-  .error-message p {
+}
+
+.error-message p {
     font-size: 1.5rem;
     margin-top: 10px;
-  }
-  
+}
