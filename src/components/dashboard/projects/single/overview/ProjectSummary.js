@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Card, ListGroup, Dropdown, Modal, Button } from "react-bootstrap";
-import { FaWhatsapp } from "react-icons/fa"; // Asegúrate de importar el ícono de WhatsApp
+import { FaWhatsapp } from "react-icons/fa"; 
 import { 
   BsPersonFill, 
   BsPersonVcardFill, 
@@ -15,14 +15,44 @@ import {
 
 const ProjectSummary = () => {
   const location = useLocation();
-  const { prospecto } = location.state || {}; // Obtener prospecto del estado
+  const { prospecto } = location.state || {};
 
-  // Estado para controlar la visibilidad del modal
   const [showModal, setShowModal] = useState(false);
+  const [comentario, setComentario] = useState("");
 
   const handleCloseModal = () => setShowModal(false);
   const handleShowModal = () => setShowModal(true);
 
+  const handleComentarioChange = (e) => setComentario(e.target.value);
+
+  const enviarComentario = async () => {
+    const data = {
+      id: prospecto?.id || "", 
+      vendedor: prospecto?.vendedor || "", 
+      comentario
+    };
+  
+    try {
+      const response = await fetch(
+        "https://script.google.com/macros/s/AKfycbxNn3wU0BDPbf6laTTq3PCaq6N7SkyVIdrzrKZkWrUW0pzcHU0Ku-tMQiZVsl6pZBRSGA/exec?func=agregarComentario",
+        {
+          method: "POST",
+        
+          body: JSON.stringify(data),
+        }
+      );
+  
+      if (response.ok) {
+        console.log("Comentario enviado correctamente");
+        handleCloseModal();
+      } else {
+        console.error("Error al enviar el comentario:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error en la solicitud:", error);
+    }
+  };
+  
   const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
     <Link
       to=""
@@ -51,14 +81,12 @@ const ProjectSummary = () => {
     </Dropdown>
   );
 
-  // Comprobar si hay un prospecto
   if (!prospecto) {
     return <p>No hay información de prospecto disponible.</p>;
   }
 
-  // Función para generar el enlace de WhatsApp
   const getWhatsAppLink = (number) => {
-    const message = "Hola, Querías solicitar un asesor?."; // Mensaje por defecto
+    const message = "Hola, Querías solicitar un asesor?."; 
     return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
   };
 
@@ -190,33 +218,34 @@ const ProjectSummary = () => {
             </ListGroup.Item>
           </ListGroup>
           <Button variant="primary" className="mt-4" onClick={handleShowModal}>
-        Agregar Comentario
-      </Button>
+            Agregar Comentario
+          </Button>
 
-      {/* Modal de agregar comentario */}
-      <Modal show={showModal} onHide={handleCloseModal}>
-        <Modal.Header closeButton>
-          <Modal.Title>Agregar Comentario</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          {/* Aquí puedes agregar un formulario o un área de texto para agregar el comentario */}
-          <textarea className="form-control" rows="5" placeholder="Escribe tu comentario..."></textarea>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseModal}>
-            Cerrar
-          </Button>
-          <Button variant="primary" onClick={handleCloseModal}>
-            Guardar Comentario
-          </Button>
-        </Modal.Footer>
-      </Modal>
+          {/* Modal de agregar comentario */}
+          <Modal show={showModal} onHide={handleCloseModal}>
+            <Modal.Header closeButton>
+              <Modal.Title>Agregar Comentario</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <textarea 
+                className="form-control" 
+                rows="5" 
+                placeholder="Escribe tu comentario..." 
+                value={comentario} 
+                onChange={handleComentarioChange}
+              ></textarea>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleCloseModal}>
+                Cerrar
+              </Button>
+              <Button variant="primary" onClick={enviarComentario}>
+                Guardar Comentario
+              </Button>
+            </Modal.Footer>
+          </Modal>
         </Card.Body>
-        
       </Card>
-
-      {/* Botón para abrir el modal */}
- 
     </div>
   );
 };

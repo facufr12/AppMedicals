@@ -267,7 +267,7 @@ const Instructor = () => {
                   {/* Agregando el Progress Bar para la evolución */}
                   <div className="mt-3">
                     <span>Evolución</span>
-                    <div className="position-relative mt-2">
+                    <div className="position-relative mt-4">
                       <div className="progress" style={{ height: "20px" }}>
                         <div
                           className="progress-bar"
@@ -291,7 +291,7 @@ const Instructor = () => {
                           fontWeight: "bold",
                         }}
                       >
-                        {person.evolucion}%
+                        {person.evolucion}
                       </span>
                     </div>
                   </div>
