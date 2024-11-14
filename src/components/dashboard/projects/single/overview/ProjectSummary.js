@@ -86,9 +86,10 @@ const ProjectSummary = () => {
   }
 
   const getWhatsAppLink = (number) => {
-    const message = "Hola, Querías solicitar un asesor?.";
+    const message = "Hola, ¿querías solicitar un asesor?";
     return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
   };
+  
 
   return (
     <div>

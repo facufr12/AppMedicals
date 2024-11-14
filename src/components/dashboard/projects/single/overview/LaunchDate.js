@@ -50,10 +50,11 @@ const LaunchDate = () => {
                                         {diasDesdeIngreso !== null ? `${diasDesdeIngreso} Días` : "Fecha de ingreso no válida"}
                                     </h1>
                                 )}
-                                {/* Muestra la fecha y hora de ingreso */}
+                                {/* Muestra la fecha de ingreso */}
                                 <p className="mb-0 text-white">
-                                    {prospecto.fechaIngreso ? new Date(prospecto.fechaIngreso).toLocaleDateString() : "Fecha no disponible"}
+                                    {prospecto.fecha ? new Date(prospecto.fecha).toLocaleDateString() : "Fecha no disponible"}
                                 </p>
+                                {/* Muestra la hora si está disponible */}
                                 <p className="mb-0 text-white">
                                     {prospecto.hora ? prospecto.hora : "Hora no disponible"}
                                 </p>

@@ -291,7 +291,7 @@ const Instructor = () => {
                           fontWeight: "bold",
                         }}
                       >
-                        {person.evolucion}
+                        {person.evolucion}%
                       </span>
                     </div>
                   </div>

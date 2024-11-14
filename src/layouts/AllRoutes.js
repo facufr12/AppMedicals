@@ -35,9 +35,7 @@ const AllRoutes = () => {
       {/* Routes with DefaultLayout */}
       <Route path="/" element={<SignIn />} />
       <Route element={<NavbarVertical />}></Route>
-
       {/* Routes with BlankLayout */}
-
       {/* Routes with AuthLayout */}
       <Route element={<AuthLayout />}>
         <Route path="/authentication/sign-in" element={<SignIn />} />
@@ -52,7 +50,10 @@ const AllRoutes = () => {
         <Route path="/overview" element={<Overview />} />
         <Route path="/dashboard/analytics" element={<Metrics />} />
         <Route path="/user/instructor" element={<Instructor />} />
-        <Route path="/prestadores/projectprestadores" element={<ProjectPrestadores />} />
+        <Route
+          path="/prestadores/projectprestadores"
+          element={<ProjectPrestadores />}
+        />
         <Route path="/user/Cotizador" element={<Cotizador />} />
         <Route path="/user/addform" element={<ProspectForm />} />
 
@@ -67,39 +68,17 @@ const AllRoutes = () => {
         />
         {/* SETTINGS ROUTERS */}
         <Route path="/settings/general" element={<General />} />
-        <Route path="/settings/google" element={<Google />} />
-        <Route path="/settings/social" element={<Social />} />
-        <Route path="/settings/social-login" element={<SocialLogin />} />
-        <Route path="/settings/smtp-server" element={<SMTPServer />} />
         {/* PROJECTS ROUTERS */}
-    
 
         {/* ** Dashboard - Tables Pages ( v2.2.0 ) */}
-
-        <Route path="/dashboard/tables/datatables" element={<Datatables />} />
       </Route>
       {/* Routes with EcommerceLayout (v2.2.0) */}
       {/* ** Dashboard - Ecommerce -> Customers Pages ( v2.2.0 ) */}
       {/* Routes with ChatLayout */}
-      <Route element={<ChatLayout />}></Route>
-
       {/* Routes with DashboardIndexTop */}
-      <Route element={<DashboardIndexTop />}>
-        <Route
-          path="/dashboard/layouts/layout-horizontal"
-          element={<Overview />}
-        />
-      </Route>
       {/* Routes with DashboardIndexCompact */}
-      <Route element={<DashboardIndexCompact />}>
-        <Route
-          path="/dashboard/layouts/layout-compact"
-          element={<Overview />}
-        />
-      </Route>
       {/*Redirect*/}
       <Route path="/error" element={<NotfoundPage />} /> {/* Ruta para error */}
-      
       {/* Redirección de rutas no definidas a la ruta de error */}
       <Route path="*" element={<Navigate to="/error" replace />} />
     </Routes>
