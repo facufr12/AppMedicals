@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Card, ListGroup, Dropdown, Modal, Button } from "react-bootstrap";
-import { FaWhatsapp } from "react-icons/fa"; 
-import { 
-  BsPersonFill, 
-  BsPersonVcardFill, 
-  BsTelephoneFill, 
-  BsHouseFill, 
-  BsGeoAltFill, 
-  BsFillEnvelopeOpenFill, 
-  BsCreditCard2BackFill, 
-  BsFillSendFill 
+import { FaWhatsapp } from "react-icons/fa";
+import {
+  BsPersonFill,
+  BsPersonVcardFill,
+  BsTelephoneFill,
+  BsHouseFill,
+  BsGeoAltFill,
+  BsFillEnvelopeOpenFill,
+  BsCreditCard2BackFill,
+  BsFillSendFill
 } from "react-icons/bs";
 
 const ProjectSummary = () => {
@@ -27,21 +27,21 @@ const ProjectSummary = () => {
 
   const enviarComentario = async () => {
     const data = {
-      id: prospecto?.id || "", 
-      vendedor: prospecto?.vendedor || "", 
+      id: prospecto?.id || "",
+      vendedor: prospecto?.vendedor || "",
       comentario
     };
-  
+
     try {
       const response = await fetch(
         "https://script.google.com/macros/s/AKfycbxNn3wU0BDPbf6laTTq3PCaq6N7SkyVIdrzrKZkWrUW0pzcHU0Ku-tMQiZVsl6pZBRSGA/exec?func=agregarComentario",
         {
           method: "POST",
-        
+
           body: JSON.stringify(data),
         }
       );
-  
+
       if (response.ok) {
         console.log("Comentario enviado correctamente");
         handleCloseModal();
@@ -52,7 +52,7 @@ const ProjectSummary = () => {
       console.error("Error en la solicitud:", error);
     }
   };
-  
+
   const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
     <Link
       to=""
@@ -86,7 +86,7 @@ const ProjectSummary = () => {
   }
 
   const getWhatsAppLink = (number) => {
-    const message = "Hola, Querías solicitar un asesor?."; 
+    const message = "Hola, Querías solicitar un asesor?.";
     return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
   };
 
@@ -95,7 +95,8 @@ const ProjectSummary = () => {
       <Card>
         <Card.Body>
           <h5 className="mb-4">
-            En la siguiente pestaña se muestran los detalles del prospecto seleccionado
+            En la siguiente pestaña se muestran los detalles del prospecto
+            seleccionado
           </h5>
           <ListGroup variant="flush">
             <ListGroup.Item className="px-0">
@@ -122,7 +123,9 @@ const ProjectSummary = () => {
                   </div>
                 </div>
                 <div>
-                  <p className="text-dark mb-0 fw-semi-bold">{prospecto.edad}</p>
+                  <p className="text-dark mb-0 fw-semi-bold">
+                    {prospecto.edad}
+                  </p>
                 </div>
               </div>
             </ListGroup.Item>
@@ -165,7 +168,11 @@ const ProjectSummary = () => {
                   </div>
                 </div>
                 <div>
-                  <a href={getWhatsAppLink(prospecto.cel)} target="_blank" rel="noopener noreferrer">
+                  <a
+                    href={getWhatsAppLink(prospecto.cel)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <FaWhatsapp size={20} className="text-success" />
                   </a>
                 </div>
@@ -227,11 +234,11 @@ const ProjectSummary = () => {
               <Modal.Title>Agregar Comentario</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              <textarea 
-                className="form-control" 
-                rows="5" 
-                placeholder="Escribe tu comentario..." 
-                value={comentario} 
+              <textarea
+                className="form-control"
+                rows="5"
+                placeholder="Escribe tu comentario..."
+                value={comentario}
                 onChange={handleComentarioChange}
               ></textarea>
             </Modal.Body>
