@@ -53,10 +53,11 @@ const Instructor = () => {
       try {
         const response = await fetch(apiUrl);
         const data = await response.json();
-        
-        // Aseguramos que 'data' siempre sea un arreglo
+  
+        // Aseguramos que 'data' sea un arreglo y lo ordenamos
         if (Array.isArray(data)) {
-          setData(data);
+          const sortedData = data.reverse(); // Cambia el orden a último primero
+          setData(sortedData);
         } else {
           console.warn('Respuesta de la API no es un arreglo:', data);
           setData([]); // Establecemos un arreglo vacío si no es un arreglo

@@ -13,6 +13,7 @@ import {
   BsFillSendFill
 } from "react-icons/bs";
 
+import CustomToast from "components/dashboard/authentication/Toast";
 const ProjectSummary = () => {
   const location = useLocation();
   const { prospecto } = location.state || {};
@@ -22,7 +23,12 @@ const ProjectSummary = () => {
 
   const handleCloseModal = () => setShowModal(false);
   const handleShowModal = () => setShowModal(true);
-
+  const [toastConfig, setToastConfig] = useState({
+    show: false,
+    message: "",
+    title: "",
+    variant: "success", // success para éxito, danger para error
+  });
   const handleComentarioChange = (e) => setComentario(e.target.value);
 
   const enviarComentario = async () => {
@@ -37,22 +43,35 @@ const ProjectSummary = () => {
         "https://script.google.com/macros/s/AKfycbxNn3wU0BDPbf6laTTq3PCaq6N7SkyVIdrzrKZkWrUW0pzcHU0Ku-tMQiZVsl6pZBRSGA/exec?func=agregarComentario",
         {
           method: "POST",
-
           body: JSON.stringify(data),
         }
       );
 
       if (response.ok) {
-        console.log("Comentario enviado correctamente");
+        setToastConfig({
+          show: true,
+          message: "Comentario enviado correctamente.",
+          title: "Éxito",
+          variant: "success",
+        });
         handleCloseModal();
       } else {
-        console.error("Error al enviar el comentario:", response.statusText);
+        setToastConfig({
+          show: true,
+          message: "Error al enviar el comentario.",
+          title: "Error",
+          variant: "danger",
+        });
       }
     } catch (error) {
-      console.error("Error en la solicitud:", error);
+      setToastConfig({
+        show: true,
+        message: "Error en la solicitud: " + error.message,
+        title: "Error",
+        variant: "danger",
+      });
     }
   };
-
   const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
     <Link
       to=""
@@ -86,11 +105,39 @@ const ProjectSummary = () => {
   }
 
   const getWhatsAppLink = (number) => {
+    if (!number) {
+      console.error("Número de teléfono no proporcionado.");
+      return "#"; // Retornar un enlace vacío si no hay número
+    }
+  
+    // Convertir el número a string y limpiar caracteres no deseados
+    let cleanNumber = String(number).replace(/[\s()-]/g, "");
+  
+    // Reemplazar "11" inicial por "15"
+    if (cleanNumber.startsWith("11")) {
+      cleanNumber = "15" + cleanNumber.slice(2);
+    }
+  
+    // Validar que el número solo contenga dígitos
+    if (!/^\+?\d+$/.test(cleanNumber)) {
+      console.error("El número de teléfono contiene caracteres no válidos:", number);
+      return "#";
+    }
+  
+    console.log("Número limpio:", cleanNumber); // Verificar el número limpio
+  
+    // Construir el enlace con el mensaje en línea
     const message = "Hola, ¿querías solicitar un asesor?";
-    return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
+    const encodedMessage = encodeURIComponent(message);
+    const link = `https://wa.me/${cleanNumber}?text=${encodedMessage}`;
+  
+    console.log("Enlace de WhatsApp:", link); // Verificar el enlace generado
+  
+    return link;
   };
   
-
+  
+  
   return (
     <div>
       <Card>
@@ -254,7 +301,17 @@ const ProjectSummary = () => {
           </Modal>
         </Card.Body>
       </Card>
+
+      {/* Toast de notificación */}
+      <CustomToast
+        show={toastConfig.show}
+        onClose={() => setToastConfig({ ...toastConfig, show: false })}
+        message={toastConfig.message}
+        title={toastConfig.title}
+        variant={toastConfig.variant}
+      />
     </div>
+    
   );
 };
 
