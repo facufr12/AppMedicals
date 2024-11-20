@@ -1,11 +1,11 @@
 /* eslint-disable */
 export const settings = {
 	app: {
-		name: 'Geeks React',
+		name: 'Cober',
 		version: '2.3.0'
 	},
 	theme: {
-		skin: 'light' // possible values are light, dark
+		skin: 'dark' // possible values are light, dark
 	}
 };
 export default { settings };

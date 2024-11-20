@@ -2,14 +2,15 @@
 import { Fragment } from "react";
 import { Row, Col } from "react-bootstrap";
 
+
 // import sub components
-import CommonHeaderTabs from "../CommonHeaderTabs";
-import ProjectSummary from "./ProjectSummary";
-import BudgetSection from "./BudgetSection";
-import UpcomingDeadlines from "./UpcomingDeadlines";
-import LaunchDate from "./LaunchDate";
-import OverallProgressChart from "./OverallProgressChart";
-import RecentActivity from "./RecentActivity";
+import ProjectSummary from "./ProjectSummary.js"
+import CommonHeaderTabs from "../CommonHeaderTabs.js";
+import BudgetSection from "./BudgetSection.js";
+import UpcomingDeadlines from "./UpcomingDeadlines.js";
+import LaunchDate from "./fechas.js";
+import OverallProgressChart from "./evolucion.js";
+import RecentActivity from "./RecentActivity.js";
 
 const ProjectOverview = () => {
   return (

@@ -13,7 +13,7 @@ import {
 import CustomToast from "../authentication/Toast";
 import { FaWhatsapp } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import ProspectForm from "../user/addform";
+import ProspectForm from "./addform";
 import { useAuth } from "../authentication/AuthContext";
 const Instructor = () => {
   const [data, setData] = useState([]);

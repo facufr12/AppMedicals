@@ -271,6 +271,21 @@ const ProjectSummary = () => {
                 </div>
               </div>
             </ListGroup.Item>
+            <ListGroup.Item className="px-0">
+              <div className="d-flex justify-content-between align-items-center">
+                <div className="d-flex align-items-center">
+                  <BsFillEnvelopeOpenFill size={16} className="text-primary" />
+                  <div className="ms-2">
+                    <h5 className="mb-0 text-body">Comentarios Agregados</h5>
+                  </div>
+                </div>
+                <div>
+                  <p className="text-dark mb-0 fw-semi-bold">
+                    {prospecto.comentario || "Sin Comentarios"}
+                  </p>
+                </div>
+              </div>
+            </ListGroup.Item>
           </ListGroup>
           <Button variant="primary" className="mt-4" onClick={handleShowModal}>
             Agregar Comentario

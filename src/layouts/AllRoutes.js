@@ -1,16 +1,16 @@
 // ** Import from react dom
 import { Route, Routes, Navigate } from "react-router-dom";
 import "assets/scss/theme.scss";
-import ProspectForm from "components/dashboard/user/addform";
+import ProspectForm from "components/dashboard/prospectos/addform";
 import DashboardIndex from "layouts/dashboard/DashboardIndex";
 import AuthLayout from "layouts/dashboard/AuthLayout";
 import DashboardIndexCompact from "layouts/dashboard/DashboardIndexCompact"; // ( added in v1.3.0 )
 import DashboardIndexTop from "layouts/dashboard/DashboardIndexTop"; // ( added in v1.3.0 )
 import ChatLayout from "./dashboard/ChatLayout"; // ( added in v2.0.0 )
-import Cotizador from "components/dashboard/user/Cotizador";
-import Overview from "components/dashboard/overview/Overview";
+import Cotizador from "components/dashboard/prospectos/Cotizador";
+import Overview from "components/dashboard/bienvenido/Overview";
 import Metrics from "components/dashboard/analytics/Metrics";
-import Instructor from "components/dashboard/user/Instructor";
+import Instructor from "components/dashboard/prospectos/Instructor";
 import SignIn from "components/dashboard/authentication/SignIn";
 import SignUp from "components/dashboard/authentication/SignUp";
 import ForgetPassword from "components/dashboard/authentication/ForgetPassword";
@@ -20,7 +20,7 @@ import Google from "components/dashboard/settings/Google";
 import Social from "components/dashboard/settings/Social";
 import SocialLogin from "components/dashboard/settings/SocialLogin";
 import SMTPServer from "components/dashboard/settings/SMTPServer";
-import ProjectOverview from "components/dashboard/projects/single/overview/ProjectOverview";
+import ProjectOverview from "components/dashboard/projects/single/masdetalles/cards";
 import ProjectPrestadores from "components/dashboard/prestadores/Planesheader";
 import Datatables from "components/dashboard/tables/Datatables";
 // ** Boostrap components

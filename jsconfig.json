@@ -3,5 +3,5 @@
     "baseUrl": "src"    
   },
   "exclude": ["node_modules"],
-  "include": ["src/**/*"]
+  "include": ["src/**/*", "src/components/dashboard/projects/single/masdetalles/ProjectSummary.jsdetalles"]
 }
