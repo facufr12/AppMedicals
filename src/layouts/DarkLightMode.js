@@ -1,53 +1,29 @@
-// import node module libraries
-import { Fragment, useContext, useEffect, useState } from 'react';
-import { Form, Image } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-
-// import context file
-import { AppConfigContext } from 'context/Context';
-// import media file
+import { Fragment } from "react";
+import { Form, Image } from "react-bootstrap";
+import { useAuth } from "components/dashboard/authentication/AuthContext";
 import LightModeIcon from 'assets/images/sun.svg';
 import DarkModeIcon from 'assets/images/moon.svg';
 
 const DarkLightMode = ({ className }) => {
-	const ConfigContext = useContext(AppConfigContext);
-	const [theme, setTheme] = useState(ConfigContext.appStats.skin || 'light');
+  const { theme, setTheme } = useAuth();  // Accede al tema y a la función para actualizarlo
 
-	useEffect(() => {
-		// Cambia el atributo data-theme en el html
-		document.querySelector('html').setAttribute('data-theme', theme);
-		
-		// Solo actualiza el contexto si el tema ha cambiado
-		if (ConfigContext.appStats.skin !== theme) {
-			ConfigContext.setAppConfig(theme);
-		}
-	}, [theme, ConfigContext]); // Asegúrate de que ConfigContext no cambie
+  const changeColorMode = () => {
+    // Cambia entre "light" y "dark" al hacer click
+    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
+  };
 
-	const changeColorMode = () => {
-		setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
-	};
-
-	return (
-		<Fragment>
-			<Link
-				to="#"
-				type="checkbox"
-				id="flexSwitchCheckDefault"
-				onClick={changeColorMode}
-				className={`form-check form-switch theme-switch btn btn-light btn-icon rounded-circle ${className}`}
-			>
-				<Form.Check.Input
-					type="checkbox"
-					isValid
-					value={theme}
-					style={{ display: 'none' }}
-				/>
-				<Form.Check.Label style={{ cursor: 'pointer' }}>
-					<Image src={theme === 'dark' ? DarkModeIcon : LightModeIcon} />
-				</Form.Check.Label>
-			</Link>
-		</Fragment>
-	);
+  return (
+    <Fragment>
+      <Form.Check
+        type="switch"
+        id="flexSwitchCheckDefault"
+        checked={theme === "dark"}
+        onChange={changeColorMode}  // Alterna entre los temas
+        className={`form-check form-switch theme-switch btn btn-light btn-icon rounded-circle ${className}`}
+      />
+      {/* Imagen de icono que cambia según el tema */}
+    </Fragment>
+  );
 };
 
 export default DarkLightMode;

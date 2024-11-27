@@ -4,7 +4,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 // Import layouts
 import ScrollToTop from "layouts/dashboard/ScrollToTop";
 import AllRoutes from "layouts/AllRoutes";
-
+import DarkLightMode from "layouts/DarkLightMode";
 // Import AuthProvider
 import { AuthProvider } from "./components/dashboard/authentication/AuthContext"; // Asegúrate de que la ruta sea correcta
 

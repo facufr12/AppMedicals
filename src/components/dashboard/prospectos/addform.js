@@ -37,9 +37,8 @@ const ProspectForm = ({ show, handleClose }) => {
             correo,
             partido,
             estado,
-            vendedor: asignarVendedor ? userData?.vendedor : null, // Envío del vendedor desde userData si se selecciona el checkbox
-          }),
-        
+            vendedor: asignarVendedor ? userData?.vendedor : null // Envío del vendedor desde userData si se selecciona el checkbox
+          })
         }
       );
 
@@ -47,18 +46,27 @@ const ProspectForm = ({ show, handleClose }) => {
       if (response.ok) {
         const resultado = await response.json();
         setToastTitle("Prospecto Creado");
-        setToastMessage("Datos enviados correctamente: " + JSON.stringify(resultado));
+        setToastMessage(
+          "Datos enviados correctamente: " + JSON.stringify(resultado)
+        );
         setToastShow(true); // Mostrar el Toast
         handleClose(); // Cierra el modal
       } else {
         setToastTitle("Error");
-        setToastMessage("Error al enviar los datos: " + response.status + " " + response.statusText);
+        setToastMessage(
+          "Error al enviar los datos: " +
+            response.status +
+            " " +
+            response.statusText
+        );
         setToastShow(true); // Mostrar el Toast
       }
     } catch (error) {
       console.error("Error en la solicitud:", error);
       setToastTitle("Error");
-      setToastMessage("Error al enviar los datos. Por favor, intenta nuevamente.");
+      setToastMessage(
+        "Error al enviar los datos. Por favor, intenta nuevamente."
+      );
       setToastShow(true); // Mostrar el Toast
     }
   };
@@ -93,46 +101,60 @@ const ProspectForm = ({ show, handleClose }) => {
             <Form.Group controlId="edad">
               <Form.Label style={{ marginTop: "1rem" }}>Edad</Form.Label>
               <Form.Control
-                type="number"
-                placeholder="Ingresa la edad"
+                as="select"
                 value={edad}
                 onChange={(e) => setEdad(e.target.value)}
                 required
-                isInvalid={edad <= 0 || edad > 120}
-              />
-              <Form.Control.Feedback type="invalid">
-                Introduzca un dato correcto.
-              </Form.Control.Feedback>
+              >
+                <option value="">Selecciona la edad</option>
+                {Array.from({ length: 80 }, (_, i) => (
+                  <option key={i + 1} value={i + 1}>
+                    {i + 1} años
+                  </option>
+                ))}
+              </Form.Control>
             </Form.Group>
 
             <Form.Group controlId="tAfiliacion">
-              <Form.Label style={{ marginTop: "1rem" }}>Tipo Afiliación</Form.Label>
+              <Form.Label style={{ marginTop: "1rem" }}>
+                Tipo Afiliación
+              </Form.Label>
               <Form.Control
-                type="text"
-                placeholder="Tipo de Afiliación"
+                as="select"
                 value={tAfiliacion}
                 onChange={(e) => setTAfiliacion(e.target.value)}
                 required
-                isInvalid={!isAlphabets(tAfiliacion) && tAfiliacion.length > 0}
-              />
-              <Form.Control.Feedback type="invalid">
-                Solo se permiten caracteres alfabéticos.
-              </Form.Control.Feedback>
+              >
+                <option value="">Selecciona el tipo de afiliación</option>
+                <option value="Particular/oAutoonomo">
+                  Particular / Autónomo
+                </option>
+                <option value="Conrecibodesueldo">Con Recibo de Sueldo</option>
+                <option value="Monotributista">Monotributista</option>
+              </Form.Control>
             </Form.Group>
 
             <Form.Group controlId="gpFamiliar">
-              <Form.Label style={{ marginTop: "1rem" }}>Grupo Familiar</Form.Label>
+              <Form.Label style={{ marginTop: "1rem" }}>
+                Grupo Familiar
+              </Form.Label>
               <Form.Control
-                type="text"
-                placeholder="Grupo Familiar"
+                as="select"
                 value={gpFamiliar}
                 onChange={(e) => setGpFamiliar(e.target.value)}
                 required
-                isInvalid={!isAlphabets(gpFamiliar) && gpFamiliar.length > 0}
-              />
-              <Form.Control.Feedback type="invalid">
-                Solo se permiten caracteres alfabéticos.
-              </Form.Control.Feedback>
+              >
+                <option value="">Selecciona el grupo familiar</option>
+                <option value="Individual">Individual</option>
+                <option value="Matrimonio">Matrimonio</option>
+                <option value="Matrimonio+1hijo">Matrimonio + 1 Hijo</option>
+                <option value="Matrimonio+2hijos">Matrimonio + 2 Hijos</option>
+                <option value="Matrimonio+3hijos">Matrimonio + 3 Hijos</option>
+                <option value="Individual+1hijo">Individual + 1 Hijo</option>
+                <option value="Individual+2hijos">Individual + 2 Hijos</option>
+                <option value="Individual+3hijo">Individual + 3 Hijos</option>
+                <option value="Otro">Otro</option>
+              </Form.Control>
             </Form.Group>
 
             <Form.Group controlId="cel">
@@ -168,16 +190,39 @@ const ProspectForm = ({ show, handleClose }) => {
             <Form.Group controlId="partido">
               <Form.Label style={{ marginTop: "1rem" }}>Partido</Form.Label>
               <Form.Control
-                type="text"
-                placeholder="Partido"
+                as="select"
                 value={partido}
                 onChange={(e) => setPartido(e.target.value)}
                 required
-                isInvalid={!isAlphabets(partido) && partido.length > 0}
-              />
-              <Form.Control.Feedback type="invalid">
-                Solo se permiten caracteres alfabéticos.
-              </Form.Control.Feedback>
+              >
+                <option value="">Selecciona el partido</option>
+                <option value="CABA">CABA</option>
+                <option value="Almirante Brown">Almirante Brown</option>
+                <option value="Avellaneda">Avellaneda</option>
+                <option value="Berazategui">Berazategui</option>
+                <option value="Esteban Echeverría">Esteban Echeverría</option>
+                <option value="Ezeiza">Ezeiza</option>
+                <option value="Florencio Varela">Florencio Varela</option>
+                <option value="General San Martín">General San Martín</option>
+                <option value="Hurlingham">Hurlingham</option>
+                <option value="Ituzaingó">Ituzaingó</option>
+                <option value="José C. Paz">José C. Paz</option>
+                <option value="La Matanza">La Matanza</option>
+                <option value="Lanús">Lanús</option>
+                <option value="Lomas de Zamora">Lomas de Zamora</option>
+                <option value="Malvinas Argentinas">Malvinas Argentinas</option>
+                <option value="Merlo">Merlo</option>
+                <option value="Moreno">Moreno</option>
+                <option value="Morón">Morón</option>
+                <option value="Quilmes">Quilmes</option>
+                <option value="San Fernando">San Fernando</option>
+                <option value="San Isidro">San Isidro</option>
+                <option value="San Miguel">San Miguel</option>
+                <option value="Tigre">Tigre</option>
+                <option value="Tres de Febrero">Tres de Febrero</option>
+                <option value="Vicente López">Vicente López</option>
+                <option value="Otra">Otra</option>
+              </Form.Control>
             </Form.Group>
 
             <Form.Group controlId="vendedor">
@@ -199,15 +244,37 @@ const ProspectForm = ({ show, handleClose }) => {
               >
                 <option value="">Selecciona un estado</option>
                 <option value="Cotizacion Enviada">Cotizacion Enviada</option>
-                <option value="Venta Cerrada">Venta Cerrada</option>
-                <option value="Pago Pendiente">Pago Pendiente</option>
-                <option value="En Espera">En Espera</option>
-                <option value="Pasa de Vigencia">Pasa de Vigencia</option>
-                <option value="Es Afiliado">Es Afiliado</option>
-                <option value="Duplicado">Duplicado</option>
-                <option value="Desestimado Por Cober">Desestimado Por Cober</option>
-                <option value="No Le Interesa">No Le Interesa</option>
-                <option value="Rechazado">Rechazado</option>
+                <option value="Desestimado Preexistencia">
+                  Desestimado Preexistencia
+                </option>
+                <option value="Desestimado Fuera de Zona">
+                  Desestimado Fuera de Zona
+                </option>
+                <option value="Desestimado por Edad">
+                  Desestimado por Edad
+                </option>
+                <option value="No Contesta">No Contesta</option>
+                <option value="Prueba Interna">Prueba Interna</option>
+                <option value="Busca Aporte x Aporte">
+                  Busca Aporte x Aporte
+                </option>
+                <option value="Ya es Socio">Ya es Socio</option>
+                <option value="Busca Otra Cobertura">
+                  Busca Otra Cobertura
+                </option>
+                <option value="Teléfono Erróneochazado">
+                  Teléfono Erróneo
+                </option>
+                <option value="Email Erróneo">Email Erróneo</option>
+                <option value="No le iInteresa por Costos">
+                  No le iInteresa por Costos
+                </option>
+
+                <option value="No le iInteresa por Cartilla">
+                  No le iInteresa por Cartilla
+                </option>
+
+                <option value="Tomó Otra Cobertura">Tomó Otra Cobertura</option>
               </Form.Control>
             </Form.Group>
 
@@ -219,11 +286,11 @@ const ProspectForm = ({ show, handleClose }) => {
       </Modal>
 
       {/* Componente Toast */}
-      <CustomToast 
-        show={toastShow} 
-        onClose={() => setToastShow(false)} 
-        message={toastMessage} 
-        title={toastTitle} 
+      <CustomToast
+        show={toastShow}
+        onClose={() => setToastShow(false)}
+        message={toastMessage}
+        title={toastTitle}
       />
     </>
   );

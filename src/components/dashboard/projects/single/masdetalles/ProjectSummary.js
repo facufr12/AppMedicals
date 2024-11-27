@@ -124,14 +124,12 @@ const ProjectSummary = () => {
       return "#";
     }
   
-    console.log("Número limpio:", cleanNumber); // Verificar el número limpio
   
     // Construir el enlace con el mensaje en línea
     const message = "Hola, ¿querías solicitar un asesor?";
     const encodedMessage = encodeURIComponent(message);
     const link = `https://wa.me/${cleanNumber}?text=${encodedMessage}`;
   
-    console.log("Enlace de WhatsApp:", link); // Verificar el enlace generado
   
     return link;
   };

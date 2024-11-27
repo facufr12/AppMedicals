@@ -249,21 +249,24 @@ const Instructor = () => {
                   <div className="d-flex justify-content-between border-bottom py-2 mt-3">
                     <span>Celular</span>
                     <span className="text-dark d-flex align-items-center">
-                      <a
-                        href={`https://wa.me/+54${person.cel}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{ display: "flex", alignItems: "center" }}
-                      >
-                        <FaWhatsapp
-                          style={{
-                            width: "34px",
-                            height: "34px",
-                            color: "#25D366",
-                          }}
-                        />
-                      </a>
-                    </span>
+  <a
+    href={`https://wa.me/+54${person.cel}?text=${encodeURIComponent(
+        "Hola, te contacto de Cober para poder ayudarte a Cotizar tu plan."
+    )}`}
+    target="_blank"
+    rel="noopener noreferrer"
+    style={{ display: "flex", alignItems: "center" }}
+  >
+    <FaWhatsapp
+      style={{
+        width: "34px",
+        height: "34px",
+        color: "#25D366",
+      }}
+    />
+  </a>
+</span>
+
                   </div>
                   {/* Agregando el Progress Bar para la evolución */}
                   <div className="mt-3">
