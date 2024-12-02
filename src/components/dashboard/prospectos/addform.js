@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import { useAuth } from "../authentication/AuthContext";
 import CustomToast from "../authentication/Toast";
-import Logo from "../../../assets/images/logo-cober.svg";
+import Logo from "../../../assets/images/logomedicals.webp";
 
 const ProspectForm = ({ show, handleClose }) => {
   const { userData } = useAuth(); // Obtener userData desde el contexto

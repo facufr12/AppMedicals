@@ -155,7 +155,7 @@ const Instructor = () => {
                       <div
                         className="avatar"
                         style={{
-                          backgroundColor: "#754ffe",
+                          backgroundColor: "#e82e8a",
                           color: "white",
                           width: "70px",
                           height: "70px",
@@ -180,7 +180,7 @@ const Instructor = () => {
                     </div>
                     <h6
                       className="text-uppercase mb-1"
-                      style={{ color: "#754ffe" }}
+                      style={{ color: "#e82e8a" }}
                     >
                       {person.partido || "SIN PARTIDO"}
                     </h6>
@@ -222,6 +222,7 @@ const Instructor = () => {
                       <Button
                         variant="primary"
                         style={{
+                          backgroundColor: '#e82e8a',
                           marginLeft: "10px",
                           padding: "2px 5px",
                           fontSize: "17px",
@@ -278,7 +279,7 @@ const Instructor = () => {
                           role="progressbar"
                           style={{
                             width: `${person.evolucion}%`,
-                            backgroundColor: "#754ffe",
+                            backgroundColor: "#e82e8a",
                           }}
                           aria-valuenow={person.evolucion}
                           aria-valuemin="0"
@@ -291,7 +292,7 @@ const Instructor = () => {
                           top: "-25px", // Ajusta la posición vertical según sea necesario
                           left: "50%",
                           transform: "translateX(-50%)",
-                          color: "#754ffe",
+                          color: "#e82e8a",
                           fontWeight: "bold",
                         }}
                       >
@@ -303,7 +304,7 @@ const Instructor = () => {
                     onClick={() => handleDetailsClick(person)}
                     variant="primary"
                     className="mt-4"
-                    style={{ width: "100%", borderRadius: "20px" }}
+                    style={{ width: "100%", borderRadius: "20px", }}
                   >
                     Ver Más Detalles
                   </Button>
@@ -438,6 +439,7 @@ const Instructor = () => {
           <Button
             onClick={() => setShowModal(true)}
             variant="primary"
+            style={{backgroundColor: '#e82e8a',}}
             className="mb-3"
           >
             Agregar Prospecto
