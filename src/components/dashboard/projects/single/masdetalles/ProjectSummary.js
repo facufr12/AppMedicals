@@ -40,7 +40,7 @@ const ProjectSummary = () => {
 
     try {
       const response = await fetch(
-        "https://script.google.com/macros/s/AKfycbxNn3wU0BDPbf6laTTq3PCaq6N7SkyVIdrzrKZkWrUW0pzcHU0Ku-tMQiZVsl6pZBRSGA/exec?func=agregarComentario",
+        "https://script.google.com/macros/s/AKfycbwi7H0owYly-99kbTVxRQJo_iwH-bm0VSmMNOmIALl4I4mwAeJcEm9s1p0XgDszasnqqQ/exec?func=agregarComentario",
         {
           method: "POST",
           body: JSON.stringify(data),

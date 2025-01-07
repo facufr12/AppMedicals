@@ -48,7 +48,7 @@ const ProjectSummary = () => {
   useEffect(() => {
     const fetchData = async () => {
       const url =
-        "https://script.google.com/macros/s/AKfycby59xET9lbPnJz14gYd-XcwUFxA_nYU0K8EQsK4N56F6BlJb-C33VDGM0nhcQGcZaCS8g/exec";
+        "https://script.google.com/macros/s/AKfycbwi7H0owYly-99kbTVxRQJo_iwH-bm0VSmMNOmIALl4I4mwAeJcEm9s1p0XgDszasnqqQ/exec";
       const newData = {};
 
       try {
