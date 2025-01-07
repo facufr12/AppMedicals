@@ -47,7 +47,7 @@ const Instructor = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const apiUrl = `https://script.google.com/macros/s/AKfycbxNn3wU0BDPbf6laTTq3PCaq6N7SkyVIdrzrKZkWrUW0pzcHU0Ku-tMQiZVsl6pZBRSGA/exec?vendedor=${userData.vendedor}&func=obtenerDatos`;
+    const apiUrl = `https://script.google.com/macros/s/AKfycbwi7H0owYly-99kbTVxRQJo_iwH-bm0VSmMNOmIALl4I4mwAeJcEm9s1p0XgDszasnqqQ/exec?vendedor=${userData.vendedor}&func=obtenerDatos`;
   
     const fetchGoogleSheetsData = async () => {
       try {
