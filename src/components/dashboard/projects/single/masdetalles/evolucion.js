@@ -21,7 +21,7 @@ const OverallProgressChartOptions = {
                 },
                 value: {
                     fontSize: '40px', // Tamaño del dato (aumentado)
-                    color: '#754ffe', // Color del dato
+                    color: '#e82e8a', // Color del dato
                     fontWeight: 'bold', // Hace el texto más grueso
                     offsetY: 0,
                 },
@@ -33,7 +33,7 @@ const OverallProgressChartOptions = {
         },
     },
     fill: {
-        colors: ['#754ffe'], // Color de la barra radial
+        colors: ['#e82e8a'], // Color de la barra radial
     },
     labels: [''], // Esto se puede usar para los labels en el gráfico
 };

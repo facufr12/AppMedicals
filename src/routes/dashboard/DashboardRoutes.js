@@ -2,6 +2,7 @@
 import { v4 as uuid } from "uuid";
 
 export const DashboardMenu = [
+  /*
   {
     id: uuid(),
     title: "Inicio (en desarrollo)",
@@ -20,6 +21,7 @@ export const DashboardMenu = [
       { id: uuid(), link: "/user/Cotizador", name: "Formulario Cotizador" }
     ]
   },
+  */
   {
     id: uuid(),
     title: "Prospectos",
@@ -28,7 +30,6 @@ export const DashboardMenu = [
       { id: uuid(), link: "/user/instructor", name: "Prospectos" },
     ]
   },
-  // Planes
   {
     id: uuid(),
     title: "Planes",

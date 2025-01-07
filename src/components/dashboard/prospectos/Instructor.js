@@ -26,22 +26,24 @@ const Instructor = () => {
   const [showModal, setShowModal] = useState(false);
   const { userData } = useAuth();
   const estados = [
-    "Cotizacion Enviada",
-    "Desestimado Preexistencia",
-    "Desestimado Fuera de Zona",
-    "Desestimado por Edad",
-    "Pasa de Vigencia",
-    "No Contesta",
-    "Prueba Interna",
-    "Busca Aporte x Aporte",
-    "No Contesta",
-    "Ya es Socio",
-    "Buscas Otra Cobertura",
-    "Teléfono Erróneo",
-    "Email Erróneo",
-    "No le Interesa por Costos",
-    "No le Interesa por Cartilla",
-    "Tomó Otra Cobertura",
+    "Lead",
+    "1º Contacto",
+    "Calificado Cotización ",
+    "Calificado Póliza ",
+    "Calificado Pago",
+    "Venta",
+    "Fuera de zona",
+    "Fuera de edad",
+    "Preexistencia",
+    "Reafiliación",
+    "No contesta",
+    "prueba interna",
+    "Ya es socio",
+    "Busca otra Cobertura",
+    "Teléfono erróneo",
+    "No le interesa (económico)",
+    
+    "No le interesa cartilla",
   ];
 
   const navigate = useNavigate();
@@ -94,7 +96,7 @@ const Instructor = () => {
     setIsLoading(true); // Deshabilitar el botón
     try {
       const response = await fetch(
-        "https://script.google.com/macros/s/AKfycbxNn3wU0BDPbf6laTTq3PCaq6N7SkyVIdrzrKZkWrUW0pzcHU0Ku-tMQiZVsl6pZBRSGA/exec?func=cambiarEstadoDato",
+        "https://script.google.com/macros/s/AKfycbwi7H0owYly-99kbTVxRQJo_iwH-bm0VSmMNOmIALl4I4mwAeJcEm9s1p0XgDszasnqqQ/exec?func=cambiarEstadoDato",
         {
           method: "POST",
           body: JSON.stringify({ id, estado }),
