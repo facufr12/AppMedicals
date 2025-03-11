@@ -15,6 +15,7 @@ import { FaWhatsapp } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import ProspectForm from "./addform";
 import { useAuth } from "../authentication/AuthContext";
+
 const Instructor = () => {
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -42,27 +43,25 @@ const Instructor = () => {
     "Busca otra Cobertura",
     "Teléfono erróneo",
     "No le interesa (económico)",
-    
-    "No le interesa cartilla",
+    "No le interesa cartilla",
   ];
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    const apiUrl = `https://script.google.com/macros/s/AKfycbwi7H0owYly-99kbTVxRQJo_iwH-bm0VSmMNOmIALl4I4mwAeJcEm9s1p0XgDszasnqqQ/exec?vendedor=${userData.vendedor}&func=obtenerDatos`;
-  
+    const apiUrl = `${process.env.REACT_APP_API_URL}?vendedor=${userData.vendedor}&func=obtenerDatos`;
+
     const fetchGoogleSheetsData = async () => {
       try {
         const response = await fetch(apiUrl);
         const data = await response.json();
-  
-        // Aseguramos que 'data' sea un arreglo y lo ordenamos
+
         if (Array.isArray(data)) {
-          const sortedData = data.reverse(); // Cambia el orden a último primero
+          const sortedData = data.reverse();
           setData(sortedData);
         } else {
           console.warn('Respuesta de la API no es un arreglo:', data);
-          setData([]); // Establecemos un arreglo vacío si no es un arreglo
+          setData([]);
         }
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -70,10 +69,9 @@ const Instructor = () => {
         setLoading(false);
       }
     };
-  
     fetchGoogleSheetsData();
   }, [userData.vendedor]);
-  
+
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
   const [toastTitle, setToastTitle] = useState("");
@@ -83,7 +81,9 @@ const Instructor = () => {
       person.nombre.toLowerCase().includes(searchTerm.toLowerCase()) &&
       (selectedEstado === "" || person.estado === selectedEstado)
   );
+
   const [isLoading, setIsLoading] = useState(false);
+
   const handleEstadoChange = (person, newEstado) => {
     setData((prevData) =>
       prevData.map((p) =>
@@ -93,7 +93,7 @@ const Instructor = () => {
   };
 
   const enviarDatos = async (id, estado) => {
-    setIsLoading(true); // Deshabilitar el botón
+    setIsLoading(true);
     try {
       const response = await fetch(
         "https://script.google.com/macros/s/AKfycbwi7H0owYly-99kbTVxRQJo_iwH-bm0VSmMNOmIALl4I4mwAeJcEm9s1p0XgDszasnqqQ/exec?func=cambiarEstadoDato",
@@ -107,7 +107,6 @@ const Instructor = () => {
         throw new Error("Error al enviar los datos");
       }
       const resultado = await response.json();
-      // Mostrar Toast de éxito
       setToastTitle("Éxito");
       setToastMessage(
         "Datos enviados correctamente: " + JSON.stringify(resultado)
@@ -115,15 +114,13 @@ const Instructor = () => {
       setShowToast(true);
     } catch (error) {
       console.error("Error en la solicitud:", error);
-
-      // Mostrar Toast de error
       setToastTitle("Error");
       setToastMessage(
         "Error al enviar los datos. Por favor, intenta nuevamente."
       );
       setShowToast(true);
     } finally {
-      setIsLoading(false); // Habilitar el botón nuevamente
+      setIsLoading(false);
     }
   };
 
@@ -232,7 +229,11 @@ const Instructor = () => {
                         onClick={() => enviarDatos(person.id, person.estado)}
                         disabled={isLoading} // Deshabilitar el botón
                       >
-                        <i className="fas fa-arrow-up"></i>
+                        {isLoading ? (
+                          <Spinner animation="border" size="sm" />
+                        ) : (
+                          <i className="fas fa-arrow-up"></i>
+                        )}
                       </Button>
                     </div>
                   </div>
@@ -252,26 +253,24 @@ const Instructor = () => {
                   <div className="d-flex justify-content-between border-bottom py-2 mt-3">
                     <span>Celular</span>
                     <span className="text-dark d-flex align-items-center">
-  <a
-    href={`https://wa.me/+54${person.cel}?text=${encodeURIComponent(
-        "Hola, te contacto de Cober para poder ayudarte a Cotizar tu plan."
-    )}`}
-    target="_blank"
-    rel="noopener noreferrer"
-    style={{ display: "flex", alignItems: "center" }}
-  >
-    <FaWhatsapp
-      style={{
-        width: "34px",
-        height: "34px",
-        color: "#25D366",
-      }}
-    />
-  </a>
-</span>
-
+                      <a
+                        href={`https://wa.me/+54${person.cel}?text=${encodeURIComponent(
+                          "Hola, te contacto de Cober para poder ayudarte a Cotizar tu plan."
+                        )}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ display: "flex", alignItems: "center" }}
+                      >
+                        <FaWhatsapp
+                          style={{
+                            width: "34px",
+                            height: "34px",
+                            color: "#e82e8a",
+                          }}
+                        />
+                      </a>
+                    </span>
                   </div>
-                  {/* Agregando el Progress Bar para la evolución */}
                   <div className="mt-3">
                     <span>Evolución</span>
                     <div className="position-relative mt-4">
@@ -291,7 +290,7 @@ const Instructor = () => {
                       <span
                         style={{
                           position: "absolute",
-                          top: "-25px", // Ajusta la posición vertical según sea necesario
+                          top: "-25px",
                           left: "50%",
                           transform: "translateX(-50%)",
                           color: "#e82e8a",
@@ -306,7 +305,7 @@ const Instructor = () => {
                     onClick={() => handleDetailsClick(person)}
                     variant="primary"
                     className="mt-4"
-                    style={{ width: "100%", borderRadius: "20px", }}
+                    style={{ width: "100%", borderRadius: "20px" }}
                   >
                     Ver Más Detalles
                   </Button>
@@ -321,7 +320,6 @@ const Instructor = () => {
               onClick={() => setCurrentPage(currentPage - 1)}
               disabled={currentPage === 1}
             />
-
             {Array.from(
               {
                 length: Math.min(
@@ -345,7 +343,6 @@ const Instructor = () => {
                 );
               }
             )}
-
             <Pagination.Next
               onClick={() => setCurrentPage(currentPage + 1)}
               disabled={
@@ -357,11 +354,13 @@ const Instructor = () => {
       </>
     );
   };
+
   const handleDetailsClick = (person) => {
     navigate("/dashboard/projects/single/overview", {
       state: { prospecto: person },
     });
   };
+
   const createTable = (data) => (
     <div style={{ overflowX: "auto" }}>
       <Table striped bordered hover>
@@ -390,8 +389,7 @@ const Instructor = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <FaWhatsapp size={30} />{" "}
-                  {/* O usa style={{ fontSize: '30px' }} */}
+                  <FaWhatsapp size={30} />
                 </a>
               </td>
               <td>
@@ -441,7 +439,7 @@ const Instructor = () => {
           <Button
             onClick={() => setShowModal(true)}
             variant="primary"
-            style={{backgroundColor: '#e82e8a',}}
+            style={{ backgroundColor: '#e82e8a' }}
             className="mb-3"
           >
             Agregar Prospecto

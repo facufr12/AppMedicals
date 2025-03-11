@@ -18,14 +18,19 @@ const ProspectForm = ({ show, handleClose }) => {
   const [toastShow, setToastShow] = useState(false); // Estado para mostrar el Toast
   const [toastMessage, setToastMessage] = useState(""); // Mensaje del Toast
   const [toastTitle, setToastTitle] = useState(""); // Título del Toast
+  const [isLoading, setIsLoading] = useState(false); // Estado para manejar el loading
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true); // Activar el estado de loading
+
+    // Obtén la URL base desde el archivo .env
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     // Realiza la petición fetch
     try {
       const response = await fetch(
-        "https://script.google.com/macros/s/AKfycbwi7H0owYly-99kbTVxRQJo_iwH-bm0VSmMNOmIALl4I4mwAeJcEm9s1p0XgDszasnqqQ/exec?func=añadirDato",
+        `${apiUrl}?func=añadirDato`,
         {
           method: "POST",
           body: JSON.stringify({
@@ -68,6 +73,8 @@ const ProspectForm = ({ show, handleClose }) => {
         "Error al enviar los datos. Por favor, intenta nuevamente."
       );
       setToastShow(true); // Mostrar el Toast
+    } finally {
+      setIsLoading(false); // Desactivar el estado de loading, independientemente del resultado
     }
   };
 
@@ -280,12 +287,12 @@ const ProspectForm = ({ show, handleClose }) => {
                 
                 <option value="Noleinteresaeconómico">No le interesa (económico)</option>
                 
-                <option value="Noleinteresacartilla">No le interesa cartilla</option>
+                <option value="Noleinteresacartilla">No le interesa cartilla</option>
               </Form.Control>
             </Form.Group>
 
-            <Button variant="primary" type="submit" className="mt-3">
-              Guardar Prospecto
+            <Button variant="primary" type="submit" className="mt-3" disabled={isLoading}>
+              {isLoading ? "Enviando..." : "Guardar Prospecto"}
             </Button>
           </Form>
         </Modal.Body>
