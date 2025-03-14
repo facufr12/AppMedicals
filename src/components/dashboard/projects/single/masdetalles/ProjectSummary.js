@@ -261,7 +261,7 @@ const ProjectSummary = () => {
                 <div className="d-flex align-items-center">
                   <BsPersonVcardFill size={16} className="text-primary" />
                   <div className="ms-2">
-                    <h5 className="mb-0 text-body">CUIT</h5>
+                    <h5 className="mb-0 text-body">Partido</h5>
                   </div>
                 </div>
                 <div>
