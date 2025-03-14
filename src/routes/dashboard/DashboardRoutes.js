@@ -30,14 +30,7 @@ export const DashboardMenu = [
       { id: uuid(), link: "/user/instructor", name: "Prospectos" },
     ]
   },
-  {
-    id: uuid(),
-    title: "Planes",
-    icon: "calendar",
-    children: [
-      { id: uuid(), link: "/prestadores/projectprestadores", name: "Cobertura / Zonas" }
-    ]
-  },
+
 ];
 
 export default DashboardMenu;
