@@ -104,7 +104,6 @@ const ProspectForm = ({ show, handleClose }) => {
                 Solo se permiten caracteres alfabéticos.
               </Form.Control.Feedback>
             </Form.Group>
-
             <Form.Group controlId="edad">
               <Form.Label style={{ marginTop: "1rem" }}>Edad</Form.Label>
               <Form.Control

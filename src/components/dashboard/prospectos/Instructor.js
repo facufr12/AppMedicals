@@ -56,6 +56,7 @@ const Instructor = () => {
         const response = await fetch(apiUrl);
         const data = await response.json();
 
+        // Asegurarse de que la respuesta sea un arreglo
         if (Array.isArray(data)) {
           const sortedData = data.reverse();
           setData(sortedData);
@@ -95,8 +96,9 @@ const Instructor = () => {
   const enviarDatos = async (id, estado) => {
     setIsLoading(true);
     try {
+      const apiUrl = process.env.REACT_APP_API_URL;
       const response = await fetch(
-        "https://script.google.com/macros/s/AKfycbwi7H0owYly-99kbTVxRQJo_iwH-bm0VSmMNOmIALl4I4mwAeJcEm9s1p0XgDszasnqqQ/exec?func=cambiarEstadoDato",
+        `${apiUrl}?func=cambiarEstadoDato`,
         {
           method: "POST",
           body: JSON.stringify({ id, estado }),
@@ -143,7 +145,7 @@ const Instructor = () => {
         />
         <Row>
           {paginatedData.map((person, index) => (
-            <Col key={index} xl={4} lg={6} md={6} xs={12} className="mb-4">
+            <Col key={person.id} xl={4} lg={6} md={6} xs={12} className="mb-4">
               <div
                 className="card border-light shadow-sm"
                 style={{ borderRadius: "40px" }}
@@ -227,7 +229,7 @@ const Instructor = () => {
                           fontSize: "17px",
                         }}
                         onClick={() => enviarDatos(person.id, person.estado)}
-                        disabled={isLoading} // Deshabilitar el botón
+                        disabled={isLoading}
                       >
                         {isLoading ? (
                           <Spinner animation="border" size="sm" />
@@ -377,7 +379,7 @@ const Instructor = () => {
         </thead>
         <tbody>
           {data.map((person, index) => (
-            <tr key={index}>
+            <tr key={person.id}>
               <td>{person.nombre}</td>
               <td>{person.edad}</td>
               <td>{person.partido}</td>

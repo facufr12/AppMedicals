@@ -17,28 +17,28 @@ const ProjectSummary = () => {
 
 
   const sheetNames = [
-    "WagonPrestadores",
-    "ClassicXPrestadores",
-    "TayloredPrestadores",
-    "CoberXPrestadores"
+    "MD450Prestadores",
+    "MD350Prestadores",
+    "MD250Prestadores",
+    "MD150Prestadores"
   ];
 
   const sheetCobertura = [
-    "WagonCobertura",
-    "ClassicXCobertura",
-    "TayloredCobertura",
-    "CoberXCobertura"
+    "MD450Cobertura",
+    "MD350Cobertura",
+    "MD250Cobertura",
+    "MD150Cobertura"
   ];
 
   const sheetDisplayNames = {
-    WagonPrestadores: "WAGON",
-    ClassicXPrestadores: "CLASSIC X",
-    TayloredPrestadores: "TAYLORED",
-    CoberXPrestadores: "COBER X",
-    WagonCobertura: "WAGON",
-    ClassicXCobertura: "CLASSIC X",
-    TayloredCobertura: "TAYLORED",
-    CoberXCobertura: "COBER X"
+    MD450Prestadores: "MD450",
+    MD350Prestadores: "MD350",
+    MD250Prestadores: "MD250",
+    MD150Prestadores: "MD150",
+    MD450Cobertura: "MD450",
+    MD350Cobertura: "MD350",
+    MD250Cobertura: "MD250",
+    MD150Cobertura: "MD150"
   };
 
   const [allData, setAllData] = useState({});
@@ -47,8 +47,7 @@ const ProjectSummary = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const url =
-        "/exec";
+      const url = process.env.REACT_APP_PLANES_URL; // Usa la variable de entorno
       const newData = {};
 
       try {
