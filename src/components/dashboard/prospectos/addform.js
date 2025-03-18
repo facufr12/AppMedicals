@@ -234,7 +234,7 @@ const ProspectForm = ({ show, handleClose }) => {
             <Form.Group controlId="vendedor">
               <Form.Check
                 type="checkbox"
-                label="¿Asignar vendedor?"
+                label="¿Autoasignar vendedor?"
                 checked={asignarVendedor}
                 onChange={(e) => setAsignarVendedor(e.target.checked)}
               />

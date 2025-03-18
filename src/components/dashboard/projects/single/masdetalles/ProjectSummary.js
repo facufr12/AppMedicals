@@ -153,7 +153,7 @@ const ProjectSummary = () => {
   
   
     // Construir el enlace con el mensaje en línea
-    const message = "Hola, cómo estás? te escribo de COBER | Medicina Privada";
+    const message = "Hola, cómo estás? te escribo de Medicals | Medicina Privada";
     const encodedMessage = encodeURIComponent(message);
     const link = `https://wa.me/${cleanNumber}?text=${encodedMessage}`;
   
