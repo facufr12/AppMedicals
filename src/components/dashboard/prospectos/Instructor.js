@@ -273,36 +273,37 @@ const Instructor = () => {
                       </a>
                     </span>
                   </div>
-                  <div className="mt-3">
-                    <span>Evolución</span>
-                    <div className="position-relative mt-4">
-                      <div className="progress" style={{ height: "20px" }}>
-                        <div
-                          className="progress-bar"
-                          role="progressbar"
-                          style={{
-                            width: `${person.evolucion}%`,
-                            backgroundColor: "#e82e8a",
-                          }}
-                          aria-valuenow={person.evolucion}
-                          aria-valuemin="0"
-                          aria-valuemax="100"
-                        />
-                      </div>
-                      <span
-                        style={{
-                          position: "absolute",
-                          top: "-25px",
-                          left: "50%",
-                          transform: "translateX(-50%)",
-                          color: "#e82e8a",
-                          fontWeight: "bold",
-                        }}
-                      >
-                        {person.evolucion}%
-                      </span>
-                    </div>
-                  </div>
+               <div className="mt-3">
+  <span>Evolución</span>
+  <div className="position-relative mt-4">
+    <div className="progress" style={{ height: "20px" }}>
+      <div
+        className="progress-bar"
+        role="progressbar"
+        style={{
+          width: `${Math.round(person.evolucion * 100)}%`,
+          backgroundColor: "#e82e8a",
+        }}
+        aria-valuenow={Math.round(person.evolucion * 100)}
+        aria-valuemin="0"
+        aria-valuemax="100"
+      />
+    </div>
+    <span
+      style={{
+        position: "absolute",
+        top: "-25px",
+        left: "50%",
+        transform: "translateX(-50%)",
+        color: "#e82e8a",
+        fontWeight: "bold",
+      }}
+    >
+      {Math.round(person.evolucion * 100)}%
+    </span>
+  </div>
+</div>
+
                   <Button
                     onClick={() => handleDetailsClick(person)}
                     variant="primary"
