@@ -284,7 +284,7 @@ const Instructor = () => {
           width: `${Math.round(person.evolucion * 100)}%`,
           backgroundColor: "#e82e8a",
         }}
-        aria-valuenow={Math.round(person.evolucion * 100)}
+        aria-valuenow={Math.round(person.evolucion)}
         aria-valuemin="0"
         aria-valuemax="100"
       />
