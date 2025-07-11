@@ -1,0 +1,42 @@
+# Configuración para evitar cache
+<IfModule mod_headers.c>
+    # Aplicar headers anti-cache a todos los archivos
+    Header always set Cache-Control "no-cache, no-store, must-revalidate"
+    Header always set Pragma "no-cache"
+    Header always set Expires "0"
+    
+    # Headers específicos para archivos HTML
+    <FilesMatch "\.(html|htm)$">
+        Header always set Cache-Control "no-cache, no-store, must-revalidate"
+        Header always set Pragma "no-cache"
+        Header always set Expires "0"
+    </FilesMatch>
+    
+    # Headers específicos para archivos JS y CSS
+    <FilesMatch "\.(js|css)$">
+        Header always set Cache-Control "no-cache, no-store, must-revalidate"
+        Header always set Pragma "no-cache"
+        Header always set Expires "0"
+    </FilesMatch>
+    
+    # Headers específicos para archivos JSON
+    <FilesMatch "\.(json)$">
+        Header always set Cache-Control "no-cache, no-store, must-revalidate"
+        Header always set Pragma "no-cache"
+        Header always set Expires "0"
+    </FilesMatch>
+</IfModule>
+
+# Configuración para reescritura de URLs
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Redirigir todas las rutas al index.html (para SPA)
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule . /index.html [L]
+    
+    # Agregar timestamp a recursos estáticos
+    RewriteCond %{QUERY_STRING} !v=
+    RewriteRule ^(static/.*)$ $1?v=%{TIME_YEAR}%{TIME_MON}%{TIME_DAY}%{TIME_HOUR}%{TIME_MIN}%{TIME_SEC} [L]
+</IfModule>

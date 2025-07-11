@@ -10,9 +10,39 @@
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
     
+    <!-- Meta tags adicionales para navegadores específicos -->
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+    <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+    <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+    
     <!-- Timestamp para cache busting -->
     <meta name="build-time" content="<%= new Date().getTime() %>" />
     <meta name="version" content="2.3.0" />
+    
+    <!-- Script para limpiar cache automáticamente -->
+    <script>
+      // Limpiar cache del navegador
+      if ('caches' in window) {
+        caches.keys().then(function(names) {
+          for (let name of names) {
+            caches.delete(name);
+          }
+        });
+      }
+      
+      // Limpiar localStorage y sessionStorage
+      if (typeof(Storage) !== "undefined") {
+        localStorage.clear();
+        sessionStorage.clear();
+      }
+      
+      // Agregar timestamp a la URL para evitar cache
+      if (window.location.search.indexOf('v=') === -1) {
+        const timestamp = new Date().getTime();
+        const separator = window.location.search ? '&' : '?';
+        window.history.replaceState({}, '', window.location.pathname + window.location.search + separator + 'v=' + timestamp);
+      }
+    </script>
 
     <!--
       manifest.json provides metadata used when your web app is installed on a

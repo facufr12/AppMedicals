@@ -16,19 +16,51 @@ const addTimestamp = () => {
       timestamp.toString()
     );
     
-    // Agregar timestamp a los assets
+    // Agregar timestamp a TODOS los assets (CSS, JS, imágenes, etc.)
     content = content.replace(
-      /href="(\/static\/[^"]*\.css)"/g,
+      /href="([^"]*\.(css|ico|png|jpg|jpeg|gif|svg|webp))"/g,
       `href="$1?v=${timestamp}"`
     );
     
     content = content.replace(
-      /src="(\/static\/[^"]*\.js)"/g,
+      /src="([^"]*\.(js|css|png|jpg|jpeg|gif|svg|webp))"/g,
       `src="$1?v=${timestamp}"`
     );
     
+    // Agregar timestamp a manifest.json y otros archivos
+    content = content.replace(
+      /href="([^"]*\.json)"/g,
+      `href="$1?v=${timestamp}"`
+    );
+    
+    // Agregar script adicional para forzar recarga
+    const forceReloadScript = `
+    <script>
+      // Verificar si la aplicación está cargada correctamente
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          if (!document.querySelector('#root').innerHTML.trim()) {
+            console.log('Aplicación no cargada correctamente, forzando recarga...');
+            window.location.reload(true);
+          }
+        }, 3000);
+      });
+      
+      // Detectar si la página se cargó desde cache
+      window.addEventListener('pageshow', function(event) {
+        if (event.persisted) {
+          console.log('Página cargada desde cache, forzando recarga...');
+          window.location.reload(true);
+        }
+      });
+    </script>`;
+    
+    // Insertar el script antes del cierre del body
+    content = content.replace('</body>', forceReloadScript + '</body>');
+    
     fs.writeFileSync(buildPath, content);
     console.log(`✅ Timestamp agregado: ${timestamp}`);
+    console.log('✅ Script anti-cache agregado');
   }
 };
 
