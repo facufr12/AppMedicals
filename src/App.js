@@ -7,6 +7,8 @@ import AllRoutes from "layouts/AllRoutes";
 import DarkLightMode from "layouts/DarkLightMode";
 // Import AuthProvider
 import { AuthProvider } from "./components/dashboard/authentication/AuthContext"; // Asegúrate de que la ruta sea correcta
+// Import CacheBuster
+import CacheBuster from "./components/CacheBuster";
 
 // Import required stylesheet
 import "simplebar/dist/simplebar.min.css";
@@ -16,6 +18,7 @@ function App() {
   return (
     <Router>
       <AuthProvider>
+        <CacheBuster />
         <ScrollToTop />
         <AllRoutes />
       </AuthProvider>
